@@ -25,7 +25,7 @@ def get_message(socket):
     :param socket: sender's socket
     :return: received message: dict
     """
-    encoded_message= socket.recv(MAX_PACKAGE_LENGTH)
+    encoded_message = socket.recv(MAX_PACKAGE_LENGTH)
     if isinstance(encoded_message, bytes):
         decoded_message = encoded_message.decode(ENCODING)
         message = json.loads(decoded_message)
@@ -33,4 +33,3 @@ def get_message(socket):
             return message
         raise ValueError
     raise ValueError
-

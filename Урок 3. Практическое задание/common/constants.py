@@ -1,5 +1,5 @@
 # IP адрес и порт по умолчанию
-DEFAULT_IP = '127.0.0.1'
+# DEFAULT_IP = '127.0.0.1'
 DEFAULT_PORT = 7777
 # Максимальная очередь подключений
 MAX_CONNECTIONS = 5

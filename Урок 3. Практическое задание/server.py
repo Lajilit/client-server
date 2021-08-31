@@ -1,6 +1,5 @@
 import json
 import sys
-import time
 from socket import socket, AF_INET, SOCK_STREAM
 from common.constants import DEFAULT_PORT, MAX_CONNECTIONS, ACTION, \
     PRESENCE, TIME, USER, ACCOUNT_NAME, RESPONSE, ERROR, STATUS
@@ -8,15 +7,16 @@ from common.functions import get_message, send_message
 
 users_db = ['Guest', 'Гость']
 
+
 def client_message_processing(message):
-    '''
+    """
     The function takes a message from the client,
     processes it and
     returns a response message from the server
 
     :param message: received message: dict
     :return: response message: dict
-    '''
+    """
     if ACTION in message \
             and message[ACTION] == PRESENCE \
             and TIME in message \
@@ -33,6 +33,7 @@ def client_message_processing(message):
         RESPONSE: 400,
         ERROR: 'bad request'
     }
+
 
 def main():
     """

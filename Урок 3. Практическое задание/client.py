@@ -2,7 +2,8 @@ import json
 import sys
 import time
 from socket import socket, AF_INET, SOCK_STREAM
-from common.constants import DEFAULT_IP, DEFAULT_PORT, ACTION, PRESENCE, TIME, \
+
+from common.constants import DEFAULT_PORT, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, TYPE, RESPONSE, ERROR, STATUS
 from common.functions import send_message, get_message
 
@@ -41,30 +42,50 @@ def server_message_processing(message):
 
 
 def main():
-    try:
-        if '-p' in sys.argv:
-            p = sys.argv.index('-p') + 1
-            port = int(sys.argv[p])
-            if port <= 1024 or port >= 65535:
-                raise ValueError
-        else:
-            port = DEFAULT_PORT
-    except IndexError:
-        print('missing port number')
+    """
+    The main function.
+    The function receives from the command line parameters the ip
+    address and port for connecting to the server and the username
+    (if there are no port and user parameters, it uses the default
+    values), generates a socket for the client and sends a presense
+    message to the server. Waits for a response message from the server,
+    processes it and displays the response.
+    """
+    # Help
+    help_string = """parameters: client.py <addr> [<port>] [-u <user>]:
+    addr - server ip-address (example 127.0.0.1)
+    port - server port (default 7777)
+    -u <user> - user name (default Guest)"""
+
+    if 'help' in sys.argv or '-h' in sys.argv:
+        print(help_string)
         sys.exit(1)
-    except ValueError:
-        print('wrong port number')
+
+    parameters = ['-u']  # Список доступных параметров, кроме addr и port
+
+    try:
+        if sys.argv[1] not in parameters:
+            addr = sys.argv[1]
+        else:
+            raise IndexError
+    except IndexError:
+        print('parameter error: missing ip address')
         sys.exit(1)
 
     try:
-        if '-a' in sys.argv:
-            a = sys.argv.index('-a') + 1
-            ip = sys.argv[a]
+        if sys.argv[2] not in parameters:
+            port = int(sys.argv[2])
+            if port <= 1024 or port >= 65535:
+                raise ValueError
         else:
-            ip = DEFAULT_IP
-    except IndexError:
-        print('missing ip address')
+            raise IndexError
+    except IndexError:  # if not second parameter - use default value
+        port = DEFAULT_PORT
+
+    except ValueError:
+        print('parameter error: wrong port number')
         sys.exit(1)
+
     try:
         if '-u' in sys.argv:
             u = sys.argv.index('-u') + 1
@@ -72,11 +93,11 @@ def main():
         else:
             user = 'Guest'
     except IndexError:
-        print('missing user')
+        print('parameter error: missing user')
         sys.exit(1)
 
     sock = socket(AF_INET, SOCK_STREAM)
-    sock.connect((ip, port))
+    sock.connect((addr, port))
     client_message = create_presence_message(user)
     send_message(sock, client_message)
     try:
