@@ -26,7 +26,7 @@ def create_presence_message(user='Guest'):
     return output_message
 
 
-def server_message_processing(message):
+def handle_response(message):
     """
     The function takes a message received from the server,
     processes it and
@@ -47,7 +47,7 @@ def main():
     The function receives from the command line parameters the ip
     address and port for connecting to the server and the username
     (if there are no port and user parameters, it uses the default
-    values), generates a socket for the client and sends a presense
+    values), generates a socket for the client and sends a presence
     message to the server. Waits for a response message from the server,
     processes it and displays the response.
     """
@@ -61,7 +61,7 @@ def main():
         print(help_string)
         sys.exit(1)
 
-    parameters = ['-u']  # Список доступных параметров, кроме addr и port
+    parameters = ['-u']
 
     try:
         if sys.argv[1] not in parameters:
@@ -101,7 +101,7 @@ def main():
     client_message = create_presence_message(user)
     send_message(sock, client_message)
     try:
-        answer = server_message_processing(get_message(sock))
+        answer = handle_response(get_message(sock))
         print(answer)
     except (ValueError, json.JSONDecodeError):
         print('the message from server is incorrect')

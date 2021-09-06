@@ -1,6 +1,7 @@
 import json
 import sys
 from socket import socket, AF_INET, SOCK_STREAM
+
 from common.constants import DEFAULT_PORT, MAX_CONNECTIONS, ACTION, \
     PRESENCE, TIME, USER, ACCOUNT_NAME, RESPONSE, ERROR, STATUS
 from common.functions import get_message, send_message
@@ -8,7 +9,7 @@ from common.functions import get_message, send_message
 users_db = ['Guest', 'Гость']
 
 
-def client_message_processing(message):
+def handle_message(message):
     """
     The function takes a message from the client,
     processes it and
@@ -24,7 +25,7 @@ def client_message_processing(message):
             and message[USER][ACCOUNT_NAME] in users_db:
         print(f'{message[USER][ACCOUNT_NAME]}: {message[USER][STATUS]}')
         return {RESPONSE: 200}
-    elif message[USER][ACCOUNT_NAME] not in users_db:
+    elif USER in message and message[USER][ACCOUNT_NAME] not in users_db:
         return {
             RESPONSE: 402,
             ERROR: 'no account with that name'
@@ -78,7 +79,7 @@ def main():
         try:
             client_message = get_message(client_socket)
             print(client_message)
-            server_response = client_message_processing(client_message)
+            server_response = handle_message(client_message)
             send_message(client_socket, server_response)
             client_socket.close()
         except (ValueError, json.JSONDecodeError):
