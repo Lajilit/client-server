@@ -2,7 +2,6 @@ import json
 import sys
 import time
 from socket import socket, AF_INET, SOCK_STREAM
-
 from common.constants import DEFAULT_PORT, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, TYPE, RESPONSE, ERROR, STATUS
 from common.functions import send_message, get_message

@@ -1,7 +1,10 @@
 import json
 import unittest
+import os, sys
 
-import common.constants as cnst
+sys.path.append(os.path.join(os.getcwd(), ''))
+
+from common.constants import ENCODING
 from common.functions import send_message, get_message
 
 
@@ -38,7 +41,7 @@ class TestFunctions(unittest.TestCase):
     def test_send_message(self):
         message = self.test_dict
         test_socket = TestSocket()
-        example_message = json.dumps(message).encode(cnst.ENCODING)
+        example_message = json.dumps(message).encode(ENCODING)
         send_message(test_socket, message)
         checked_message = test_socket.message_to_socket
 
@@ -47,7 +50,7 @@ class TestFunctions(unittest.TestCase):
     def test_get_message_ok(self):
         message = b'{"action": "presence", "time": 0.0, "user": "user"}'
         test_socket = TestSocket(message)
-        example_message = json.loads(message.decode(cnst.ENCODING))
+        example_message = json.loads(message.decode(ENCODING))
 
         self.assertEqual(get_message(test_socket), example_message)
 

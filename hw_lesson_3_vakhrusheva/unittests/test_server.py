@@ -1,5 +1,8 @@
 import time
 import unittest
+import os, sys
+
+sys.path.append(os.path.join(os.getcwd(), '..' ))
 
 import common.constants as cnst
 from server import handle_message

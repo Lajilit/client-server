@@ -1,9 +1,11 @@
 import time
 import unittest
+import os, sys
 
-import common.constants as cnst
+sys.path.append(os.path.join(os.getcwd(), ''))
+
+from  common.constants import *
 from client import create_presence_message, handle_response
-
 
 class TestClient(unittest.TestCase):
 
@@ -16,48 +18,48 @@ class TestClient(unittest.TestCase):
     def test_create_presence_message_default_user(self):
         message = create_presence_message()
         result = {
-            cnst.ACTION: cnst.PRESENCE,
-            cnst.TIME: time.time(),
-            cnst.USER: {
-                cnst.ACCOUNT_NAME: 'Guest',
-                cnst.STATUS: 'online'
+            ACTION: PRESENCE,
+            TIME: time.time(),
+            USER: {
+                ACCOUNT_NAME: 'Guest',
+                STATUS: 'online'
             },
-            cnst.TYPE: cnst.STATUS
+            TYPE: STATUS
         }
         self.assertEqual(message, result)
 
     def test_create_presence_message_user(self):
         message = create_presence_message('User')
         result = {
-            cnst.ACTION: cnst.PRESENCE,
-            cnst.TIME: time.time(),
-            cnst.USER: {
-                cnst.ACCOUNT_NAME: 'User',
-                cnst.STATUS: 'online'
+            ACTION: PRESENCE,
+            TIME: time.time(),
+            USER: {
+                ACCOUNT_NAME: 'User',
+                STATUS: 'online'
             },
-            cnst.TYPE: cnst.STATUS
+            TYPE: STATUS
         }
         self.assertEqual(message, result)
 
     def test_handle_response_200(self):
         message = {
-            cnst.RESPONSE: 200
+            RESPONSE: 200
         }
         result = '200 : OK'
         self.assertEqual(handle_response(message), result)
 
     def test_handle_response_400(self):
         message = {
-            cnst.RESPONSE: 400,
-            cnst.ERROR: 'bad request'
+            RESPONSE: 400,
+            ERROR: 'bad request'
         }
         result = '400 : bad request'
         self.assertEqual(handle_response(message), result)
 
     def test_handle_response_402(self):
         message = {
-            cnst.RESPONSE: 402,
-            cnst.ERROR: 'no account with that name'
+            RESPONSE: 402,
+            ERROR: 'no account with that name'
         }
         result = '402 : no account with that name'
         self.assertEqual(handle_response(message), result)
