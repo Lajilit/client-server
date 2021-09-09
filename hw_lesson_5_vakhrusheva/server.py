@@ -1,10 +1,10 @@
 import json
 import sys
-from socket import socket, AF_INET, SOCK_STREAM
 
-from common.constants import DEFAULT_PORT, MAX_CONNECTIONS, ACTION, \
+from constants import DEFAULT_PORT, MAX_CONNECTIONS, ACTION, \
     PRESENCE, TIME, USER, ACCOUNT_NAME, RESPONSE, ERROR, STATUS
-from common.functions import get_message, send_message
+from functions import get_message, send_message
+from socket import socket, AF_INET, SOCK_STREAM
 
 users_db = ['Guest', 'Гость']
 

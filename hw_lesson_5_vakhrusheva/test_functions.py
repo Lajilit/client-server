@@ -1,11 +1,8 @@
 import json
 import unittest
-import os, sys
 
-sys.path.append(os.path.join(os.getcwd(), ''))
-
-from common.constants import ENCODING
-from common.functions import send_message, get_message
+from constants import ENCODING
+from functions import send_message, get_message
 
 
 class TestSocket:
