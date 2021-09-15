@@ -1,14 +1,29 @@
+import inspect
 import json
+import logging
 import sys
-
+from socket import socket, AF_INET, SOCK_STREAM
 from constants import DEFAULT_PORT, MAX_CONNECTIONS, ACTION, \
     PRESENCE, TIME, USER, ACCOUNT_NAME, RESPONSE, ERROR, STATUS
 from functions import get_message, send_message
-from socket import socket, AF_INET, SOCK_STREAM
+import project_logging.config.server_log_config
 
 users_db = ['Guest', 'Гость']
 
+server_logger = logging.getLogger('server')
 
+def log(func):
+
+    def wrapper(*args, **kwargs):
+        server_logger.debug(
+            f'Function: {func.__name__}, args: {args}, kwargs: {kwargs}, '
+            f'called from function: {inspect.stack()[1][3]}'
+        )
+        result = func(*args, **kwargs)
+        return result
+    return wrapper
+
+@log
 def handle_message(message):
     """
     The function takes a message from the client,
@@ -18,12 +33,13 @@ def handle_message(message):
     :param message: received message: dict
     :return: response message: dict
     """
+    server_logger.debug('the message from the client is being handled')
     if ACTION in message \
             and message[ACTION] == PRESENCE \
             and TIME in message \
             and USER in message \
             and message[USER][ACCOUNT_NAME] in users_db:
-        print(f'{message[USER][ACCOUNT_NAME]}: {message[USER][STATUS]}')
+        server_logger.info(f'{message[USER][ACCOUNT_NAME]}: {message[USER][STATUS]}')
         return {RESPONSE: 200}
     elif USER in message and message[USER][ACCOUNT_NAME] not in users_db:
         return {
@@ -54,10 +70,12 @@ def main():
         else:
             port = DEFAULT_PORT
     except IndexError:
-        print('missing port number')
+        server_logger.warning(
+            f'missing port number: default port {DEFAULT_PORT} used'
+        )
         sys.exit(1)
     except ValueError:
-        print('wrong port number')
+        server_logger.critical(f'wrong port number: {sys.argv[p]}')
         sys.exit(1)
 
     try:
@@ -67,25 +85,35 @@ def main():
         else:
             ip = ''
     except IndexError:
-        print('missing ip address')
+        server_logger.warning(f'missing ip address')
         sys.exit(1)
 
     sock = socket(AF_INET, SOCK_STREAM)
     sock.bind((ip, port))
     sock.listen(MAX_CONNECTIONS)
+    if ip:
+        server_logger.info(f'server started at {port} and listened ip {ip}')
+    else:
+        server_logger.info(f'server started at {port} and listened all ip')
 
     while True:
         client_socket, client_address = sock.accept()
+        server_logger.info(f'client connected: {client_address}')
         try:
             client_message = get_message(client_socket)
-            print(client_message)
+            server_logger.debug(f'message reseived {client_message}')
             server_response = handle_message(client_message)
+            server_logger.debug(
+                f'a response to the client is generated: {server_response}')
             send_message(client_socket, server_response)
+            server_logger.debug('responce was sent to the client')
             client_socket.close()
+            server_logger.debug('client connection closed')
         except (ValueError, json.JSONDecodeError):
-            print('the message from client is incorrect')
+            server_logger.error('the message from client is incorrect')
             client_socket.close()
 
 
 if __name__ == '__main__':
     main()
+    handle_message('text')

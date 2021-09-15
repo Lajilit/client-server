@@ -1,6 +1,6 @@
 import json
 
-from .constants import MAX_PACKAGE_LENGTH, ENCODING
+from constants import MAX_PACKAGE_LENGTH, ENCODING
 
 
 def send_message(socket, message):

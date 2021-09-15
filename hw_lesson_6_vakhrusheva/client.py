@@ -1,12 +1,31 @@
+import inspect
 import json
+import logging
 import sys
 import time
 from socket import socket, AF_INET, SOCK_STREAM
 from constants import DEFAULT_PORT, ACTION, PRESENCE, TIME, \
-    USER, ACCOUNT_NAME, TYPE, RESPONSE, ERROR, STATUS
+    USER, ACCOUNT_NAME, TYPE, RESPONSE, ERROR, STATUS, DEFAULT_IP
 from functions import send_message, get_message
+import project_logging.config.client_log_config
+
+client_logger = logging.getLogger('client')
+
+class Log():
+
+    def __call__(self, func):
+        def wrapper(*args, **kwargs):
+            client_logger.debug(
+                f'Function: {func.__name__}, args: {args}, kwargs: {kwargs}, '
+                f'called from function: {inspect.stack()[1][3]}'
+            )
+            result = func(*args, **kwargs)
+            return result
+
+        return wrapper
 
 
+@Log()
 def create_presence_message(user='Guest'):
     """
     The function generates a presence message for the user
@@ -22,9 +41,10 @@ def create_presence_message(user='Guest'):
         },
         TYPE: STATUS
     }
+    client_logger.debug(f'{user}: {PRESENCE} message is created')
     return output_message
 
-
+@Log()
 def handle_response(message):
     """
     The function takes a message received from the server,
@@ -33,6 +53,7 @@ def handle_response(message):
     :param message: message from server: dict
     :return: server answer: str
     """
+    client_logger.debug('the responce from the server is being handled')
     if RESPONSE in message:
         if message[RESPONSE] == 200:
             return f'{message[RESPONSE]} : OK'
@@ -68,8 +89,8 @@ def main():
         else:
             raise IndexError
     except IndexError:
-        print('parameter error: missing ip address')
-        sys.exit(1)
+        client_logger.warning('missing ip address: default ip used')
+        addr = DEFAULT_IP
 
     try:
         if sys.argv[2] not in parameters:
@@ -79,10 +100,11 @@ def main():
         else:
             raise IndexError
     except IndexError:  # if not second parameter - use default value
+        client_logger.warning('missing port number: default port used')
         port = DEFAULT_PORT
 
     except ValueError:
-        print('parameter error: wrong port number')
+        client_logger.critical(f'wrong port number: {sys.argv[2]}')
         sys.exit(1)
 
     try:
@@ -92,18 +114,29 @@ def main():
         else:
             user = 'Guest'
     except IndexError:
-        print('parameter error: missing user')
+        client_logger.critical('missing user')
         sys.exit(1)
-
-    sock = socket(AF_INET, SOCK_STREAM)
-    sock.connect((addr, port))
-    client_message = create_presence_message(user)
+    try:
+        sock = socket(AF_INET, SOCK_STREAM)
+        sock.connect((addr, port))
+        client_logger.debug('trying to connect to server at '
+                           f'{addr}:{port}')
+    except ConnectionRefusedError:
+        client_logger.critical('No connection could be made because the '
+                                'target machine actively refused it')
+        sys.exit(1)
+    client_message = create_presence_message(user=user)
     send_message(sock, client_message)
+    client_logger.debug('presense message was sent to the server')
     try:
         answer = handle_response(get_message(sock))
-        print(answer)
+        client_logger.info(
+            f'server response: {answer}'
+        )
     except (ValueError, json.JSONDecodeError):
-        print('the message from server is incorrect')
+        client_logger.error(
+            'the message from server is incorrect'
+        )
 
 
 if __name__ == '__main__':

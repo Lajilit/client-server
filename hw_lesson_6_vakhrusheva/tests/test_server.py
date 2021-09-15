@@ -1,5 +1,8 @@
-import time
 import unittest
+import os, sys
+
+parent_directory = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(parent_directory)
 
 from constants import *
 from server import handle_message
@@ -29,7 +32,7 @@ class TestServer(unittest.TestCase):
     def test_handle_message_presence_ok(self):
         message = {
             ACTION: PRESENCE,
-            TIME: time.time(),
+            TIME: 1.1,
             USER: {
                 ACCOUNT_NAME: 'Guest',
                 STATUS: 'online'
@@ -41,7 +44,7 @@ class TestServer(unittest.TestCase):
     def test_handle_message_presence_no_user(self):
         message = {
             ACTION: 'wrong',
-            TIME: time.time(),
+            TIME: 1.1,
             TYPE: STATUS
         }
         self.assertEqual(handle_message(message), self.results[1])
@@ -49,7 +52,7 @@ class TestServer(unittest.TestCase):
     def test_handle_message_presence_wrong_user(self):
         message = {
             ACTION: PRESENCE,
-            TIME: time.time(),
+            TIME: 1.1,
             USER: {
                 ACCOUNT_NAME: 'Wrong User',
                 STATUS: 'online'
@@ -60,7 +63,7 @@ class TestServer(unittest.TestCase):
 
     def test_handle_message_presence_no_action(self):
         message = {
-            TIME: time.time(),
+            TIME: 1.1,
             USER: {
                 ACCOUNT_NAME: 'Guest',
                 STATUS: 'online'
@@ -72,7 +75,7 @@ class TestServer(unittest.TestCase):
     def test_handle_message_presence_wrong_action(self):
         message = {
             ACTION: 'wrong',
-            TIME: time.time(),
+            TIME: 1.1,
             USER: {
                 ACCOUNT_NAME: 'Guest',
                 STATUS: 'online'

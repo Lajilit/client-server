@@ -1,5 +1,9 @@
 import json
 import unittest
+import os, sys
+
+parent_directory = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(parent_directory)
 
 from constants import ENCODING
 from functions import send_message, get_message

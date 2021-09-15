@@ -1,5 +1,8 @@
-import time
 import unittest
+import os, sys
+
+parent_directory = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(parent_directory)
 
 from constants import *
 from client import create_presence_message, handle_response
@@ -14,9 +17,10 @@ class TestClient(unittest.TestCase):
 
     def test_create_presence_message_default_user(self):
         message = create_presence_message()
+        message[TIME] = 1.1
         result = {
             ACTION: PRESENCE,
-            TIME: time.time(),
+            TIME: 1.1,
             USER: {
                 ACCOUNT_NAME: 'Guest',
                 STATUS: 'online'
@@ -27,9 +31,10 @@ class TestClient(unittest.TestCase):
 
     def test_create_presence_message_user(self):
         message = create_presence_message('User')
+        message[TIME] = 1.1
         result = {
             ACTION: PRESENCE,
-            TIME: time.time(),
+            TIME: 1.1,
             USER: {
                 ACCOUNT_NAME: 'User',
                 STATUS: 'online'
