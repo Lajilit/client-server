@@ -1,0 +1,47 @@
+2021-09-10 02:12:47,990   INFO       server.py    server started at 7777 and listened all ip
+2021-09-10 02:13:10,541   INFO       server.py    server started at 7777 and listened ip 127.0.0.1
+2021-09-10 02:13:29,786   INFO       server.py    client connected: ('127.0.0.1', 61458)
+2021-09-10 02:13:29,786   DEBUG      server.py    message reseived {'action': 'presence', 'time': 1631229209.7865763, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}
+2021-09-10 02:13:29,786   INFO       server.py    the message from the client is being handled
+2021-09-10 02:13:29,786   INFO       server.py    a response to the client is generated: 
+{'response': 200}
+2021-09-10 02:13:29,786   INFO       server.py    responce was sent to the client
+2021-09-10 02:13:29,786   INFO       server.py    client connection closed
+2021-09-10 02:14:23,988   INFO       server.py    client connected: ('127.0.0.1', 52549)
+2021-09-10 02:14:23,988   DEBUG      server.py    message reseived {'action': 'presence', 'time': 1631229263.9889357, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}
+2021-09-10 02:14:23,988   INFO       server.py    the message from the client is being handled
+2021-09-10 02:14:23,988   INFO       server.py    a response to the client is generated: 
+{'response': 200}
+2021-09-10 02:14:23,988   INFO       server.py    responce was sent to the client
+2021-09-10 02:14:23,988   INFO       server.py    client connection closed
+2021-09-10 02:15:08,618   INFO       server.py    server started at 7777 and listened ip 127.0.0.1
+2021-09-10 02:15:10,556   INFO       server.py    client connected: ('127.0.0.1', 52550)
+2021-09-10 02:15:10,556   DEBUG      server.py    message reseived {'action': 'presence', 'time': 1631229310.556457, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}
+2021-09-10 02:15:10,556   INFO       server.py    the message from the client is being handled
+2021-09-10 02:15:10,556   INFO       server.py    a response to the client is generated: {'response': 200}
+2021-09-10 02:15:10,556   INFO       server.py    responce was sent to the client
+2021-09-10 02:15:10,556   INFO       server.py    client connection closed
+2021-09-10 02:15:54,385   INFO       server.py    client connected: ('127.0.0.1', 52552)
+2021-09-10 02:15:54,385   DEBUG      server.py    message reseived {'action': 'presence', 'time': 1631229354.3852477, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'}
+2021-09-10 02:15:54,385   INFO       server.py    the message from the client is being handled
+2021-09-10 02:15:54,385   INFO       server.py    a response to the client is generated: {'response': 402, 'error': 'no account with that name'}
+2021-09-10 02:15:54,385   INFO       server.py    responce was sent to the client
+2021-09-10 02:15:54,385   INFO       server.py    client connection closed
+2021-09-10 02:16:49,946   INFO       server.py    client connected: ('127.0.0.1', 52555)
+2021-09-10 02:16:49,946   DEBUG      server.py    message reseived {'action': 'presence', 'time': 1631229409.9468517, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'}
+2021-09-10 02:16:49,946   INFO       server.py    the message from the client is being handled
+2021-09-10 02:16:49,946   INFO       server.py    a response to the client is generated: {'response': 402, 'error': 'no account with that name'}
+2021-09-10 02:16:49,946   INFO       server.py    responce was sent to the client
+2021-09-10 02:16:49,946   INFO       server.py    client connection closed
+2021-09-10 02:19:29,928   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:19:29,928   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:19:29,928   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:19:29,928   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:19:29,928   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:19:29,928   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:25:14,390   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:25:14,392   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:25:14,392   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:25:14,394   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:25:14,395   DEBUG      server.py    the message from the client is being handled
+2021-09-10 02:25:14,396   DEBUG      server.py    the message from the client is being handled
