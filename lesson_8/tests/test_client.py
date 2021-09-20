@@ -5,7 +5,9 @@ parent_directory = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(parent_directory)
 
 from constants import *
-from client import create_presence_message, handle_response
+from client import create_presence_message, handle_message, \
+    handle_response
+
 
 class TestClient(unittest.TestCase):
 
@@ -44,9 +46,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(message, result)
 
     def test_handle_response_200(self):
-        message = {
-            RESPONSE: 200
-        }
+        message = {RESPONSE: 200}
         result = '200 : OK'
         self.assertEqual(handle_response(message), result)
 
@@ -66,10 +66,10 @@ class TestClient(unittest.TestCase):
         result = '402 : no account with that name'
         self.assertEqual(handle_response(message), result)
 
-    def test_handle_response_error(self):
-        message = {
-        }
-        self.assertRaises(ValueError, handle_response, message)
+    # def test_handle_response_error(self):
+    #     message = {
+    #     }
+    #     self.assertRaises(ValueError, handle_message, message)
 
 
 if __name__ == '__main__':

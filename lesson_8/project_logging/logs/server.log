@@ -1,0 +1,50 @@
+2021-09-20 19:37:07,874   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:07,908   INFO       server.py    server started at 8000 and listened ip 127.0.0.1
+2021-09-20 19:37:07,943   INFO       server.py    client connection established at ('127.0.0.1', 61575)
+2021-09-20 19:37:08,380   INFO       server.py    client connection established at ('127.0.0.1', 61572)
+2021-09-20 19:37:08,382   DEBUG      server.py    Function: handle_client_message, args: ({'action': 'presence', 'time': 1632155827.945482, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=424, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 61575)>), kwargs: {}, called from function: main
+2021-09-20 19:37:08,382   DEBUG      server.py    the message from the client is being handled
+2021-09-20 19:37:08,383   INFO       server.py    client disconnected ('127.0.0.1', 61575)
+2021-09-20 19:37:08,396   INFO       server.py    client connection established at ('127.0.0.1', 61573)
+2021-09-20 19:37:08,399   DEBUG      server.py    Function: handle_client_message, args: ({'action': 'presence', 'time': 1632155828.3814828, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=364, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 61572)>), kwargs: {}, called from function: main
+2021-09-20 19:37:08,400   DEBUG      server.py    the message from the client is being handled
+2021-09-20 19:37:08,400   INFO       server.py    client disconnected ('127.0.0.1', 61572)
+2021-09-20 19:37:08,402   DEBUG      server.py    Function: handle_client_message, args: ({'action': 'presence', 'time': 1632155828.397482, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 61573)>), kwargs: {}, called from function: main
+2021-09-20 19:37:08,402   DEBUG      server.py    the message from the client is being handled
+2021-09-20 19:37:08,403   INFO       server.py    client disconnected ('127.0.0.1', 61573)
+2021-09-20 19:37:08,412   INFO       server.py    client connection established at ('127.0.0.1', 61574)
+2021-09-20 19:37:08,415   DEBUG      server.py    Function: handle_client_message, args: ({'action': 'presence', 'time': 1632155828.4134793, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=332, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 61574)>), kwargs: {}, called from function: main
+2021-09-20 19:37:08,416   DEBUG      server.py    the message from the client is being handled
+2021-09-20 19:37:08,416   INFO       server.py    client disconnected ('127.0.0.1', 61574)
+2021-09-20 19:37:25,728   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:25,761   INFO       server.py    server started at 8000 and listened ip 127.0.0.1
+2021-09-20 19:37:25,767   INFO       server.py    client connection established at ('127.0.0.1', 56957)
+2021-09-20 19:37:25,789   INFO       server.py    client connection established at ('127.0.0.1', 56958)
+2021-09-20 19:37:25,791   DEBUG      server.py    Function: handle_client_message, args: ({'action': 'presence', 'time': 1632155845.7695332, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=280, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 56957)>), kwargs: {}, called from function: main
+2021-09-20 19:37:25,792   DEBUG      server.py    the message from the client is being handled
+2021-09-20 19:37:25,792   INFO       server.py    client disconnected ('127.0.0.1', 56957)
+2021-09-20 19:37:25,800   INFO       server.py    client connection established at ('127.0.0.1', 56959)
+2021-09-20 19:37:25,802   DEBUG      server.py    Function: handle_client_message, args: ({'action': 'presence', 'time': 1632155845.7915328, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=464, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 56958)>), kwargs: {}, called from function: main
+2021-09-20 19:37:25,802   DEBUG      server.py    the message from the client is being handled
+2021-09-20 19:37:25,802   INFO       server.py    client disconnected ('127.0.0.1', 56958)
+2021-09-20 19:37:26,258   INFO       server.py    client connection established at ('127.0.0.1', 56956)
+2021-09-20 19:37:26,261   DEBUG      server.py    Function: handle_client_message, args: ({'action': 'presence', 'time': 1632155845.8015304, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=456, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 56959)>), kwargs: {}, called from function: main
+2021-09-20 19:37:26,261   DEBUG      server.py    the message from the client is being handled
+2021-09-20 19:37:26,262   INFO       server.py    client disconnected ('127.0.0.1', 56959)
+2021-09-20 19:37:27,273   DEBUG      server.py    Function: handle_client_message, args: ({'action': 'presence', 'time': 1632155846.2612019, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 8000), raddr=('127.0.0.1', 56956)>), kwargs: {}, called from function: main
+2021-09-20 19:37:27,274   DEBUG      server.py    the message from the client is being handled
+2021-09-20 19:37:27,276   INFO       server.py    client disconnected ('127.0.0.1', 56956)
+2021-09-20 20:10:42,209   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:10:42,227   INFO       server.py    server started at 7777 and listened all ip
+2021-09-20 20:10:46,869   INFO       server.py    client connection established at ('127.0.0.1', 57864)
+2021-09-20 20:10:47,871   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1632157846.8701437, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=404, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 57864)>), kwargs: {}, called from function: main
+2021-09-20 20:10:47,871   DEBUG      server.py    the message from the client is being handled
+2021-09-20 20:10:47,872   INFO       server.py    Guest: online
+2021-09-20 20:10:47,872   DEBUG      server.py    Guest added into users_list
+2021-09-20 20:10:48,877   INFO       server.py    client disconnected ('127.0.0.1', 57864)
+2021-09-20 20:11:49,468   INFO       server.py    client connection established at ('127.0.0.1', 65074)
+2021-09-20 20:11:50,476   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1632157909.4691262, 'user': {'account_name': 'Guest', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=340, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 65074)>), kwargs: {}, called from function: main
+2021-09-20 20:11:50,476   DEBUG      server.py    the message from the client is being handled
+2021-09-20 20:11:50,476   INFO       server.py    Guest: online
+2021-09-20 20:11:50,477   DEBUG      server.py    Guest added into users_list
+2021-09-20 20:11:51,484   INFO       server.py    client disconnected ('127.0.0.1', 65074)

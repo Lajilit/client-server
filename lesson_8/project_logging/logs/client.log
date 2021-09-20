@@ -1,0 +1,1491 @@
+2021-09-10 02:13:29,786   WARNING    client.py    missing port number: default port used
+2021-09-10 02:13:29,786   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-10 02:13:29,786   INFO       client.py    presense message was sent to the server
+2021-09-10 02:13:29,786   INFO       client.py    the responce from the server is being handled
+2021-09-10 02:13:29,786   INFO       client.py    server response: 200 : OK
+2021-09-10 02:14:23,988   WARNING    client.py    missing port number: default port used
+2021-09-10 02:14:23,988   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-10 02:14:23,988   INFO       client.py    presense message was sent to the server
+2021-09-10 02:14:23,988   INFO       client.py    the responce from the server is being handled
+2021-09-10 02:14:23,988   INFO       client.py    server response: 200 : OK
+2021-09-10 02:15:10,556   WARNING    client.py    missing port number: default port used
+2021-09-10 02:15:10,556   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-10 02:15:10,556   INFO       client.py    presense message was sent to the server
+2021-09-10 02:15:10,556   INFO       client.py    the responce from the server is being handled
+2021-09-10 02:15:10,556   INFO       client.py    server response: 200 : OK
+2021-09-10 02:15:54,385   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-10 02:15:54,385   INFO       client.py    presense message was sent to the server
+2021-09-10 02:15:54,385   INFO       client.py    the responce from the server is being handled
+2021-09-10 02:15:54,385   INFO       client.py    server response: 402 : no account with that name
+2021-09-10 02:16:49,946   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-10 02:16:49,946   DEBUG      client.py    Катя: presence message is created
+2021-09-10 02:16:49,946   INFO       client.py    presense message was sent to the server
+2021-09-10 02:16:49,946   INFO       client.py    the responce from the server is being handled
+2021-09-10 02:16:49,946   INFO       client.py    server response: 402 : no account with that name
+2021-09-10 02:19:18,459   DEBUG      client.py    Guest: presence message is created
+2021-09-10 02:19:18,459   DEBUG      client.py    User: presence message is created
+2021-09-10 02:19:18,459   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:19:18,459   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:19:18,459   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:19:18,459   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:23:21,236   DEBUG      client.py    Guest: presence message is created
+2021-09-10 02:23:21,237   DEBUG      client.py    User: presence message is created
+2021-09-10 02:23:21,242   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:23:21,243   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:23:21,244   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:23:21,245   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:23:41,304   DEBUG      client.py    Guest: presence message is created
+2021-09-10 02:23:41,325   DEBUG      client.py    User: presence message is created
+2021-09-10 02:23:41,325   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:23:41,325   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:23:41,326   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:23:41,336   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:25:18,134   DEBUG      client.py    Guest: presence message is created
+2021-09-10 02:25:18,135   DEBUG      client.py    User: presence message is created
+2021-09-10 02:25:18,136   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:25:18,137   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:25:18,138   DEBUG      client.py    the responce from the server is being handled
+2021-09-10 02:25:18,138   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:22:50,991   CRITICAL   client.py    missing ip address
+2021-09-13 21:23:14,365   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:23:14,365   DEBUG      client.py    Function: create_presence_message, args: ('Guest',), kwargs: {}
+2021-09-13 21:23:14,365   DEBUG      client.py    Guest: presence message is created
+2021-09-13 21:23:14,365   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:23:14,366   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}
+2021-09-13 21:23:14,367   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:23:14,367   INFO       client.py    server response: 200 : OK
+2021-09-13 21:23:22,581   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:23:22,581   DEBUG      client.py    Function: create_presence_message, args: ('Guest',), kwargs: {}
+2021-09-13 21:23:22,582   DEBUG      client.py    Guest: presence message is created
+2021-09-13 21:23:22,582   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:23:22,582   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}
+2021-09-13 21:23:22,583   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:23:22,583   INFO       client.py    server response: 200 : OK
+2021-09-13 21:23:31,486   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:23:31,486   DEBUG      client.py    Function: create_presence_message, args: ('Guest',), kwargs: {}
+2021-09-13 21:23:31,486   DEBUG      client.py    Guest: presence message is created
+2021-09-13 21:23:31,486   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:23:38,587   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:23:38,587   DEBUG      client.py    Function: create_presence_message, args: ('Guest',), kwargs: {}
+2021-09-13 21:23:38,587   DEBUG      client.py    Guest: presence message is created
+2021-09-13 21:23:38,587   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:23:38,588   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}
+2021-09-13 21:23:38,588   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:23:38,588   INFO       client.py    server response: 200 : OK
+2021-09-13 21:24:32,292   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:24:32,292   DEBUG      client.py    Function: create_presence_message, args: ('Guest',), kwargs: {}
+2021-09-13 21:24:32,292   DEBUG      client.py    Guest: presence message is created
+2021-09-13 21:24:32,293   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:24:32,293   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}
+2021-09-13 21:24:32,294   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:24:32,294   INFO       client.py    server response: 200 : OK
+2021-09-13 21:27:10,019   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:27:10,019   DEBUG      client.py    Function: create_presence_message, args: ('Катя',), kwargs: {}
+2021-09-13 21:27:10,019   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:27:10,019   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:27:10,020   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}
+2021-09-13 21:27:10,020   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:27:10,020   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 21:28:17,494   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:28:17,495   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}
+2021-09-13 21:28:17,495   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:28:17,495   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:28:17,496   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}
+2021-09-13 21:28:17,496   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:28:17,496   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 21:32:48,485   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:32:48,485   DEBUG      decorators.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}
+2021-09-13 21:32:48,486   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:32:48,486   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:32:48,487   DEBUG      decorators.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}
+2021-09-13 21:32:48,487   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:32:48,487   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 21:47:09,219   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:47:09,259   DEBUG      decorators.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 21:47:09,259   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:47:09,259   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:47:09,261   DEBUG      decorators.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 21:47:09,261   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:47:09,262   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 21:48:39,597   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:48:39,637   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 21:48:39,637   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:48:39,637   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:48:39,639   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 21:48:39,639   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:48:39,639   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 21:54:37,559   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:54:37,599   DEBUG      decorators.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 21:54:37,599   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:54:37,599   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:54:37,600   DEBUG      decorators.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 21:54:37,600   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:54:37,601   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 21:54:43,035   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:54:43,112   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 21:54:43,113   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:54:43,113   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:54:43,115   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 21:54:43,115   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:54:43,115   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 21:54:53,415   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:54:53,454   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 21:54:53,454   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:54:53,454   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:54:53,456   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 21:54:53,456   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:54:53,456   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 21:59:54,328   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 21:59:54,378   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 21:59:54,379   DEBUG      client.py    Катя: presence message is created
+2021-09-13 21:59:54,380   DEBUG      client.py    presense message was sent to the server
+2021-09-13 21:59:54,384   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 21:59:54,385   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 21:59:54,385   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:01:02,396   DEBUG      test_client.py    Function: create_presence_message, args: (), kwargs: {}.Module name: client.Called from function test_create_presence_message_default_user
+2021-09-13 22:01:02,397   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:01:02,407   DEBUG      test_client.py    Function: create_presence_message, args: ('User',), kwargs: {}.Module name: client.Called from function test_create_presence_message_user
+2021-09-13 22:01:02,408   DEBUG      client.py    User: presence message is created
+2021-09-13 22:01:02,412   DEBUG      test_client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}.Module name: client.Called from function test_handle_response_200
+2021-09-13 22:01:02,412   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:01:02,415   DEBUG      test_client.py    Function: handle_response, args: ({'response': 400, 'error': 'bad request'},), kwargs: {}.Module name: client.Called from function test_handle_response_400
+2021-09-13 22:01:02,415   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:01:02,418   DEBUG      test_client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: client.Called from function test_handle_response_402
+2021-09-13 22:01:02,419   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:01:02,422   DEBUG      case.py    Function: handle_response, args: ({},), kwargs: {}.Module name: client.Called from function handle
+2021-09-13 22:01:02,423   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:10:37,847   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:10:37,847   DEBUG      client.py    User: presence message is created
+2021-09-13 22:10:37,847   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:10:37,863   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:10:37,863   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:10:37,863   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:12:25,847   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:12:25,847   DEBUG      client.py    User: presence message is created
+2021-09-13 22:12:25,847   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:12:25,847   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:12:25,847   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:12:25,847   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:13:52,491   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:13:52,492   DEBUG      client.py    User: presence message is created
+2021-09-13 22:13:52,492   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:13:52,493   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:13:52,493   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:13:52,494   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:15:08,194   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:15:08,225   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 22:15:08,225   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:15:08,225   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:15:08,241   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560508.2257044, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:15:08,241   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:15:08,241   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:15:08,241   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:16:49,822   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:16:49,845   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 22:16:49,845   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:16:49,846   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:16:49,847   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560609.8458164, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:16:49,848   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:16:49,848   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:16:49,848   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:18:33,243   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:18:33,274   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}.Module name: __main__.Called from function main
+2021-09-13 22:18:33,274   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:18:33,274   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:18:33,274   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560713.2743673, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:18:33,274   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:18:33,274   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:18:33,274   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:18:49,986   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:18:50,011   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:18:50,011   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:18:50,011   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:18:50,013   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560730.0113804, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:18:50,014   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:18:50,014   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:18:50,014   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:19:28,403   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:19:28,434   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:19:28,434   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:19:28,434   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:19:28,434   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560768.434914, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:19:28,434   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:19:28,434   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:19:28,434   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:19:40,646   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:19:40,668   DEBUG      decorators.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:19:40,668   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:19:40,668   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:19:40,669   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560780.6689079, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:19:40,670   DEBUG      decorators.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:19:40,670   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:19:40,670   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:19:46,809   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:19:46,833   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:19:46,833   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:19:46,833   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:19:46,834   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560786.8336709, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}.Module name: __main__.Called from function main
+2021-09-13 22:19:46,835   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:19:46,835   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:19:46,835   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:21:32,703   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:21:32,719   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:21:32,719   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:21:32,719   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:21:32,750   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560892.7192757, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}, called from function main
+2021-09-13 22:21:32,750   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:21:32,750   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:21:32,750   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:22:43,071   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:22:43,095   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:22:43,095   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:22:43,096   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:22:43,097   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631560963.0950649, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}, called from function main
+2021-09-13 22:22:43,098   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:22:43,098   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:22:43,098   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:24:31,005   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:24:31,043   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:24:31,043   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:27:32,235   CRITICAL   client_log_config.py    critical
+2021-09-13 22:27:32,235   ERROR      client_log_config.py    error
+2021-09-13 22:27:32,235   WARNING    client_log_config.py    warning
+2021-09-13 22:27:32,235   INFO       client_log_config.py    info
+2021-09-13 22:27:32,235   DEBUG      client_log_config.py    debug
+2021-09-13 22:29:01,850   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:29:01,882   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:29:01,882   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:29:01,882   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:29:01,897   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631561341.882241, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}, called from function main
+2021-09-13 22:29:01,897   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:29:01,897   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:29:01,897   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:29:51,150   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:29:51,173   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:29:51,173   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:29:51,173   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:29:51,174   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631561391.1735573, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}, called from function main
+2021-09-13 22:29:51,175   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:29:51,175   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:29:51,176   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:30:00,432   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:30:00,447   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:30:00,447   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:30:00,447   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:30:00,447   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631561400.447908, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}, called from function main
+2021-09-13 22:30:00,447   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:30:00,447   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:30:00,447   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:39:40,058   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:39:40,085   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:39:40,085   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:39:40,086   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:39:40,087   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631561980.0855887, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}, called from function main
+2021-09-13 22:39:40,089   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:39:40,089   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:39:40,089   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:39:59,463   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:39:59,494   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:39:59,494   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:39:59,494   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:39:59,494   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631561999.4946678, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}, called from function main
+2021-09-13 22:39:59,494   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:39:59,494   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:39:59,494   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:40:26,975   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:40:26,991   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:40:26,991   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:40:26,991   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:40:26,991   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1631562026.9915764, 'user': {'account_name': 'Катя', 'status': 'online'}, 'type': 'status'},), kwargs: {}, called from function main
+2021-09-13 22:40:26,991   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:40:26,991   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:40:26,991   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:44:08,513   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:44:08,529   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:44:08,529   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:44:08,529   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:44:08,544   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:44:08,544   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:44:08,544   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:44:11,393   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:44:11,409   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:44:11,409   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:44:11,409   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:44:11,424   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:44:11,424   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:44:11,424   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:44:56,521   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:44:56,544   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function main
+2021-09-13 22:44:56,544   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:44:56,544   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:44:56,547   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function main
+2021-09-13 22:44:56,547   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:44:56,547   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:47:03,491   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:47:03,523   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function: main
+2021-09-13 22:47:03,523   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:47:03,523   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:47:03,538   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: main
+2021-09-13 22:47:03,538   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:47:03,538   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:48:45,643   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:48:45,668   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function: main
+2021-09-13 22:48:45,669   DEBUG      client.py    Катя: presence message is created
+2021-09-13 22:48:45,669   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:48:45,672   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: main
+2021-09-13 22:48:45,672   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:48:45,672   INFO       client.py    server response: 402 : no account with that name
+2021-09-13 22:48:58,179   WARNING    client.py    missing ip address: default ip used
+2021-09-13 22:48:58,179   WARNING    client.py    missing port number: default port used
+2021-09-13 22:48:58,180   INFO       client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:48:58,200   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-13 22:48:58,200   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:48:58,200   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:48:58,202   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-13 22:48:58,202   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:48:58,202   INFO       client.py    server response: 200 : OK
+2021-09-13 22:49:30,520   WARNING    client.py    missing ip address: default ip used
+2021-09-13 22:49:30,520   WARNING    client.py    missing port number: default port used
+2021-09-13 22:49:30,520   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:49:30,567   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-13 22:49:30,567   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:49:30,567   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:49:30,567   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-13 22:49:30,567   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:49:30,567   INFO       client.py    server response: 200 : OK
+2021-09-13 22:50:53,019   WARNING    client.py    missing ip address: default ip used
+2021-09-13 22:50:53,019   WARNING    client.py    missing port number: default port used
+2021-09-13 22:50:53,019   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:50:53,050   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-13 22:50:53,050   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:50:53,050   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:50:53,050   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-13 22:50:53,050   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:50:53,050   INFO       client.py    server response: 200 : OK
+2021-09-13 22:51:20,366   WARNING    client.py    missing ip address: default ip used
+2021-09-13 22:51:20,366   WARNING    client.py    missing port number: default port used
+2021-09-13 22:51:20,366   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:51:20,381   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-13 22:51:20,381   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:51:20,381   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:51:20,413   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-13 22:51:20,413   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:51:20,413   INFO       client.py    server response: 200 : OK
+2021-09-13 22:52:37,474   WARNING    client.py    missing ip address: default ip used
+2021-09-13 22:52:37,474   WARNING    client.py    missing port number: default port used
+2021-09-13 22:52:37,474   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:52:37,505   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-13 22:52:37,505   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:52:37,505   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:52:37,505   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-13 22:52:37,505   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:52:37,505   INFO       client.py    server response: 200 : OK
+2021-09-13 22:52:52,603   WARNING    client.py    missing ip address: default ip used
+2021-09-13 22:52:52,603   WARNING    client.py    missing port number: default port used
+2021-09-13 22:52:52,603   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:52:52,635   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-13 22:52:52,635   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:52:52,635   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:52:52,666   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-13 22:52:52,666   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:52:52,666   INFO       client.py    server response: 200 : OK
+2021-09-13 22:53:02,263   WARNING    client.py    missing ip address: default ip used
+2021-09-13 22:53:02,263   WARNING    client.py    missing port number: default port used
+2021-09-13 22:53:02,263   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-13 22:53:02,279   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-13 22:53:02,279   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:53:02,279   DEBUG      client.py    presense message was sent to the server
+2021-09-13 22:53:02,294   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-13 22:53:02,294   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:53:02,294   INFO       client.py    server response: 200 : OK
+2021-09-13 22:53:55,993   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: test_create_presence_message_default_user
+2021-09-13 22:53:55,993   DEBUG      client.py    Guest: presence message is created
+2021-09-13 22:53:55,993   DEBUG      client.py    Function: create_presence_message, args: ('User',), kwargs: {}, called from function: test_create_presence_message_user
+2021-09-13 22:53:55,993   DEBUG      client.py    User: presence message is created
+2021-09-13 22:53:55,993   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: test_handle_response_200
+2021-09-13 22:53:55,993   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:53:55,993   DEBUG      client.py    Function: handle_response, args: ({'response': 400, 'error': 'bad request'},), kwargs: {}, called from function: test_handle_response_400
+2021-09-13 22:53:55,993   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:53:56,009   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: test_handle_response_402
+2021-09-13 22:53:56,009   DEBUG      client.py    the responce from the server is being handled
+2021-09-13 22:53:56,009   DEBUG      client.py    Function: handle_response, args: ({},), kwargs: {}, called from function: handle
+2021-09-13 22:53:56,009   DEBUG      client.py    the responce from the server is being handled
+2021-09-16 23:17:37,824   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:18:42,276   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:19:17,149   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:19:17,164   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-16 23:19:17,164   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Катя'}, called from function: main
+2021-09-16 23:19:17,164   DEBUG      client.py    Катя: presence message is created
+2021-09-16 23:19:17,164   DEBUG      client.py    presense message was sent to the server
+2021-09-16 23:19:17,180   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: main
+2021-09-16 23:19:17,180   DEBUG      client.py    the responce from the server is being handled
+2021-09-16 23:19:17,180   INFO       client.py    server response: 402 : no account with that name
+2021-09-16 23:19:33,371   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:19:33,387   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-16 23:19:33,387   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-16 23:19:33,387   DEBUG      client.py    Guest: presence message is created
+2021-09-16 23:19:33,387   DEBUG      client.py    presense message was sent to the server
+2021-09-16 23:19:33,387   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-16 23:19:33,387   DEBUG      client.py    the responce from the server is being handled
+2021-09-16 23:19:33,387   INFO       client.py    server response: 200 : OK
+2021-09-16 23:19:43,190   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:19:43,203   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-16 23:19:43,204   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-16 23:19:43,204   DEBUG      client.py    Guest: presence message is created
+2021-09-16 23:19:43,204   DEBUG      client.py    presense message was sent to the server
+2021-09-16 23:19:43,206   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-16 23:19:43,206   DEBUG      client.py    the responce from the server is being handled
+2021-09-16 23:19:43,206   INFO       client.py    server response: 200 : OK
+2021-09-16 23:19:50,319   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:19:50,334   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-16 23:19:50,334   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'user'}, called from function: main
+2021-09-16 23:19:50,334   DEBUG      client.py    user: presence message is created
+2021-09-16 23:19:50,334   DEBUG      client.py    presense message was sent to the server
+2021-09-16 23:19:50,350   DEBUG      client.py    Function: handle_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: main
+2021-09-16 23:19:50,350   DEBUG      client.py    the responce from the server is being handled
+2021-09-16 23:19:50,350   INFO       client.py    server response: 402 : no account with that name
+2021-09-16 23:20:10,868   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:20:10,883   CRITICAL   client.py    wrong port number: 1000
+2021-09-16 23:20:17,662   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:20:19,726   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-16 23:20:28,851   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:20:28,867   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-16 23:20:28,867   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-16 23:20:28,867   DEBUG      client.py    Guest: presence message is created
+2021-09-16 23:20:28,867   DEBUG      client.py    presense message was sent to the server
+2021-09-16 23:20:28,867   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-16 23:20:28,867   DEBUG      client.py    the responce from the server is being handled
+2021-09-16 23:20:28,867   INFO       client.py    server response: 200 : OK
+2021-09-16 23:26:18,570   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:26:20,619   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-16 23:27:26,665   DEBUG      client.py    Function: arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:27:26,681   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-16 23:27:26,681   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-16 23:27:26,681   DEBUG      client.py    Guest: presence message is created
+2021-09-16 23:27:26,681   DEBUG      client.py    presense message was sent to the server
+2021-09-16 23:27:26,712   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-16 23:27:26,712   DEBUG      client.py    the responce from the server is being handled
+2021-09-16 23:27:26,712   INFO       client.py    server response: 200 : OK
+2021-09-16 23:40:26,598   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-16 23:40:26,614   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-16 23:40:26,614   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-16 23:40:26,614   DEBUG      client.py    Guest: presence message is created
+2021-09-16 23:40:26,614   DEBUG      client.py    presense message was sent to the server
+2021-09-16 23:40:26,614   DEBUG      client.py    Function: handle_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-16 23:40:26,614   DEBUG      client.py    the responce from the server is being handled
+2021-09-16 23:40:26,614   INFO       client.py    server response: 200 : OK
+2021-09-17 00:55:20,355   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 00:55:20,369   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 00:55:20,370   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'rfnz'}, called from function: main
+2021-09-17 00:55:20,370   DEBUG      client.py    rfnz: presence message is created
+2021-09-17 00:55:20,370   DEBUG      client.py    presense message was sent to the server
+2021-09-17 00:55:57,918   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 00:56:12,429   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 00:56:12,442   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 00:56:12,443   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 00:56:12,443   DEBUG      client.py    Guest: presence message is created
+2021-09-17 00:56:12,443   DEBUG      client.py    presense message was sent to the server
+2021-09-17 00:56:47,444   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 00:56:47,475   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 00:56:47,475   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 00:56:47,475   DEBUG      client.py    Guest: presence message is created
+2021-09-17 00:56:47,475   DEBUG      client.py    presense message was sent to the server
+2021-09-17 00:57:14,591   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 00:57:14,606   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 00:57:14,606   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 00:57:14,606   DEBUG      client.py    Guest: presence message is created
+2021-09-17 00:57:14,606   DEBUG      client.py    presense message was sent to the server
+2021-09-17 00:58:01,745   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 00:58:03,823   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-17 00:58:28,635   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 00:58:28,651   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 00:58:28,651   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 00:58:28,651   DEBUG      client.py    Guest: presence message is created
+2021-09-17 00:58:28,651   DEBUG      client.py    presense message was sent to the server
+2021-09-17 00:59:10,006   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 00:59:12,047   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-17 01:02:59,183   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:02:59,209   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:02:59,209   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:02:59,209   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:02:59,209   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:07:26,907   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:07:28,970   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-17 01:07:37,851   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:07:37,866   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:07:37,882   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:07:37,882   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:07:37,882   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:08:57,165   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:08:57,182   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:08:57,184   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:08:57,184   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:08:57,184   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:09:17,835   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:09:17,860   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:09:17,861   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:09:17,861   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:09:17,861   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:09:31,312   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:09:31,328   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:09:31,328   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:09:31,328   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:09:31,328   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:12:11,741   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:12:11,757   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:12:11,757   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:12:11,757   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:12:11,757   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:12:12,772   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:12:12,772   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:12:12,772   INFO       client.py    server response: 200 : OK
+2021-09-17 01:12:12,772   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:12:51,727   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:12:51,748   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:12:51,749   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:12:51,749   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:12:51,749   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:12:52,754   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:12:52,755   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:12:52,755   INFO       client.py    server response: 200 : OK
+2021-09-17 01:12:52,755   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:13:13,267   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:13:13,282   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:13:13,283   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:13:13,284   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:13:13,284   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:13:14,297   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:13:14,297   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:13:14,298   INFO       client.py    server response: 200 : OK
+2021-09-17 01:13:14,298   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:13:14,299   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=340, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 63223), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:13:22,041   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631830402.0415895, 'account_name': 'Guest', 'message_text': ' hello'}
+2021-09-17 01:13:22,043   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=340, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 63223), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:14:40,053   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631830480.0531313, 'account_name': 'Guest', 'message_text': ' hello all'}
+2021-09-17 01:14:40,053   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=340, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 63223), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:14:42,257   INFO       client.py    user output
+2021-09-17 01:17:02,813   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:17:02,828   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:17:02,829   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:17:02,829   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:17:02,830   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:17:03,843   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:17:03,843   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:17:03,845   INFO       client.py    server response: 200 : OK
+2021-09-17 01:17:03,846   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:17:17,105   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:17:17,123   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:17:17,124   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:17:17,124   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:17:17,124   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:17:18,140   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:17:18,140   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:17:18,141   INFO       client.py    server response: 200 : OK
+2021-09-17 01:17:18,141   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:17:37,551   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:17:37,567   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:17:37,567   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:17:37,567   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:17:37,567   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:17:38,567   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:17:38,567   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:17:38,567   INFO       client.py    server response: 200 : OK
+2021-09-17 01:17:38,567   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:17:38,567   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55794), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:18:10,141   INFO       client.py    user output
+2021-09-17 01:18:12,931   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:18:12,948   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:18:12,949   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:18:12,949   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:18:12,950   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:18:13,953   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:18:13,954   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:18:13,956   INFO       client.py    server response: 200 : OK
+2021-09-17 01:18:13,957   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:18:13,959   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=292, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55795), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:18:15,585   INFO       client.py    user output
+2021-09-17 01:18:21,302   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:18:21,319   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:18:21,320   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:18:21,320   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:18:21,320   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:18:22,329   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:18:22,329   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:18:22,329   INFO       client.py    server response: 200 : OK
+2021-09-17 01:18:22,329   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:18:27,969   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:18:27,985   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:18:27,985   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:18:27,985   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:18:27,985   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:18:28,985   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:18:28,985   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:18:28,985   INFO       client.py    server response: 200 : OK
+2021-09-17 01:18:28,985   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:20:13,312   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:20:13,326   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:20:13,327   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:20:13,328   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:20:13,329   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:20:14,343   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:20:14,343   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:20:14,346   INFO       client.py    server response: 200 : OK
+2021-09-17 01:20:14,347   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:20:14,350   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=400, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59605), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,177   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:21:48,210   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:21:48,238   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:21:48,295   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:21:48,294   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:21:48,300   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,318   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:21:48,326   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:21:48,362   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:21:48,365   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:21:48,371   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:21:48,371   INFO       client.py    server response: 200 : OK
+2021-09-17 01:21:48,372   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:21:48,371   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,376   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:21:48,377   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:21:48,382   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:21:48,383   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:21:48,383   INFO       client.py    server response: 200 : OK
+2021-09-17 01:21:48,383   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:21:48,383   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:21:48,383   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:21:48,387   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,387   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:21:48,379   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:21:48,408   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:21:48,403   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,414   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:21:48,420   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,421   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:21:48,422   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:21:48,388   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:21:48,416   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:21:48,428   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:21:48,445   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:21:48,445   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:21:48,454   INFO       client.py    server response: 200 : OK
+2021-09-17 01:21:48,456   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:21:48,486   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:21:48,487   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,489   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:21:48,490   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:21:48,489   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:21:48,490   INFO       client.py    server response: 200 : OK
+2021-09-17 01:21:48,491   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:21:48,490   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:21:48,491   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:21:48,491   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:21:48,492   INFO       client.py    server response: 200 : OK
+2021-09-17 01:21:48,492   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:21:48,493   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=300, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59520), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,511   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:21:48,541   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:21:48,543   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:48,543   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:21:48,544   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:21:48,544   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:21:48,545   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:21:48,545   INFO       client.py    server response: 200 : OK
+2021-09-17 01:21:48,545   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:21:48,547   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=336, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59521), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:21:49,556   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:21:49,556   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:21:49,556   INFO       client.py    server response: 200 : OK
+2021-09-17 01:21:49,556   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:21:57,798   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631830917.7988448, 'account_name': 'Guest', 'message_text': 'hello'}
+2021-09-17 01:21:57,799   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=300, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59520), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:11,077   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631830931.0775104, 'account_name': 'Guest', 'message_text': 'how are you'}
+2021-09-17 01:22:11,077   CRITICAL   client.py    server connection lost
+2021-09-17 01:22:36,808   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:22:36,839   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:22:36,886   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:22:36,902   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:22:36,918   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:36,918   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:36,918   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:22:36,918   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:22:36,918   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:22:36,918   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:22:36,918   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:22:36,949   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:22:36,964   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:22:36,964   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:22:36,964   INFO       client.py    server response: 200 : OK
+2021-09-17 01:22:36,964   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:22:36,964   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:22:36,964   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:22:36,980   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:22:36,980   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:36,980   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:22:36,980   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:22:36,980   INFO       client.py    server response: 200 : OK
+2021-09-17 01:22:36,980   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:22:36,980   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=368, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 63621), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:36,996   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:22:37,011   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:22:37,011   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:22:37,027   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:22:37,027   INFO       client.py    server response: 200 : OK
+2021-09-17 01:22:37,027   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:22:37,027   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:37,027   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:22:37,027   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:22:37,027   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:22:37,027   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=424, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 63622), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:37,027   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:22:37,069   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:22:37,069   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:37,069   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:22:37,069   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:22:37,069   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:22:37,069   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:22:37,069   INFO       client.py    server response: 200 : OK
+2021-09-17 01:22:37,069   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:22:37,101   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:22:37,101   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:22:37,101   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:37,101   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:22:37,101   INFO       client.py    server response: 200 : OK
+2021-09-17 01:22:37,101   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:22:37,101   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:22:37,101   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:22:37,101   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:22:37,101   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:22:37,101   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:22:37,101   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:22:37,101   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:22:37,101   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:22:37,101   INFO       client.py    server response: 200 : OK
+2021-09-17 01:22:37,101   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:22:38,101   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:22:38,101   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:22:38,101   INFO       client.py    server response: 200 : OK
+2021-09-17 01:22:38,101   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:23:17,236   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:23:17,267   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:23:17,298   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:23:17,298   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:23:17,298   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:23:17,298   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:23:17,298   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:23:17,314   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:23:17,314   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:23:17,314   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:23:17,314   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:23:17,314   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:23:17,314   INFO       client.py    server response: 200 : OK
+o the server
+2021-09-17 01:23:17,314   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:23:17,314   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=320, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58192), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:23:17,330   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:23:17,330   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:23:17,330   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:23:17,330   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:23:17,330   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:23:17,330   INFO       client.py    server response: 200 : OK
+2021-09-17 01:23:17,345   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:23:17,330   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:23:17,345   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:23:17,376   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:23:17,376   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:23:17,376   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:23:17,376   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:23:17,376   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:23:17,376   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:23:17,376   INFO       client.py    server response: 200 : OK
+2021-09-17 01:23:17,376   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:23:18,376   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:23:18,376   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:23:18,376   INFO       client.py    server response: 200 : OK
+2021-09-17 01:23:18,376   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:23:18,376   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=348, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58195), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:25:54,713   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:25:54,722   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:25:54,746   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:25:54,756   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:25:54,758   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:25:54,759   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:25:54,759   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:25:54,761   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:25:54,763   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:25:54,765   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:25:54,765   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:25:54,767   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:25:54,765   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:25:54,769   INFO       client.py    server response: 200 : OK
+2021-09-17 01:25:54,770   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:25:54,771   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=424, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55672), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:25:54,776   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:25:54,777   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:25:54,777   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:25:54,778   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:25:54,779   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:25:54,779   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:25:54,780   INFO       client.py    server response: 200 : OK
+2021-09-17 01:25:54,780   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:25:54,795   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:25:54,821   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:25:54,822   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:25:54,824   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:25:54,824   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:25:54,824   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:25:54,825   INFO       client.py    server response: 200 : OK
+2021-09-17 01:25:54,825   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:25:54,825   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:25:55,841   DEBUG      client.py    Function: handle_server_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:25:55,842   DEBUG      client.py    the message from the server is being handled
+2021-09-17 01:25:55,843   INFO       client.py    server response: 200 : OK
+2021-09-17 01:25:55,844   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:25:55,845   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=292, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55675), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:30:02,575   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:30:02,575   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:30:02,621   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:30:02,621   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:30:02,621   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:30:02,621   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:30:02,621   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:30:02,621   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:30:02,621   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:30:02,621   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:30:02,621   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:30:02,637   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:30:02,653   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:30:02,653   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:30:02,653   DEBUG      client.py    the message is being handled
+2021-09-17 01:30:02,653   INFO       client.py    server response: the message from server is incorrect
+2021-09-17 01:30:02,653   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:30:02,653   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=288, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59940), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:30:02,653   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:30:02,653   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:30:02,653   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:30:02,653   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:30:02,653   DEBUG      client.py    the message is being handled
+2021-09-17 01:30:02,668   INFO       client.py    server response: the message from server is incorrect
+2021-09-17 01:30:02,668   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:30:02,668   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:30:02,668   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:30:02,668   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:30:02,668   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:30:02,668   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:30:02,668   DEBUG      client.py    the message is being handled
+2021-09-17 01:30:02,668   INFO       client.py    server response: the message from server is incorrect
+2021-09-17 01:30:02,684   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:30:03,668   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:30:03,668   DEBUG      client.py    the message is being handled
+2021-09-17 01:30:03,668   INFO       client.py    server response: the message from server is incorrect
+2021-09-17 01:30:03,668   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:30:03,668   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=368, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59943), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:31:18,200   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:31:18,231   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:31:18,231   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:31:18,247   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:31:18,247   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:31:18,247   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:31:18,247   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:31:18,247   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:31:18,262   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:31:18,262   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:31:18,262   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:31:18,262   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:31:18,262   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:31:18,262   DEBUG      client.py    the message {'response': 200} is being handled
+2021-09-17 01:31:18,262   INFO       client.py    server response: the message from server is incorrect
+2021-09-17 01:31:18,262   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:31:18,262   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=368, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59791), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:31:18,278   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:31:18,278   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:31:18,278   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:31:18,278   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:31:18,278   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:31:18,278   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:31:18,278   DEBUG      client.py    the message {'response': 200} is being handled
+2021-09-17 01:31:18,278   INFO       client.py    server response: the message from server is incorrect
+2021-09-17 01:31:18,278   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:31:18,278   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:31:18,278   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:31:18,278   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:31:18,278   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:31:18,278   DEBUG      client.py    the message {'response': 200} is being handled
+2021-09-17 01:31:18,278   INFO       client.py    server response: the message from server is incorrect
+2021-09-17 01:31:18,278   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:31:19,294   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:31:19,294   DEBUG      client.py    the message {'response': 200} is being handled
+2021-09-17 01:31:19,294   INFO       client.py    server response: the message from server is incorrect
+2021-09-17 01:31:19,294   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:31:19,294   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=276, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59794), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:32:48,137   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:32:48,181   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:32:48,182   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:32:48,182   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:32:48,198   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:32:48,208   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:32:48,211   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:32:48,213   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:32:48,215   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:32:48,215   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:32:48,216   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:32:48,215   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:32:48,217   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:32:48,217   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:32:48,218   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:32:48,218   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:32:48,218   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:32:48,218   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:32:48,218   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:32:48,219   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:32:48,219   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:32:48,220   INFO       client.py    server response: 200 : OK
+2021-09-17 01:32:48,220   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:32:48,222   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:32:48,223   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:32:48,223   INFO       client.py    server response: 200 : OK
+2021-09-17 01:32:48,223   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:32:48,224   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50920), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:32:48,224   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:32:48,225   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:32:48,226   INFO       client.py    server response: 200 : OK
+2021-09-17 01:32:48,226   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:32:48,226   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:32:48,227   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:32:48,227   INFO       client.py    server response: 200 : OK
+2021-09-17 01:32:48,227   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:32:48,229   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=468, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50922), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:36:49,039   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:36:49,055   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:36:49,055   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:36:49,055   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:36:49,055   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:36:50,055   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:36:50,055   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:36:50,055   INFO       client.py    server response: 200 : OK
+2021-09-17 01:36:50,055   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:36:50,055   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61469), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:37:01,080   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:37:01,095   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:37:01,095   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:37:01,095   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:37:01,095   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:37:02,095   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:37:02,095   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:37:02,095   INFO       client.py    server response: 200 : OK
+2021-09-17 01:37:02,095   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:37:07,700   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631831827.70082, 'account_name': 'Guest', 'message_text': 'hello'}
+2021-09-17 01:37:07,700   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61469), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:37:17,893   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631831837.8930154, 'account_name': 'Guest', 'message_text': 'how are you'}
+2021-09-17 01:37:17,893   CRITICAL   client.py    server connection lost
+2021-09-17 01:37:31,456   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:37:31,471   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:37:31,471   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:37:31,471   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:37:31,471   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:37:32,473   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:37:32,473   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:37:32,473   INFO       client.py    server response: 200 : OK
+2021-09-17 01:37:32,473   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:37:32,473   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=368, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49346), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:37:34,584   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631831854.5847325, 'account_name': 'Guest', 'message_text': 'hi'}
+2021-09-17 01:37:34,584   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=368, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49346), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:37:37,303   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631831857.3034987, 'account_name': 'Guest', 'message_text': 'hi'}
+2021-09-17 01:37:37,303   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=368, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49346), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:37:38,977   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631831858.9773042, 'account_name': 'Guest', 'message_text': 'hi'}
+2021-09-17 01:37:38,977   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=368, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 49346), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:38:54,895   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:38:54,911   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:38:54,912   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Guest'}, called from function: main
+2021-09-17 01:38:54,912   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:38:54,912   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:38:55,924   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:38:55,925   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:38:55,926   INFO       client.py    server response: 200 : OK
+2021-09-17 01:38:55,926   INFO       client.py    Guest is started in the mode of receiving messages
+2021-09-17 01:39:04,199   INFO       client.py    user output
+2021-09-17 01:39:25,400   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:39:25,416   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:39:25,416   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Kate'}, called from function: main
+2021-09-17 01:39:25,416   DEBUG      client.py    Kate: presence message is created
+2021-09-17 01:39:25,431   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:39:26,416   DEBUG      client.py    Function: handle_server_response, args: ({'response': 402, 'error': 'Kate: no account with that name'},), kwargs: {}, called from function: main
+2021-09-17 01:39:26,416   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:39:26,416   INFO       client.py    server response: 402 : Kate: no account with that name
+2021-09-17 01:39:26,416   INFO       client.py    Kate is started in the mode of sending messages
+2021-09-17 01:39:26,416   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=332, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51834), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Kate'}, called from function: main
+2021-09-17 01:42:37,643   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:42:37,658   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:42:37,658   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': '1'}, called from function: main
+2021-09-17 01:42:37,658   DEBUG      client.py    1: presence message is created
+2021-09-17 01:42:37,658   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:42:38,658   DEBUG      client.py    Function: handle_server_response, args: ({'response': 402, 'error': '1: no account with that name'},), kwargs: {'user': '1'}, called from function: main
+2021-09-17 01:42:38,658   DEBUG      client.py    1 the response from the server is being handled
+2021-09-17 01:42:38,658   INFO       client.py    server response: 402 : 1: no account with that name
+2021-09-17 01:42:38,658   INFO       client.py    1 is started in the mode of receiving messages
+2021-09-17 01:42:52,533   INFO       client.py    user output
+2021-09-17 01:42:54,788   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:42:54,803   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:42:54,804   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {'user': 'Kate'}, called from function: main
+2021-09-17 01:42:54,805   DEBUG      client.py    Kate: presence message is created
+2021-09-17 01:42:54,806   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:42:55,820   DEBUG      client.py    Function: handle_server_response, args: ({'response': 402, 'error': 'Kate: no account with that name'},), kwargs: {'user': 'Kate'}, called from function: main
+2021-09-17 01:42:55,821   DEBUG      client.py    Kate the response from the server is being handled
+2021-09-17 01:42:55,822   INFO       client.py    server response: 402 : Kate: no account with that name
+2021-09-17 01:42:55,823   INFO       client.py    Kate is started in the mode of sending messages
+2021-09-17 01:42:55,825   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=304, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55419), raddr=('127.0.0.1', 7777)>,), kwargs: {'user': 'Kate'}, called from function: main
+2021-09-17 01:49:09,780   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:09,780   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:09,811   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:49:09,811   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:09,811   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:49:09,811   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:49:09,811   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:49:09,811   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:09,811   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:49:09,811   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:49:09,811   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:49:09,811   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:49:09,811   INFO       client.py    server response: 200 : OK
+2021-09-17 01:49:09,811   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:49:09,811   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=292, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 57525), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:49:10,811   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:49:10,811   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:49:10,811   INFO       client.py    server response: 200 : OK
+2021-09-17 01:49:10,811   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:49:18,658   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631832558.6424284, 'account_name': 'Guest', 'message_text': 'hello'}
+2021-09-17 01:49:18,658   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=292, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 57525), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:49:24,986   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631832564.9861677, 'account_name': 'Guest', 'message_text': 'how are you'}
+2021-09-17 01:49:24,986   CRITICAL   client.py    server connection lost
+2021-09-17 01:49:32,322   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:32,322   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:32,354   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:49:32,354   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:49:32,354   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:32,354   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:32,354   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:49:32,354   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:49:32,354   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:49:32,354   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:49:33,358   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:49:33,358   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:49:33,358   INFO       client.py    server response: 200 : OK
+2021-09-17 01:49:33,358   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:49:33,358   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:49:33,358   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:49:33,358   INFO       client.py    server response: 200 : OK
+2021-09-17 01:49:33,358   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:49:33,358   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=336, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 57528), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:49:37,799   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:37,815   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:37,830   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:49:37,830   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:37,830   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:49:37,830   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:49:37,846   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:49:37,846   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:37,846   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:49:37,846   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:49:37,846   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:49:37,846   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:49:37,846   INFO       client.py    server response: 200 : OK
+2021-09-17 01:49:37,846   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:49:38,846   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:49:38,846   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:49:38,846   INFO       client.py    server response: 200 : OK
+2021-09-17 01:49:38,846   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:49:38,846   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=392, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 57530), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:49:44,478   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:44,479   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:44,510   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:49:44,511   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:44,511   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:49:44,512   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:49:44,511   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:49:44,514   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:49:44,514   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:49:44,514   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:49:45,519   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:49:45,519   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:49:45,520   INFO       client.py    server response: 200 : OK
+2021-09-17 01:49:45,520   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:49:45,521   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:49:45,521   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:49:45,521   INFO       client.py    server response: 200 : OK
+2021-09-17 01:49:45,521   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:49:45,522   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=448, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 57532), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:50:02,214   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:50:02,242   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:50:02,244   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:50:02,244   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:50:02,244   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:50:03,262   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:50:03,262   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:50:03,263   INFO       client.py    server response: 200 : OK
+2021-09-17 01:50:03,263   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:52:15,079   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:15,140   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:15,170   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:52:15,171   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:15,172   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:52:15,172   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:52:15,640   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:52:15,642   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:15,643   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:52:15,644   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:52:15,647   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:52:15,647   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:52:15,648   INFO       client.py    server response: 200 : OK
+2021-09-17 01:52:15,649   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:52:15,651   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=352, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 60615), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:52:16,657   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:52:16,657   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:52:16,658   INFO       client.py    server response: 200 : OK
+2021-09-17 01:52:16,658   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:52:27,214   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631832747.214627, 'account_name': 'Guest', 'message_text': 'hello'}
+2021-09-17 01:52:27,215   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=352, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 60615), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:52:27,776   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832747.775254, 'message_text': 'hello'},), kwargs: {}, called from function: main
+2021-09-17 01:52:27,777   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:52:27,777   INFO       client.py    Received a message from the user Guest: hello
+2021-09-17 01:52:36,330   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631832756.3304417, 'account_name': 'Guest', 'message_text': 'how are you'}
+2021-09-17 01:52:36,332   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=352, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 60615), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:52:36,855   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832756.8539484, 'message_text': 'how are you'},), kwargs: {}, called from function: main
+2021-09-17 01:52:36,856   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:52:36,857   INFO       client.py    Received a message from the user Guest: how are you
+2021-09-17 01:52:55,361   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:55,426   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:55,446   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:52:55,452   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:55,453   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:55,456   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:55,458   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:52:55,462   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:52:55,471   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:52:55,472   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:55,473   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:52:55,476   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:52:55,480   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:52:55,485   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:52:55,487   INFO       client.py    server response: 200 : OK
+2021-09-17 01:52:55,487   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:52:55,489   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:52:55,489   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=168, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58988), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:52:55,491   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:55,492   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:52:55,491   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-17 01:52:55,493   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:52:55,496   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-17 01:52:55,496   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:52:55,496   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:52:55,496   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:52:55,497   INFO       client.py    server response: 200 : OK
+2021-09-17 01:52:55,497   DEBUG      client.py    presense message was sent to the server
+2021-09-17 01:52:55,497   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:52:55,500   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:52:55,501   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:52:55,501   INFO       client.py    server response: 200 : OK
+2021-09-17 01:52:55,502   INFO       client.py    the client is started in the mode of sending messages
+2021-09-17 01:52:55,503   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=344, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58990), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:52:56,522   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-17 01:52:56,522   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:52:56,523   INFO       client.py    server response: 200 : OK
+2021-09-17 01:52:56,523   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-17 01:53:04,856   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631832784.8563564, 'account_name': 'Guest', 'message_text': 'hello'}
+2021-09-17 01:53:04,857   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=168, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58988), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:53:05,613   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832785.6090055, 'message_text': 'hello'},), kwargs: {}, called from function: main
+2021-09-17 01:53:05,613   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832785.6090055, 'message_text': 'hello'},), kwargs: {}, called from function: main
+2021-09-17 01:53:05,613   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832785.6090055, 'message_text': 'hello'},), kwargs: {}, called from function: main
+2021-09-17 01:53:05,613   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:05,613   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:05,613   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:05,614   INFO       client.py    Received a message from the user Guest: hello
+2021-09-17 01:53:05,615   INFO       client.py    Received a message from the user Guest: hello
+2021-09-17 01:53:11,561   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631832791.5612738, 'account_name': 'Guest', 'message_text': 'how are you'}
+2021-09-17 01:53:11,562   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=168, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58988), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:53:11,673   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832791.671506, 'message_text': 'how are you'},), kwargs: {}, called from function: main
+2021-09-17 01:53:11,674   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832791.671506, 'message_text': 'how are you'},), kwargs: {}, called from function: main
+2021-09-17 01:53:11,674   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832791.671506, 'message_text': 'how are you'},), kwargs: {}, called from function: main
+2021-09-17 01:53:11,674   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:11,674   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:11,675   INFO       client.py    Received a message from the user Guest: how are you
+2021-09-17 01:53:11,675   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:11,675   INFO       client.py    Received a message from the user Guest: how are you
+2021-09-17 01:53:11,676   INFO       client.py    Received a message from the user Guest: how are you
+2021-09-17 01:53:22,926   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1631832802.92523, 'account_name': 'Guest', 'message_text': 'what are you doing'}
+2021-09-17 01:53:22,927   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=344, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 58990), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-17 01:53:23,784   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832803.7812917, 'message_text': 'what are you doing'},), kwargs: {}, called from function: main
+2021-09-17 01:53:23,784   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832803.7812917, 'message_text': 'what are you doing'},), kwargs: {}, called from function: main
+2021-09-17 01:53:23,785   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1631832803.7812917, 'message_text': 'what are you doing'},), kwargs: {}, called from function: main
+2021-09-17 01:53:23,785   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:23,785   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:23,787   INFO       client.py    Received a message from the user Guest: what are you doing
+2021-09-17 01:53:23,787   INFO       client.py    Received a message from the user Guest: what are you doing
+2021-09-17 01:53:23,785   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:23,789   INFO       client.py    Received a message from the user Guest: what are you doing
+2021-09-17 01:53:50,101   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: test_create_presence_message_default_user
+2021-09-17 01:53:50,101   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:53:50,101   DEBUG      client.py    Function: create_presence_message, args: ('User',), kwargs: {}, called from function: test_create_presence_message_user
+2021-09-17 01:53:50,101   DEBUG      client.py    User: presence message is created
+2021-09-17 01:53:50,116   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: test_handle_response_200
+2021-09-17 01:53:50,116   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:50,116   DEBUG      client.py    Function: handle_message, args: ({'response': 400, 'error': 'bad request'},), kwargs: {}, called from function: test_handle_response_400
+2021-09-17 01:53:50,116   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:50,132   DEBUG      client.py    Function: handle_message, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: test_handle_response_402
+2021-09-17 01:53:50,132   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:53:50,132   DEBUG      client.py    Function: handle_message, args: ({},), kwargs: {}, called from function: handle
+2021-09-17 01:53:50,132   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:55:14,354   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: test_create_presence_message_default_user
+2021-09-17 01:55:14,354   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:55:14,358   DEBUG      client.py    Function: create_presence_message, args: ('User',), kwargs: {}, called from function: test_create_presence_message_user
+2021-09-17 01:55:14,359   DEBUG      client.py    User: presence message is created
+2021-09-17 01:55:14,364   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: test_handle_response_200
+2021-09-17 01:55:14,364   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:55:14,370   DEBUG      client.py    Function: handle_server_response, args: ({'response': 400, 'error': 'bad request'},), kwargs: {}, called from function: test_handle_response_400
+2021-09-17 01:55:14,370   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:55:14,374   DEBUG      client.py    Function: handle_server_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: test_handle_response_402
+2021-09-17 01:55:14,375   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:55:14,383   DEBUG      client.py    Function: handle_message, args: ({},), kwargs: {}, called from function: handle
+2021-09-17 01:55:14,383   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:57:11,476   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: test_create_presence_message_default_user
+2021-09-17 01:57:11,476   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:57:11,481   DEBUG      client.py    Function: create_presence_message, args: ('User',), kwargs: {}, called from function: test_create_presence_message_user
+2021-09-17 01:57:11,481   DEBUG      client.py    User: presence message is created
+2021-09-17 01:57:11,485   DEBUG      client.py    Function: handle_message, args: ({'response': 200},), kwargs: {}, called from function: test_handle_response_200
+2021-09-17 01:57:11,485   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:57:11,491   DEBUG      client.py    Function: handle_server_response, args: ({'response': 400, 'error': 'bad request'},), kwargs: {}, called from function: test_handle_response_400
+2021-09-17 01:57:11,491   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:57:11,496   DEBUG      client.py    Function: handle_server_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: test_handle_response_402
+2021-09-17 01:57:11,497   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:57:11,501   DEBUG      client.py    Function: handle_message, args: ({},), kwargs: {}, called from function: handle
+2021-09-17 01:57:11,502   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:57:27,805   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: test_create_presence_message_default_user
+2021-09-17 01:57:27,805   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:57:27,820   DEBUG      client.py    Function: create_presence_message, args: ('User',), kwargs: {}, called from function: test_create_presence_message_user
+2021-09-17 01:57:27,820   DEBUG      client.py    User: presence message is created
+2021-09-17 01:57:27,820   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: test_handle_response_200
+2021-09-17 01:57:27,820   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:57:27,820   DEBUG      client.py    Function: handle_server_response, args: ({'response': 400, 'error': 'bad request'},), kwargs: {}, called from function: test_handle_response_400
+2021-09-17 01:57:27,820   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:57:27,836   DEBUG      client.py    Function: handle_server_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: test_handle_response_402
+2021-09-17 01:57:27,836   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:57:27,836   DEBUG      client.py    Function: handle_message, args: ({},), kwargs: {}, called from function: handle
+2021-09-17 01:57:27,836   DEBUG      client.py    the message {message} is being handled
+2021-09-17 01:57:50,137   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: test_create_presence_message_default_user
+2021-09-17 01:57:50,137   DEBUG      client.py    Guest: presence message is created
+2021-09-17 01:57:50,141   DEBUG      client.py    Function: create_presence_message, args: ('User',), kwargs: {}, called from function: test_create_presence_message_user
+2021-09-17 01:57:50,141   DEBUG      client.py    User: presence message is created
+2021-09-17 01:57:50,145   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: test_handle_response_200
+2021-09-17 01:57:50,145   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:57:50,149   DEBUG      client.py    Function: handle_server_response, args: ({'response': 400, 'error': 'bad request'},), kwargs: {}, called from function: test_handle_response_400
+2021-09-17 01:57:50,150   DEBUG      client.py    the response from the server is being handled
+2021-09-17 01:57:50,153   DEBUG      client.py    Function: handle_server_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: test_handle_response_402
+2021-09-17 01:57:50,153   DEBUG      client.py    the response from the server is being handled
+2021-09-17 02:03:28,438   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: test_create_presence_message_default_user
+2021-09-17 02:03:28,438   DEBUG      client.py    Guest: presence message is created
+2021-09-17 02:03:28,454   DEBUG      client.py    Function: create_presence_message, args: ('User',), kwargs: {}, called from function: test_create_presence_message_user
+2021-09-17 02:03:28,454   DEBUG      client.py    User: presence message is created
+2021-09-17 02:03:28,454   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: test_handle_response_200
+2021-09-17 02:03:28,454   DEBUG      client.py    the response from the server is being handled
+2021-09-17 02:03:28,454   DEBUG      client.py    Function: handle_server_response, args: ({'response': 400, 'error': 'bad request'},), kwargs: {}, called from function: test_handle_response_400
+2021-09-17 02:03:28,454   DEBUG      client.py    the response from the server is being handled
+2021-09-17 02:03:28,454   DEBUG      client.py    Function: handle_server_response, args: ({'response': 402, 'error': 'no account with that name'},), kwargs: {}, called from function: test_handle_response_402
+2021-09-17 02:03:28,454   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:21:13,072   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:21:13,131   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:21:13,144   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:21:13,183   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-19 15:21:13,185   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:21:13,185   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:21:13,186   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:21:13,191   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:21:13,217   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-19 15:21:13,220   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:21:13,220   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:21:13,220   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:21:13,222   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:21:13,223   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:21:13,223   INFO       client.py    server response: 200 : OK
+2021-09-19 15:21:13,223   INFO       client.py    the client is started in the mode of sending messages
+2021-09-19 15:21:13,225   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=412, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50286), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-19 15:21:13,657   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-19 15:21:13,660   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:21:13,660   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:21:13,661   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:21:13,664   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:21:13,665   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:21:13,665   INFO       client.py    server response: 200 : OK
+2021-09-19 15:21:13,665   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-19 15:21:13,673   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-19 15:21:13,675   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:21:13,676   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:21:13,677   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:21:13,681   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:21:13,683   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:21:13,683   INFO       client.py    server response: 200 : OK
+2021-09-19 15:21:13,683   INFO       client.py    the client is started in the mode of sending messages
+2021-09-19 15:21:13,685   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=312, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50284), raddr=('127.0.0.1', 7777)>,), kwargs: {}, called from function: main
+2021-09-19 15:21:14,694   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:21:14,694   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:21:14,695   INFO       client.py    server response: 200 : OK
+2021-09-19 15:21:14,695   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-19 15:21:53,652   CRITICAL   client.py    server connection lost
+2021-09-19 15:22:54,645   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:22:54,645   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:22:54,723   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:22:54,739   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:22:56,728   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:22:56,744   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:22:56,775   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:22:56,806   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:23:02,518   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:02,549   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:02,581   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:02,924   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:04,582   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:23:04,628   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:23:04,660   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:23:04,988   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:23:26,216   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:26,232   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:26,263   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:26,263   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:26,779   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-19 15:23:26,779   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:26,779   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:23:26,779   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:23:26,779   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-19 15:23:26,779   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:26,779   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:23:26,779   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:23:26,779   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:23:26,779   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:23:26,779   INFO       client.py    server response: 200 : OK
+2021-09-19 15:23:26,779   INFO       client.py    the client is started in the mode of sending messages
+2021-09-19 15:23:26,779   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50310), raddr=('127.0.0.1', 8000)>,), kwargs: {}, called from function: main
+2021-09-19 15:23:26,810   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-19 15:23:26,810   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-19 15:23:26,810   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:26,810   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:23:26,810   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:23:26,810   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:23:26,810   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:23:26,810   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:23:26,810   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:23:26,810   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:23:26,810   INFO       client.py    server response: 200 : OK
+2021-09-19 15:23:26,810   INFO       client.py    the client is started in the mode of sending messages
+2021-09-19 15:23:26,810   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=472, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50309), raddr=('127.0.0.1', 8000)>,), kwargs: {}, called from function: main
+2021-09-19 15:23:26,810   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:23:26,810   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:23:26,810   INFO       client.py    server response: 200 : OK
+2021-09-19 15:23:26,810   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-19 15:23:26,810   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:23:26,810   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:23:26,810   INFO       client.py    server response: 200 : OK
+2021-09-19 15:23:26,810   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-19 15:25:13,421   DEBUG      client.py    Guest: message is created: {'action': 'message', 'time': 1632054313.4215415, 'account_name': 'Guest', 'message_text': 'hi'}
+2021-09-19 15:25:13,421   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50310), raddr=('127.0.0.1', 8000)>,), kwargs: {}, called from function: main
+2021-09-19 15:25:13,546   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1632054313.546541, 'message_text': 'hi'},), kwargs: {}, called from function: main
+2021-09-19 15:25:13,546   DEBUG      client.py    Function: handle_message, args: ({'action': 'message', 'sender': 'Guest', 'time': 1632054313.546541, 'message_text': 'hi'},), kwargs: {}, called from function: main
+2021-09-19 15:25:13,546   DEBUG      client.py    the message {message} is being handled
+2021-09-19 15:25:13,546   DEBUG      client.py    the message {message} is being handled
+2021-09-19 15:25:13,546   INFO       client.py    Received a message from the user Guest: hi
+2021-09-19 15:25:13,546   INFO       client.py    Received a message from the user Guest: hi
+2021-09-19 15:25:56,399   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:25:58,450   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-19 15:26:11,182   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-19 15:26:11,198   DEBUG      client.py    trying to connect to server at 127.0.0.1:7777
+2021-09-19 15:26:11,198   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-19 15:26:11,198   DEBUG      client.py    Guest: presence message is created
+2021-09-19 15:26:11,198   DEBUG      client.py    presense message was sent to the server
+2021-09-19 15:26:12,214   DEBUG      client.py    Function: handle_server_response, args: ({'response': 200},), kwargs: {}, called from function: main
+2021-09-19 15:26:12,214   DEBUG      client.py    the response from the server is being handled
+2021-09-19 15:26:12,214   INFO       client.py    server response: 200 : OK
+2021-09-19 15:26:12,214   INFO       client.py    the client is started in the mode of receiving messages
+2021-09-19 17:16:49,588   CRITICAL   client.py    server connection lost
+2021-09-20 19:37:07,825   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:07,854   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:07,844   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:07,905   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:07,943   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-20 19:37:07,945   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:07,945   DEBUG      client.py    Guest: presence message is created
+2021-09-20 19:37:07,946   DEBUG      client.py    presense message was sent to the server
+2021-09-20 19:37:08,380   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-20 19:37:08,381   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:08,381   DEBUG      client.py    Guest: presence message is created
+2021-09-20 19:37:08,382   DEBUG      client.py    presense message was sent to the server
+2021-09-20 19:37:08,396   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-20 19:37:08,397   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:08,397   DEBUG      client.py    Guest: presence message is created
+2021-09-20 19:37:08,398   DEBUG      client.py    presense message was sent to the server
+2021-09-20 19:37:08,412   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-20 19:37:08,413   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:08,414   DEBUG      client.py    Guest: presence message is created
+2021-09-20 19:37:08,414   DEBUG      client.py    presense message was sent to the server
+2021-09-20 19:37:25,683   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:25,724   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:25,765   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:25,767   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-20 19:37:25,768   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:25,769   DEBUG      client.py    Guest: presence message is created
+2021-09-20 19:37:25,769   DEBUG      client.py    presense message was sent to the server
+2021-09-20 19:37:25,780   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:25,789   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-20 19:37:25,790   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:25,791   DEBUG      client.py    Guest: presence message is created
+2021-09-20 19:37:25,791   DEBUG      client.py    presense message was sent to the server
+2021-09-20 19:37:25,800   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-20 19:37:25,801   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:25,801   DEBUG      client.py    Guest: presence message is created
+2021-09-20 19:37:25,802   DEBUG      client.py    presense message was sent to the server
+2021-09-20 19:37:26,258   DEBUG      client.py    trying to connect to server at 127.0.0.1:8000
+2021-09-20 19:37:26,261   DEBUG      client.py    Function: create_presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 19:37:26,261   DEBUG      client.py    Guest: presence message is created
+2021-09-20 19:37:26,262   DEBUG      client.py    presense message was sent to the server
+2021-09-20 20:07:45,035   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:07:45,041   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:07:45,124   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:07:45,148   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:00,886   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:00,926   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:00,953   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:01,036   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:34,353   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:34,410   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:34,535   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:34,543   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:36,510   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:08:36,542   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:08:36,622   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:08:36,622   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:08:56,214   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:56,258   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:56,269   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:56,477   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:08:58,319   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:08:58,335   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:08:58,351   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:08:58,556   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:09:20,119   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:09:20,127   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:09:20,225   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:09:20,239   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:09:22,241   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:09:22,278   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:09:22,353   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:09:22,369   CRITICAL   client.py    No connection could be made because the target machine actively refused it
+2021-09-20 20:10:46,853   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:10:46,869   DEBUG      client.py    Guest: trying to connect to server at 127.0.0.1:7777
+2021-09-20 20:10:46,870   DEBUG      client.py    Function: create_presence_message, args: ('Guest',), kwargs: {}, called from function: main
+2021-09-20 20:10:46,870   DEBUG      client.py    Guest: presence message is created
+2021-09-20 20:10:46,870   DEBUG      client.py    Guest: presense message was sent to the server
+2021-09-20 20:10:47,873   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'},), kwargs: {}, called from function: main
+2021-09-20 20:10:47,874   DEBUG      client.py    the response from the server is being handled
+2021-09-20 20:10:47,874   DEBUG      client.py    Guest: server response: OK
+2021-09-20 20:11:49,445   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:11:49,468   DEBUG      client.py    Guest: trying to connect to server at 127.0.0.1:7777
+2021-09-20 20:11:49,469   DEBUG      client.py    Function: create_presence_message, args: ('Guest',), kwargs: {}, called from function: main
+2021-09-20 20:11:49,469   DEBUG      client.py    Guest: presence message is created
+2021-09-20 20:11:49,470   DEBUG      client.py    Guest: presense message was sent to the server
+2021-09-20 20:11:50,478   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'},), kwargs: {}, called from function: main
