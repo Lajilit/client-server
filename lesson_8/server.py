@@ -61,21 +61,25 @@ def handle_message(message, messages_list, socket):
     :param socket: client socket
 
     """
-    server_logger.debug('the message from the client is being handled')
+    server_logger.info(
+        f'{socket.getpeername()}: the message from the client is being handled'
+    )
     if ACTION in message \
             and message[ACTION] == PRESENCE \
             and TIME in message \
             and USER in message:
             server_logger.info(
-                f'{message[USER][ACCOUNT_NAME]}: '
-                f'{message[USER][STATUS]}')
+                f'{socket.getpeername()}: '
+                f'name \'{message[USER][ACCOUNT_NAME]}\' '
+                f'status \'{message[USER][STATUS]}\'')
             send_message(socket, {
                 RESPONSE: 200,
                 ALERT: 'ok'
             })
             users.append(message[USER][ACCOUNT_NAME])
-            server_logger.debug(
-                f'{message[USER][ACCOUNT_NAME]} added into users_list'
+            server_logger.info(
+                f'{socket.getpeername()}: '
+                f'name \'{message[USER][ACCOUNT_NAME]}\' added into users_list'
             )
     elif ACTION in message and \
             message[ACTION] == MESSAGE and \
@@ -88,12 +92,17 @@ def handle_message(message, messages_list, socket):
             message[DESTINATION],
             message[MESSAGE_TEXT],
         ))
+        server_logger.info(f'message: {message[MESSAGE_TEXT]} '
+                           f'from: {message[SENDER]} '
+                           f'to: {message[DESTINATION]} '
+                           f'appended into messages_list')
 
     else:
         send_message(socket, {
             RESPONSE: 400,
             ERROR: 'Bad Request'
         })
+        server_logger.info(ERROR)
 
 
 def main():
@@ -129,8 +138,8 @@ def main():
         except OSError:
             pass
         else:
-            server_logger.info(f'client connection established at '
-                               f'{client_address}')
+            server_logger.info(
+                f'{client.getpeername()}: client connection established')
             all_clients.append(client)
         clients_senders = []
         clients_receivers = []
@@ -149,7 +158,7 @@ def main():
                     handle_message(received_message, messages_list, client)
                 except:
                     server_logger.info(
-                        f'client disconnected {client.getpeername()}'
+                        f'{client.getpeername()}: client disconnected'
                     )
                     all_clients.remove(client)
 
@@ -169,7 +178,7 @@ def main():
                     send_message(client, message_to_send)
                 except:
                     server_logger.info(
-                        f'client disconnected {client.getpeername()}'
+                        f'{client.getpeername()}: client disconnected'
                     )
                     all_clients.remove(client)
 

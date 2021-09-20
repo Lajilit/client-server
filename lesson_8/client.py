@@ -1,19 +1,15 @@
 import argparse
 import inspect
-import json
 import sys
 import time
 from socket import socket, AF_INET, SOCK_STREAM
 
 from constants import DEFAULT_PORT, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, TYPE, RESPONSE, ERROR, STATUS, DEFAULT_IP, MESSAGE, \
-    SENDER, MESSAGE_TEXT
+    SENDER, MESSAGE_TEXT, DESTINATION
 from functions import send_message, get_message
 from project_logging.config.client_log_config import client_logger
 
-
-# import logging
-# client_logger = logging.getLogger('client')
 
 class Log():
 
@@ -54,9 +50,8 @@ def client_arg_parser():
 
     return address, port, user_name
 
-
 @Log()
-def create_presence_message(user):
+def presence_message():
     """
     The function generates a presence message for the user
     :param user: user name: str
@@ -66,14 +61,13 @@ def create_presence_message(user):
         ACTION: PRESENCE,
         TIME: time.time(),
         USER: {
-            ACCOUNT_NAME: user,
+            ACCOUNT_NAME: user_name,
             STATUS: 'online'
         },
         TYPE: STATUS
     }
-    client_logger.debug(f'{user}: {PRESENCE} message is created')
+    client_logger.info(f'{user_name}: {PRESENCE} message is created')
     return output_message
-
 
 @Log()
 def handle_response(message):
@@ -84,16 +78,18 @@ def handle_response(message):
     :param message: message from server: dict
     :return: server answer: str
     """
-    client_logger.debug(f'the response from the server is being handled')
+    client_logger.info(
+        f'{user_name}: the response from the server is being handled'
+    )
     if RESPONSE in message:
         if message[RESPONSE] == 200:
             return f'OK'
         return f'{message[ERROR]}'
 
-    return 'the response from server is incorrect'
+    return f'{user_name}: the response from server is incorrect'
 
 @Log()
-def create_message(sock, user='Guest'):
+def create_message(sock):
     """
     The function asks for the user input message_text and generates a
     message for the user
@@ -104,15 +100,15 @@ def create_message(sock, user='Guest'):
         'Enter your message text or press enter to shutdown: ')
     if not input_message:
         sock.close()
-        client_logger.info('user output')
+        client_logger.info(f'{user_name}: user output')
         sys.exit(0)
     message = {
         ACTION: MESSAGE,
         TIME: time.time(),
-        ACCOUNT_NAME: user,
+        ACCOUNT_NAME: user_name,
         MESSAGE_TEXT: input_message
     }
-    client_logger.debug(f'{user}: message is created: {message}')
+    client_logger.info(f'{user_name}: message is created: {message}')
     return message
 
 @Log()
@@ -123,15 +119,17 @@ def handle_message(message):
     :param message: message from server: dict
     :return: server answer: str
     """
-    client_logger.debug('the message {message} is being handled')
+    client_logger.info(f'{user_name}: the message {message} is being handled')
     if ACTION in message and \
             message[ACTION] == MESSAGE and \
             SENDER in message and \
-            MESSAGE_TEXT in message:
-        return f'Received a message from the user ' \
+            MESSAGE_TEXT in message and \
+            DESTINATION in message and \
+            DESTINATION == user_name:
+        return f'{user_name}: Received a message from the user ' \
                f'{message[SENDER]}: {message[MESSAGE_TEXT]}'
 
-    return 'the message from server is incorrect'
+    return f'{user_name}: the message from server is incorrect'
 
 
 def main():
@@ -145,29 +143,27 @@ def main():
     If 'client_mode' is 'listen, client wait for the message from server,
     receives, handle and displays it.
     """
+    global user_name
     addr, port, user_name = client_arg_parser()
     try:
         sock = socket(AF_INET, SOCK_STREAM)
         sock.connect((addr, port))
-        client_logger.debug(
+        client_logger.info(
             f'{user_name}: trying to connect to server at {addr}:{port}'
         )
-        presence_message = create_presence_message(user_name)
-        send_message(sock, presence_message)
-        client_logger.debug(
-            f'{user_name}: presense message was sent to the server'
+        send_message(sock, presence_message())
+        client_logger.info(
+            f'{user_name}: presence message was sent to the server'
         )
         answer = handle_response(get_message(sock))
-        client_logger.debug(
+        client_logger.info(
             f'{user_name}: server response: {answer}'
         )
     except ConnectionRefusedError:
-        client_logger.critical('No connection could be made because the '
-                               'target machine actively refused it')
+        client_logger.critical(
+            f'{user_name}: no connection could be made because '
+            f'the target machine actively refused it')
         sys.exit(1)
-
-    else:
-        pass
 
 
 if __name__ == '__main__':

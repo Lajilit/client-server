@@ -14,7 +14,7 @@ server_logs_file = os.path.join(server_logs_file, 'logs', 'server.log')
 
 console_handler = logging.StreamHandler(sys.stderr)
 console_handler.setFormatter(server_formatter)
-console_handler.setLevel(logging.DEBUG)
+console_handler.setLevel(logging.INFO)
 
 file_handler = logging.handlers.TimedRotatingFileHandler(
     server_logs_file, encoding='UTF-8', interval=1, when='midnight'

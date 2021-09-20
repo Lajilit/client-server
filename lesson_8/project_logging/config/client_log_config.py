@@ -14,7 +14,7 @@ client_logs_file = os.path.join(client_logs_file, 'logs', 'client.log')
 
 console_handler = logging.StreamHandler(sys.stderr)
 console_handler.setFormatter(client_formatter)
-console_handler.setLevel(logging.DEBUG)
+console_handler.setLevel(logging.INFO)
 
 file_handler = logging.FileHandler(client_logs_file, encoding='UTF-8')
 file_handler.setFormatter(client_formatter)
