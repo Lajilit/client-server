@@ -1603,3 +1603,391 @@ o the server
 2021-09-20 20:39:30,296   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'},), kwargs: {}, called from function: main
 2021-09-20 20:39:30,296   INFO       client.py    Guest: the response from the server is being handled
 2021-09-20 20:39:30,296   INFO       client.py    Guest: server response: OK
+2021-09-20 20:41:27,312   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:41:27,330   INFO       client.py    Guest: trying to connect to server at 127.0.0.1:7777
+2021-09-20 20:41:27,331   DEBUG      client.py    Function: presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 20:41:27,331   INFO       client.py    Guest: presence message is created
+2021-09-20 20:41:27,331   INFO       client.py    Guest: presence message was sent to the server
+2021-09-20 20:41:28,341   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'},), kwargs: {}, called from function: main
+2021-09-20 20:41:28,342   INFO       client.py    Guest: the response from the server is being handled
+2021-09-20 20:41:28,342   INFO       client.py    Guest: server response: OK
+2021-09-20 20:41:43,299   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 20:41:43,317   INFO       client.py    Kate: trying to connect to server at 127.0.0.1:7777
+2021-09-20 20:41:43,318   DEBUG      client.py    Function: presence_message, args: (), kwargs: {}, called from function: main
+2021-09-20 20:41:43,318   INFO       client.py    Kate: presence message is created
+2021-09-20 20:41:43,318   INFO       client.py    Kate: presence message was sent to the server
+2021-09-20 20:41:44,329   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'},), kwargs: {}, called from function: main
+2021-09-20 20:41:44,329   INFO       client.py    Kate: the response from the server is being handled
+2021-09-20 20:41:44,329   INFO       client.py    Kate: server response: OK
+2021-09-20 23:48:17,069   INFO       client.py    Client module started
+2021-09-20 23:48:17,100   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 23:48:17,116   INFO       client.py    Kate: trying to connect to server at 127.0.0.1:7777
+2021-09-20 23:48:17,116   DEBUG      client.py    Function: presence_message, args: ('Kate',), kwargs: {}, called from function: main
+2021-09-20 23:48:17,116   INFO       client.py    Kate: presence message is created
+2021-09-20 23:48:17,116   INFO       client.py    Kate: presence message was sent to the server
+2021-09-20 23:48:18,116   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'}, 'Kate'), kwargs: {}, called from function: main
+2021-09-20 23:48:18,116   INFO       client.py    Kate: the response from the server is being handled
+2021-09-20 23:48:18,116   INFO       client.py    Kate: server response: OK
+2021-09-20 23:48:18,116   INFO       client.py    Kate: reseiver process started
+2021-09-20 23:48:18,116   INFO       client.py    Kate: interface process started
+2021-09-20 23:48:18,116   DEBUG      client.py    Function: handle_message, args: (<socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 64412), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: run
+2021-09-20 23:48:18,116   DEBUG      client.py    Function: user_interaction, args: (<socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 64412), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: run
+2021-09-20 23:48:18,116   DEBUG      client.py    Function: help_function, args: (), kwargs: {}, called from function: user_interaction
+2021-09-20 23:48:25,462   DEBUG      client.py    Function: help_function, args: (), kwargs: {}, called from function: user_interaction
+2021-09-20 23:48:34,000   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 64412), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: user_interaction
+2021-09-20 23:48:40,966   INFO       client.py    Kate: message is created: {'action': 'message', 'time': 1632170920.966204, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:40,966   INFO       client.py    Kate: message was sent to user user
+2021-09-20 23:48:41,316   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170921.3153684, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:41,316   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170921.3153684, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:42,321   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170922.3210297, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:42,321   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170922.3210297, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:43,322   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170923.3228745, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:43,322   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170923.3228745, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:44,325   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170924.3252404, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:44,325   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170924.3252404, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:45,326   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170925.326153, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:45,327   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170925.326153, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:46,332   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170926.3329332, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:46,332   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170926.3329332, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:47,348   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170927.3485558, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:47,348   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170927.3485558, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:48,348   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170928.3485682, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:48,348   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170928.3485682, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:49,350   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170929.350248, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:49,350   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170929.350248, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:50,350   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170930.3502488, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:50,350   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170930.3502488, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:51,365   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170931.3658633, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:51,365   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170931.3658633, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:52,365   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170932.3658733, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:52,365   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170932.3658733, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:53,381   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170933.381497, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:53,381   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170933.381497, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:54,381   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170934.381497, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:54,381   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170934.381497, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:55,381   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170935.3815129, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:55,381   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170935.3815129, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:56,381   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170936.3815134, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:56,381   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170936.3815134, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:57,397   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170937.3971224, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:57,397   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170937.3971224, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:58,412   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170938.4127474, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:58,412   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170938.4127474, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:48:59,428   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170939.428372, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:48:59,428   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170939.428372, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:49:00,428   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170940.4283721, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:49:00,428   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170940.4283721, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:49:01,428   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170941.428373, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:49:01,428   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170941.428373, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:49:02,444   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170942.4440033, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:49:02,444   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170942.4440033, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:49:03,459   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170943.4596236, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:49:03,459   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170943.4596236, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:49:04,475   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170944.4752464, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:49:04,475   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170944.4752464, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:49:05,475   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170945.4752548, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:49:05,475   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170945.4752548, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:49:06,490   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632170946.4908776, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:49:06,490   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632170946.4908776, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:52:20,739   INFO       client.py    Client module started
+2021-09-20 23:52:20,763   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 23:52:22,803   CRITICAL   client.py    Kate: no connection could be made because the target machine actively refused it
+2021-09-20 23:52:40,019   INFO       client.py    Client module started
+2021-09-20 23:52:40,041   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 23:52:40,060   INFO       client.py    Kate: trying to connect to server at 127.0.0.1:7777
+2021-09-20 23:52:40,061   DEBUG      client.py    Function: presence_message, args: ('Kate',), kwargs: {}, called from function: main
+2021-09-20 23:52:40,061   INFO       client.py    Kate: presence message is created
+2021-09-20 23:52:40,061   INFO       client.py    Kate: presence message was sent to the server
+2021-09-20 23:52:41,074   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'}, 'Kate'), kwargs: {}, called from function: main
+2021-09-20 23:52:41,075   INFO       client.py    Kate: the response from the server is being handled
+2021-09-20 23:52:41,075   INFO       client.py    Kate: server response: OK
+2021-09-20 23:52:41,077   INFO       client.py    Kate: reseiver process started
+2021-09-20 23:52:41,078   INFO       client.py    Kate: interface process started
+2021-09-20 23:52:41,083   DEBUG      client.py    Function: user_interaction, args: (<socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54443), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: run
+2021-09-20 23:52:41,083   DEBUG      client.py    Function: handle_message, args: (<socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54443), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: run
+2021-09-20 23:52:41,086   DEBUG      client.py    Function: help_function, args: (), kwargs: {}, called from function: user_interaction
+2021-09-20 23:52:47,102   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=388, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54443), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: user_interaction
+2021-09-20 23:52:54,883   INFO       client.py    Kate: message is created: {'action': 'message', 'time': 1632171174.883445, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:52:54,884   INFO       client.py    Kate: message was sent to user Kate
+2021-09-20 23:52:55,228   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171175.228686, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:52:55,228   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:52:55,229   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171175.228686, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:52:56,237   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171176.2371244, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:52:56,237   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:52:56,238   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171176.2371244, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:52:57,237   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171177.237741, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:52:57,237   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:52:57,238   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171177.237741, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:52:58,249   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171178.2498727, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:52:58,249   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:52:58,249   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171178.2498727, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:52:59,262   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171179.2621572, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:52:59,262   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:52:59,263   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171179.2621572, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:00,273   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171180.273101, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:00,273   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:00,274   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171180.273101, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:01,282   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171181.2822964, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:01,282   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:01,283   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171181.2822964, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:02,295   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171182.2958283, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:02,295   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:02,296   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171182.2958283, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:03,307   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171183.3078434, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:03,307   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:03,308   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171183.3078434, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:04,320   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171184.3202753, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:04,320   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:04,321   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171184.3202753, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:05,331   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171185.3314562, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:05,331   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:05,332   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171185.3314562, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:06,342   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171186.3428617, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:06,342   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:06,343   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171186.3428617, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:07,357   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171187.3573258, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:07,357   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:07,358   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171187.3573258, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:08,369   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171188.3694975, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:08,369   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:08,370   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171188.3694975, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:09,382   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171189.382659, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:09,382   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:09,383   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171189.382659, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:10,391   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171190.3915582, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:10,391   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:10,392   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171190.3915582, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:11,402   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171191.4025123, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:11,402   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:11,403   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171191.4025123, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:12,415   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171192.4151967, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:12,415   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:12,416   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171192.4151967, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:13,426   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171193.4267848, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:13,426   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:13,427   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171193.4267848, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:14,440   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171194.44042, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:14,440   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:14,441   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171194.44042, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:15,451   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171195.4513958, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:15,451   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:15,452   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171195.4513958, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:16,453   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171196.4534812, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:16,453   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:16,453   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171196.4534812, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:17,467   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171197.4670153, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:17,467   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:17,468   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171197.4670153, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:18,468   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171198.4680471, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:18,468   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:18,469   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171198.4680471, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:19,480   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171199.4804301, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:19,480   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:19,481   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171199.4804301, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:20,483   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171200.4838474, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:20,483   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:20,483   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171200.4838474, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:21,486   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171201.4863174, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:21,486   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:21,487   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171201.4863174, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:22,501   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171202.5015552, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:22,501   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:22,502   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171202.5015552, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:23,506   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171203.5068138, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:23,506   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:23,507   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171203.5068138, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:24,518   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171204.5188317, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:24,518   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:24,518   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171204.5188317, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:25,533   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171205.533405, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:25,533   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:25,534   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171205.533405, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:26,534   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171206.5345063, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:26,534   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:26,535   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171206.5345063, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:27,545   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171207.5459146, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:27,545   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:27,546   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171207.5459146, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:28,550   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171208.550978, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:28,550   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:28,550   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171208.550978, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:29,552   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171209.552519, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:29,552   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:29,553   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171209.552519, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:30,566   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171210.56603, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:30,567   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:30,567   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171210.56603, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:31,573   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171211.5731819, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:31,573   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:31,573   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171211.5731819, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:32,577   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171212.5776768, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:32,577   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:32,577   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171212.5776768, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:33,584   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171213.584686, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:33,584   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:33,585   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171213.584686, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:34,590   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171214.5900328, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:34,590   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:34,591   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171214.5900328, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:35,602   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171215.6020124, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:35,602   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:35,603   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171215.6020124, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:36,607   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171216.6077726, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:36,607   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:36,607   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171216.6077726, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:37,619   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171217.6190565, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'} is being handled
+2021-09-20 23:53:37,619   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:53:37,619   INFO       client.py    Kate: the message from server is incorrect: {'action': 'message', 'time': 1632171217.6190565, 'to': 'Kate', 'from': 'Kate', 'message_text': 'hello'}
+2021-09-20 23:53:42,829   INFO       client.py    Client module started
+2021-09-20 23:53:42,848   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 23:53:44,891   CRITICAL   client.py    Kate: no connection could be made because the target machine actively refused it
+2021-09-20 23:54:05,256   INFO       client.py    Client module started
+2021-09-20 23:54:05,275   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 23:54:05,291   INFO       client.py    Kate: trying to connect to server at 127.0.0.1:7777
+2021-09-20 23:54:05,291   DEBUG      client.py    Function: presence_message, args: ('Kate',), kwargs: {}, called from function: main
+2021-09-20 23:54:05,291   INFO       client.py    Kate: presence message is created
+2021-09-20 23:54:05,292   INFO       client.py    Kate: presence message was sent to the server
+2021-09-20 23:54:06,308   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'}, 'Kate'), kwargs: {}, called from function: main
+2021-09-20 23:54:06,308   INFO       client.py    Kate: the response from the server is being handled
+2021-09-20 23:54:06,308   INFO       client.py    Kate: server response: OK
+2021-09-20 23:54:06,310   INFO       client.py    Kate: reseiver process started
+2021-09-20 23:54:06,311   INFO       client.py    Kate: interface process started
+2021-09-20 23:54:06,318   DEBUG      client.py    Function: handle_message, args: (<socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54447), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: run
+2021-09-20 23:54:06,318   DEBUG      client.py    Function: user_interaction, args: (<socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54447), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: run
+2021-09-20 23:54:06,321   DEBUG      client.py    Function: help_function, args: (), kwargs: {}, called from function: user_interaction
+2021-09-20 23:54:17,333   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54447), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: user_interaction
+2021-09-20 23:54:24,703   INFO       client.py    Kate: message is created: {'action': 'message', 'time': 1632171264.7038722, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:54:24,703   INFO       client.py    Kate: message was sent to user user
+2021-09-20 23:54:25,524   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171265.5242684, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:25,525   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:26,536   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171266.5360494, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:26,536   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:27,546   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171267.546081, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:27,546   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:28,557   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171268.557605, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:28,557   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:29,569   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171269.5698535, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:29,569   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:30,583   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171270.5833416, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:30,583   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:31,594   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171271.5941048, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:31,595   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:32,597   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171272.5979857, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:32,597   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:33,605   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171273.605191, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:33,605   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:34,607   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171274.6078417, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:34,607   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:35,619   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171275.6196647, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:35,619   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:36,620   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171276.6201208, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:36,620   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:37,631   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171277.6311324, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:37,631   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:38,633   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171278.6330383, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:38,633   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:39,641   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171279.6416624, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:39,641   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:40,653   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171280.6531937, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:40,653   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:54:41,653   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171281.6537833, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:54:41,653   INFO       client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:08,536   INFO       client.py    Client module started
+2021-09-20 23:57:08,555   DEBUG      client.py    Function: client_arg_parser, args: (), kwargs: {}, called from function: main
+2021-09-20 23:57:08,572   INFO       client.py    Kate: trying to connect to server at 127.0.0.1:7777
+2021-09-20 23:57:08,573   DEBUG      client.py    Function: presence_message, args: ('Kate',), kwargs: {}, called from function: main
+2021-09-20 23:57:08,573   INFO       client.py    Kate: presence message is created
+2021-09-20 23:57:08,573   INFO       client.py    Kate: presence message was sent to the server
+2021-09-20 23:57:09,581   DEBUG      client.py    Function: handle_response, args: ({'response': 200, 'alert': 'ok'}, 'Kate'), kwargs: {}, called from function: main
+2021-09-20 23:57:09,582   INFO       client.py    Kate: the response from the server is being handled
+2021-09-20 23:57:09,582   INFO       client.py    Kate: server response: OK
+2021-09-20 23:57:09,584   INFO       client.py    Kate: reseiver process started
+2021-09-20 23:57:09,585   INFO       client.py    Kate: interface process started
+2021-09-20 23:57:09,590   DEBUG      client.py    Function: handle_message, args: (<socket.socket fd=284, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 65498), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: run
+2021-09-20 23:57:09,591   DEBUG      client.py    Function: user_interaction, args: (<socket.socket fd=284, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 65498), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: run
+2021-09-20 23:57:09,593   DEBUG      client.py    Function: help_function, args: (), kwargs: {}, called from function: user_interaction
+2021-09-20 23:57:17,150   DEBUG      client.py    Function: create_message, args: (<socket.socket fd=284, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 65498), raddr=('127.0.0.1', 7777)>, 'Kate'), kwargs: {}, called from function: user_interaction
+2021-09-20 23:57:31,416   INFO       client.py    Kate: message is created: {'action': 'message', 'time': 1632171451.4162364, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'}
+2021-09-20 23:57:31,416   INFO       client.py    Kate: message was sent to user user
+2021-09-20 23:57:31,804   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171451.804799, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:31,804   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:32,817   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171452.8174655, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:32,817   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:33,828   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171453.8288271, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:33,828   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:34,842   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171454.8425784, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:34,842   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:35,857   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171455.8578207, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:35,857   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:36,871   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171456.8718045, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:36,871   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:37,877   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171457.877312, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:37,877   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:38,878   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171458.8787835, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:38,878   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:39,894   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171459.8941166, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:39,894   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:40,907   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171460.9071462, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:40,907   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:41,915   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171461.9152286, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:41,915   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:42,927   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171462.9272716, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:42,928   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:43,938   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171463.938294, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:43,938   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:44,953   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171464.9533257, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:44,953   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:45,962   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171465.9625165, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:45,962   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:46,968   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171466.9686656, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:46,968   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:47,976   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171467.9765012, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:47,976   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:48,988   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171468.988349, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:48,988   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:50,000   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171470.0009503, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:50,000   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:51,047   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171471.0474896, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:51,047   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:52,058   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171472.058479, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:52,058   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:53,059   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171473.0599308, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:53,059   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:54,074   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171474.0745368, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:54,074   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:55,077   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171475.0772588, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:55,078   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:56,080   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171476.0809011, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:56,080   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:57,096   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171477.0960572, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:57,096   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:58,109   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171478.1093016, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:58,109   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:57:59,109   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171479.109906, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:57:59,109   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:00,117   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171480.1173413, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:00,117   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:01,128   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171481.1288939, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:01,128   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:02,141   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171482.1410456, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:02,141   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:03,153   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171483.1537852, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:03,153   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:04,165   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171484.165388, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:04,165   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:05,176   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171485.1767414, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:05,177   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:06,177   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171486.1774611, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:06,177   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:07,187   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171487.1877437, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:07,187   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:08,202   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171488.2025924, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:08,202   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:09,214   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171489.2141764, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:09,214   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:10,226   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171490.226481, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:10,226   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:11,236   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171491.236261, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:11,236   DEBUG      client.py    Kate: Received a message from the user Kate: hello
+2021-09-20 23:58:12,236   INFO       client.py    Kate: the message {'action': 'message', 'time': 1632171492.2362783, 'to': 'Kate', 'from': 'user', 'message_text': 'hello'} is being handled
+2021-09-20 23:58:12,236   DEBUG      client.py    Kate: Received a message from the user Kate: hello

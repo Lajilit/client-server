@@ -22,6 +22,6 @@ MESSAGE = 'message'
 MESSAGE_TEXT = 'message_text'
 SENDER = 'to'
 DESTINATION = 'from'
-
+EXIT = 'exit'
 ALERT = 'alert'
 ERROR = 'error'
