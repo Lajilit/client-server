@@ -1,0 +1,185 @@
+2021-11-16 00:59:46,333   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-11-16 00:59:46,349   INFO       server.py    server started at 7777 and listened all ip
+2021-11-16 01:00:06,313   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-11-16 01:00:06,329   INFO       server.py    server started at 7777 and listened all ip
+2021-11-16 01:00:39,439   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-11-16 01:00:58,211   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-11-16 01:01:12,969   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-11-16 01:01:28,427   INFO       server.py    ('127.0.0.1', 50081): client connection established
+2021-11-16 01:01:28,443   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-11-16 01:01:28,443   INFO       server.py    ('127.0.0.1', 50082): client connection established
+2021-11-16 01:01:28,443   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013688.4433784, 'user': {'account_name': '2', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=448, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50081)>), kwargs: {}, called from function: main
+2021-11-16 01:01:28,443   INFO       server.py    ('127.0.0.1', 50081): the message from the client is being handled
+2021-11-16 01:01:28,443   INFO       server.py    ('127.0.0.1', 50081): name '2' status 'online'
+2021-11-16 01:01:28,443   INFO       server.py    ('127.0.0.1', 50081): name '2' added into users_list
+2021-11-16 01:01:28,443   INFO       server.py    ('127.0.0.1', 50083): client connection established
+2021-11-16 01:01:28,443   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013688.4433784, 'user': {'account_name': '0', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50082)>), kwargs: {}, called from function: main
+2021-11-16 01:01:28,443   INFO       server.py    ('127.0.0.1', 50082): the message from the client is being handled
+2021-11-16 01:01:28,443   INFO       server.py    ('127.0.0.1', 50082): name '0' status 'online'
+2021-11-16 01:01:28,443   INFO       server.py    ('127.0.0.1', 50082): name '0' added into users_list
+2021-11-16 01:01:29,456   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013688.4433784, 'user': {'account_name': '1', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=456, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50083)>), kwargs: {}, called from function: main
+2021-11-16 01:01:29,456   INFO       server.py    ('127.0.0.1', 50083): the message from the client is being handled
+2021-11-16 01:01:29,456   INFO       server.py    ('127.0.0.1', 50083): name '1' status 'online'
+2021-11-16 01:01:29,456   INFO       server.py    ('127.0.0.1', 50083): name '1' added into users_list
+2021-11-16 01:01:55,651   DEBUG      server.py    Function: handle_message, args: ({'action': 'message', 'time': 1637013714.839124, 'to': '2', 'from': '1', 'message_text': 'hello'}, [], <socket.socket fd=448, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50081)>), kwargs: {}, called from function: main
+2021-11-16 01:01:55,651   INFO       server.py    ('127.0.0.1', 50081): the message from the client is being handled
+2021-11-16 01:01:55,651   INFO       server.py    message: hello from: 2 to: 1 appended into messages_list
+2021-11-16 01:02:06,753   INFO       server.py    ('127.0.0.1', 50081): client disconnected
+2021-11-16 01:02:06,753   INFO       server.py    ('127.0.0.1', 50081): client disconnected
+2021-11-16 01:02:52,612   DEBUG      server.py    Function: server_arg_parser, args: (), kwargs: {}, called from function: main
+2021-11-16 01:02:52,752   INFO       server.py    server started at 7777 and listened all ip
+2021-11-16 01:02:52,909   INFO       server.py    ('127.0.0.1', 50087): client connection established
+2021-11-16 01:02:53,127   INFO       server.py    ('127.0.0.1', 50088): client connection established
+2021-11-16 01:02:53,256   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013772.9558878, 'user': {'account_name': '1', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=412, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50087)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,256   INFO       server.py    ('127.0.0.1', 50087): the message from the client is being handled
+2021-11-16 01:02:53,256   INFO       server.py    ('127.0.0.1', 50087): name '1' status 'online'
+2021-11-16 01:02:53,256   INFO       server.py    ('127.0.0.1', 50087): name '1' added into users_list
+2021-11-16 01:02:53,256   INFO       server.py    ('127.0.0.1', 50089): client connection established
+2021-11-16 01:02:53,272   INFO       server.py    ('127.0.0.1', 50090): client connection established
+2021-11-16 01:02:53,272   INFO       server.py    ('127.0.0.1', 50091): client connection established
+2021-11-16 01:02:53,288   INFO       server.py    ('127.0.0.1', 50092): client connection established
+2021-11-16 01:02:53,459   INFO       server.py    ('127.0.0.1', 50093): client connection established
+2021-11-16 01:02:53,553   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.159007, 'user': {'account_name': '6', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=184, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50088)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50088): the message from the client is being handled
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50088): name '6' status 'online'
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50088): name '6' added into users_list
+2021-11-16 01:02:53,553   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.2255957, 'user': {'account_name': '3', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=324, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50089)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50089): the message from the client is being handled
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50089): name '3' status 'online'
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50089): name '3' added into users_list
+2021-11-16 01:02:53,553   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.2099683, 'user': {'account_name': '22', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=356, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50090)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50090): the message from the client is being handled
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50090): name '22' status 'online'
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50090): name '22' added into users_list
+2021-11-16 01:02:53,553   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.2724674, 'user': {'account_name': '2', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=404, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50091)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,553   INFO       server.py    ('127.0.0.1', 50091): the message from the client is being handled
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50091): name '2' status 'online'
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50091): name '2' added into users_list
+2021-11-16 01:02:53,569   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.2880917, 'user': {'account_name': '8', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=368, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50092)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50092): the message from the client is being handled
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50092): name '8' status 'online'
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50092): name '8' added into users_list
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50094): client connection established
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50095): client connection established
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50096): client connection established
+2021-11-16 01:02:53,569   INFO       server.py    ('127.0.0.1', 50097): client connection established
+2021-11-16 01:02:53,584   INFO       server.py    ('127.0.0.1', 50098): client connection established
+2021-11-16 01:02:53,803   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.459962, 'user': {'account_name': '26', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=416, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50093)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,803   INFO       server.py    ('127.0.0.1', 50093): the message from the client is being handled
+2021-11-16 01:02:53,819   INFO       server.py    ('127.0.0.1', 50093): name '26' status 'online'
+2021-11-16 01:02:53,819   INFO       server.py    ('127.0.0.1', 50093): name '26' added into users_list
+2021-11-16 01:02:53,834   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.459962, 'user': {'account_name': '11', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=364, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50094)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,834   INFO       server.py    ('127.0.0.1', 50094): the message from the client is being handled
+2021-11-16 01:02:53,836   INFO       server.py    ('127.0.0.1', 50094): name '11' status 'online'
+2021-11-16 01:02:53,837   INFO       server.py    ('127.0.0.1', 50094): name '11' added into users_list
+2021-11-16 01:02:53,839   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.5068355, 'user': {'account_name': '25', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=336, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50095)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,839   INFO       server.py    ('127.0.0.1', 50095): the message from the client is being handled
+2021-11-16 01:02:53,840   INFO       server.py    ('127.0.0.1', 50095): name '25' status 'online'
+2021-11-16 01:02:53,841   INFO       server.py    ('127.0.0.1', 50095): name '25' added into users_list
+2021-11-16 01:02:53,842   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.5693336, 'user': {'account_name': '23', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=352, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50096)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50096): the message from the client is being handled
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50096): name '23' status 'online'
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50096): name '23' added into users_list
+2021-11-16 01:02:53,843   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.5849576, 'user': {'account_name': '5', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=420, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50097)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50097): the message from the client is being handled
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50097): name '5' status 'online'
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50097): name '5' added into users_list
+2021-11-16 01:02:53,843   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.6005828, 'user': {'account_name': '0', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=424, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50098)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50098): the message from the client is being handled
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50098): name '0' status 'online'
+2021-11-16 01:02:53,843   INFO       server.py    ('127.0.0.1', 50098): name '0' added into users_list
+2021-11-16 01:02:53,859   INFO       server.py    ('127.0.0.1', 50099): client connection established
+2021-11-16 01:02:53,859   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.6005828, 'user': {'account_name': '28', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=432, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50099)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,859   INFO       server.py    ('127.0.0.1', 50099): the message from the client is being handled
+2021-11-16 01:02:53,859   INFO       server.py    ('127.0.0.1', 50099): name '28' status 'online'
+2021-11-16 01:02:53,859   INFO       server.py    ('127.0.0.1', 50099): name '28' added into users_list
+2021-11-16 01:02:53,859   INFO       server.py    ('127.0.0.1', 50100): client connection established
+2021-11-16 01:02:53,874   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.6162071, 'user': {'account_name': '19', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=436, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50100)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50100): the message from the client is being handled
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50100): name '19' status 'online'
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50100): name '19' added into users_list
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50101): client connection established
+2021-11-16 01:02:53,874   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.6318314, 'user': {'account_name': '24', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=444, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50101)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50101): the message from the client is being handled
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50101): name '24' status 'online'
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50101): name '24' added into users_list
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50102): client connection established
+2021-11-16 01:02:53,874   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.6318314, 'user': {'account_name': '9', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50102)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50102): the message from the client is being handled
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50102): name '9' status 'online'
+2021-11-16 01:02:53,874   INFO       server.py    ('127.0.0.1', 50102): name '9' added into users_list
+2021-11-16 01:02:53,890   INFO       server.py    ('127.0.0.1', 50103): client connection established
+2021-11-16 01:02:53,890   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.6318314, 'user': {'account_name': '18', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50103)>), kwargs: {}, called from function: main
+2021-11-16 01:02:53,890   INFO       server.py    ('127.0.0.1', 50103): the message from the client is being handled
+2021-11-16 01:02:53,890   INFO       server.py    ('127.0.0.1', 50103): name '18' status 'online'
+2021-11-16 01:02:53,890   INFO       server.py    ('127.0.0.1', 50103): name '18' added into users_list
+2021-11-16 01:02:53,890   INFO       server.py    ('127.0.0.1', 50113): client connection established
+2021-11-16 01:02:53,905   INFO       server.py    ('127.0.0.1', 50114): client connection established
+2021-11-16 01:02:54,046   INFO       server.py    ('127.0.0.1', 50115): client connection established
+2021-11-16 01:02:54,046   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.9059467, 'user': {'account_name': '4', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=448, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50113)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,046   INFO       server.py    ('127.0.0.1', 50113): the message from the client is being handled
+2021-11-16 01:02:54,046   INFO       server.py    ('127.0.0.1', 50113): name '4' status 'online'
+2021-11-16 01:02:54,046   INFO       server.py    ('127.0.0.1', 50113): name '4' added into users_list
+2021-11-16 01:02:54,046   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013773.9215698, 'user': {'account_name': '17', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=348, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50114)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,046   INFO       server.py    ('127.0.0.1', 50114): the message from the client is being handled
+2021-11-16 01:02:54,046   INFO       server.py    ('127.0.0.1', 50114): name '17' status 'online'
+2021-11-16 01:02:54,046   INFO       server.py    ('127.0.0.1', 50114): name '17' added into users_list
+2021-11-16 01:02:54,062   INFO       server.py    ('127.0.0.1', 50116): client connection established
+2021-11-16 01:02:54,062   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.046568, 'user': {'account_name': '27', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=440, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50115)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,062   INFO       server.py    ('127.0.0.1', 50115): the message from the client is being handled
+2021-11-16 01:02:54,062   INFO       server.py    ('127.0.0.1', 50115): name '27' status 'online'
+2021-11-16 01:02:54,062   INFO       server.py    ('127.0.0.1', 50115): name '27' added into users_list
+2021-11-16 01:02:54,213   INFO       server.py    ('127.0.0.1', 50104): client connection established
+2021-11-16 01:02:54,213   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.062191, 'user': {'account_name': '14', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=456, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50116)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,213   INFO       server.py    ('127.0.0.1', 50116): the message from the client is being handled
+2021-11-16 01:02:54,213   INFO       server.py    ('127.0.0.1', 50116): name '14' status 'online'
+2021-11-16 01:02:54,213   INFO       server.py    ('127.0.0.1', 50116): name '14' added into users_list
+2021-11-16 01:02:54,229   INFO       server.py    ('127.0.0.1', 50105): client connection established
+2021-11-16 01:02:54,229   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.2136378, 'user': {'account_name': '29', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=460, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50104)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,229   INFO       server.py    ('127.0.0.1', 50104): the message from the client is being handled
+2021-11-16 01:02:54,229   INFO       server.py    ('127.0.0.1', 50104): name '29' status 'online'
+2021-11-16 01:02:54,229   INFO       server.py    ('127.0.0.1', 50104): name '29' added into users_list
+2021-11-16 01:02:54,244   INFO       server.py    ('127.0.0.1', 50106): client connection established
+2021-11-16 01:02:54,244   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.2292478, 'user': {'account_name': '16', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=468, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50105)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,244   INFO       server.py    ('127.0.0.1', 50105): the message from the client is being handled
+2021-11-16 01:02:54,244   INFO       server.py    ('127.0.0.1', 50105): name '16' status 'online'
+2021-11-16 01:02:54,244   INFO       server.py    ('127.0.0.1', 50105): name '16' added into users_list
+2021-11-16 01:02:54,291   INFO       server.py    ('127.0.0.1', 50107): client connection established
+2021-11-16 01:02:54,291   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.244875, 'user': {'account_name': '15', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=472, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50106)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,291   INFO       server.py    ('127.0.0.1', 50106): the message from the client is being handled
+2021-11-16 01:02:54,291   INFO       server.py    ('127.0.0.1', 50106): name '15' status 'online'
+2021-11-16 01:02:54,291   INFO       server.py    ('127.0.0.1', 50106): name '15' added into users_list
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50108): client connection established
+2021-11-16 01:02:54,323   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.2917473, 'user': {'account_name': '20', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=476, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50107)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50107): the message from the client is being handled
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50107): name '20' status 'online'
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50107): name '20' added into users_list
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50110): client connection established
+2021-11-16 01:02:54,323   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.3230073, 'user': {'account_name': '21', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=480, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50108)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50108): the message from the client is being handled
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50108): name '21' status 'online'
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50108): name '21' added into users_list
+2021-11-16 01:02:54,323   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.3230073, 'user': {'account_name': '10', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=464, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50110)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50110): the message from the client is being handled
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50110): name '10' status 'online'
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50110): name '10' added into users_list
+2021-11-16 01:02:54,323   INFO       server.py    ('127.0.0.1', 50111): client connection established
+2021-11-16 01:02:54,338   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.3230073, 'user': {'account_name': '12', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=488, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50111)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50111): the message from the client is being handled
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50111): name '12' status 'online'
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50111): name '12' added into users_list
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50109): client connection established
+2021-11-16 01:02:54,338   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.3230073, 'user': {'account_name': '7', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=484, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50109)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50109): the message from the client is being handled
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50109): name '7' status 'online'
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50109): name '7' added into users_list
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50112): client connection established
+2021-11-16 01:02:54,338   DEBUG      server.py    Function: handle_message, args: ({'action': 'presence', 'time': 1637013774.3386183, 'user': {'account_name': '13', 'status': 'online'}, 'type': 'status'}, [], <socket.socket fd=496, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50112)>), kwargs: {}, called from function: main
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50112): the message from the client is being handled
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50112): name '13' status 'online'
+2021-11-16 01:02:54,338   INFO       server.py    ('127.0.0.1', 50112): name '13' added into users_list
+2021-11-16 01:03:07,515   DEBUG      server.py    Function: handle_message, args: ({'action': 'message', 'time': 1637013787.3752913, 'to': '14', 'from': '15', 'message_text': 'hello'}, [], <socket.socket fd=456, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 50116)>), kwargs: {}, called from function: main
+2021-11-16 01:03:07,515   INFO       server.py    ('127.0.0.1', 50116): the message from the client is being handled
+2021-11-16 01:03:07,515   INFO       server.py    message: hello from: 14 to: 15 appended into messages_list
+2021-11-16 01:03:27,731   INFO       server.py    ('127.0.0.1', 50094): client disconnected
+2021-11-16 01:03:27,731   INFO       server.py    ('127.0.0.1', 50094): client disconnected
