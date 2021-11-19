@@ -11,6 +11,7 @@ from constants import DEFAULT_PORT, MAX_CONNECTIONS, ACTION, \
 from functions import get_message, send_message
 from project_logging.config.server_log_config import server_logger
 
+
 def log(func):
     def wrapper(*args, **kwargs):
         server_logger.debug(
@@ -68,19 +69,19 @@ def handle_message(message, messages_list, socket):
             and message[ACTION] == PRESENCE \
             and TIME in message \
             and USER in message:
-            server_logger.info(
-                f'{socket.getpeername()}: '
-                f'name \'{message[USER][ACCOUNT_NAME]}\' '
-                f'status \'{message[USER][STATUS]}\'')
-            send_message(socket, {
-                RESPONSE: 200,
-                ALERT: 'ok'
-            })
-            users.append(message[USER][ACCOUNT_NAME])
-            server_logger.info(
-                f'{socket.getpeername()}: '
-                f'name \'{message[USER][ACCOUNT_NAME]}\' added into users_list'
-            )
+        server_logger.info(
+            f'{socket.getpeername()}: '
+            f'name \'{message[USER][ACCOUNT_NAME]}\' '
+            f'status \'{message[USER][STATUS]}\'')
+        send_message(socket, {
+            RESPONSE: 200,
+            ALERT: 'ok'
+        })
+        users[message[USER][ACCOUNT_NAME]] = socket
+        server_logger.info(
+            f'{socket.getpeername()}: '
+            f'name \'{message[USER][ACCOUNT_NAME]}\' added into users_dict'
+        )
     elif ACTION in message and \
             message[ACTION] == MESSAGE and \
             TIME in message and \
@@ -129,7 +130,7 @@ def main():
     all_clients = []
     messages_list = []
     global users
-    users = []
+    users = {}
 
     while True:
 
@@ -163,7 +164,7 @@ def main():
                     all_clients.remove(client)
 
         if messages_list and clients_receivers:
-            message_in_list = messages_list[0]
+            message_in_list = messages_list.pop(0)
             message_to_send = {
                 ACTION: MESSAGE,
                 TIME: time.time(),
@@ -171,16 +172,16 @@ def main():
                 DESTINATION: message_in_list[1],
                 MESSAGE_TEXT: message_in_list[2]
             }
-            del message_in_list
 
             for client in clients_receivers:
-                try:
-                    send_message(client, message_to_send)
-                except:
-                    server_logger.info(
-                        f'{client.getpeername()}: client disconnected'
-                    )
-                    all_clients.remove(client)
+                if client == users[message_to_send[DESTINATION]]:
+                    try:
+                        send_message(client, message_to_send)
+                    except Exception:
+                        server_logger.info(
+                            f'{client.getpeername()}: client disconnected'
+                        )
+                        all_clients.remove(client)
 
 
 if __name__ == '__main__':

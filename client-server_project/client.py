@@ -138,12 +138,12 @@ def create_message(socket, user_name):
         DESTINATION: input_destination,
         MESSAGE_TEXT: input_message
     }
-    client_logger.info(
+    client_logger.debug(
         f'{user_name}: message is created: {message}'
     )
     try:
         send_message(socket, message)
-        client_logger.info(
+        client_logger.debug(
             f'{user_name}: message was sent to user {input_destination}'
         )
     except ConnectionRefusedError:
@@ -165,7 +165,7 @@ def handle_message(socket, user_name):
     while True:
         try:
             message = get_message(socket)
-            client_logger.info(
+            client_logger.debug(
                 f'{user_name}: the message {message} is being handled'
             )
             if ACTION in message and \
@@ -245,7 +245,7 @@ def main():
             f'{username}: presence message was sent to the server'
         )
         answer = handle_response(get_message(server_socket), username)
-        client_logger.info(
+        client_logger.debug(
             f'{username}: server response: {answer}'
         )
     except ConnectionRefusedError:
