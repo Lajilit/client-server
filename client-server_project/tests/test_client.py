@@ -5,7 +5,7 @@ parent_directory = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(parent_directory)
 
 from constants import *
-from client import presence_message, handle_message, \
+from client import create_presence, handle_message, \
     handle_response
 
 
@@ -18,7 +18,7 @@ class TestClient(unittest.TestCase):
         pass
 
     def test_create_presence_message_default_user(self):
-        message = presence_message()
+        message = create_presence()
         message[TIME] = 1.1
         result = {
             ACTION: PRESENCE,
@@ -32,7 +32,7 @@ class TestClient(unittest.TestCase):
         self.assertEqual(message, result)
 
     def test_create_presence_message_user(self):
-        message = presence_message('User')
+        message = create_presence('User')
         message[TIME] = 1.1
         result = {
             ACTION: PRESENCE,
