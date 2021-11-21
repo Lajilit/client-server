@@ -1,22 +1,25 @@
 import argparse
-import hashlib
 import inspect
-import logging
-import socket
 import sys
 import threading
 import time
-from datetime import datetime
+from socket import socket, AF_INET, SOCK_STREAM
 
-from constants import DEFAULT_IP, DEFAULT_PORT, MAX_PACKAGE_LENGTH, ENCODING, ACTION, PRESENCE, TIME, USER, \
+from constants import ACTION, PRESENCE, TIME, USER, \
     ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT
+from meta import SocketVerifier
 from project_logging.config.log_config import client_logger
-from server import Server
+from socket_include import Socket
 
 
-class Client(Server):
-    def __init__(self, name):
-        self.name = name
+class ClientMeta(metaclass=SocketVerifier):
+    pass
+
+
+class Client(ClientMeta, Socket):
+
+    def __init__(self, username):
+        self.name = username
         super().__init__()
 
     @staticmethod
@@ -168,6 +171,7 @@ class Client(Server):
 
         # Подключение к серверу и отправка сообщения от присутствии
         try:
+            self.socket = socket(AF_INET, SOCK_STREAM)
             self.socket.connect((self.host, self.port))
             client_logger.info(
                 f'{self.name}: trying to connect to server at '
@@ -206,7 +210,6 @@ class Client(Server):
 
 
 if __name__ == '__main__':
-
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-n', '--name', default='Guest', nargs='?',
