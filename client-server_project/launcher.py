@@ -10,5 +10,5 @@ PROCESS = [subprocess.Popen(
 
 for i in range(args.count):
     PROCESS.append(subprocess.Popen(
-        f'python client.py -n {i+1}',
+        f'python client.py -n guest{i+1}',
         creationflags=subprocess.CREATE_NEW_CONSOLE))

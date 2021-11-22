@@ -8679,3 +8679,87 @@ s: (<__main__.Client object at 0x000001A6E1B5A590>, {'response': 200, 'alert': '
 2021-11-22 16:54:40,444   INFO       client.py    Guest: interface process started
 2021-11-22 16:54:40,475   DEBUG      client.py    Function: user_interaction, args: (<__main__.Client object at 0x0000021BF2B630D0>,), kwargs: {}, called from function: run
 2021-11-22 16:54:40,475   DEBUG      client.py    Function: listen_server, args: (<__main__.Client object at 0x0000021BF2B630D0>,), kwargs: {}, called from function: run
+2021-11-22 21:14:49,372   INFO       client.py    Client module started
+2021-11-22 21:14:49,372   INFO       client.py    Guest: trying to connect to server at 127.0.0.1:7777
+2021-11-22 21:14:49,388   DEBUG      client.py    Function: create_presence, args: (<__main__.Client object at 0x000001748E9575E0>,), kwargs: {}, called from function: set_up
+2021-11-22 21:14:49,388   INFO       client.py    Guest: presence message is created
+2021-11-22 21:14:49,404   INFO       client.py    Guest: presence message was sent to the server
+2021-11-22 21:14:50,419   DEBUG      client.py    Function: handle_response, args: (<__main__.Client object at 0x000001748E9575E0>, {'response': 200, 'alert': 'ok'}), kwargs: {}, called from function: set_up
+2021-11-22 21:14:50,419   INFO       client.py    Guest: the response from the server is being handled
+2021-11-22 21:14:50,419   DEBUG      client.py    Guest: server response: OK
+2021-11-22 21:14:50,419   INFO       client.py    Guest: receiver process started
+2021-11-22 21:14:50,419   INFO       client.py    Guest: interface process started
+2021-11-22 21:14:50,419   DEBUG      client.py    Function: user_interaction, args: (<__main__.Client object at 0x000001748E9575E0>,), kwargs: {}, called from function: run
+2021-11-22 21:14:50,419   DEBUG      client.py    Function: listen_server, args: (<__main__.Client object at 0x000001748E9575E0>,), kwargs: {}, called from function: run
+2021-11-22 21:15:44,426   INFO       client.py    Client module started
+2021-11-22 21:15:44,426   INFO       client.py    Client module started
+2021-11-22 21:15:44,426   INFO       client.py    1: trying to connect to server at 127.0.0.1:2525
+2021-11-22 21:15:44,457   INFO       client.py    Client module started
+2021-11-22 21:15:44,457   INFO       client.py    3: trying to connect to server at 127.0.0.1:2525
+2021-11-22 21:15:44,473   DEBUG      client.py    Function: create_presence, args: (<__main__.Client object at 0x00000197075C7640>,), kwargs: {}, called from function: set_up
+2021-11-22 21:15:44,473   INFO       client.py    1: presence message is created
+2021-11-22 21:15:44,473   INFO       client.py    1: presence message was sent to the server
+2021-11-22 21:15:44,489   DEBUG      client.py    Function: create_presence, args: (<__main__.Client object at 0x000002A949747640>,), kwargs: {}, called from function: set_up
+2021-11-22 21:15:44,489   INFO       client.py    3: presence message is created
+2021-11-22 21:15:44,489   INFO       client.py    3: presence message was sent to the server
+2021-11-22 21:15:44,942   INFO       client.py    2: trying to connect to server at 127.0.0.1:2525
+2021-11-22 21:15:44,973   DEBUG      client.py    Function: create_presence, args: (<__main__.Client object at 0x0000023657D87640>,), kwargs: {}, called from function: set_up
+2021-11-22 21:15:44,973   INFO       client.py    2: presence message is created
+2021-11-22 21:15:44,973   INFO       client.py    2: presence message was sent to the server
+2021-11-22 21:15:44,973   DEBUG      client.py    Function: handle_response, args: (<__main__.Client object at 0x00000197075C7640>, {'response': 200, 'alert': 'ok'}), kwargs: {}, called from function: set_up
+2021-11-22 21:15:44,973   INFO       client.py    1: the response from the server is being handled
+2021-11-22 21:15:44,973   DEBUG      client.py    1: server response: OK
+2021-11-22 21:15:44,973   DEBUG      client.py    Function: handle_response, args: (<__main__.Client object at 0x000002A949747640>, {'response': 200, 'alert': 'ok'}), kwargs: {}, called from function: set_up
+2021-11-22 21:15:44,973   INFO       client.py    1: receiver process started
+2021-11-22 21:15:44,973   INFO       client.py    3: the response from the server is being handled
+2021-11-22 21:15:44,973   DEBUG      client.py    3: server response: OK
+2021-11-22 21:15:44,973   INFO       client.py    1: interface process started
+2021-11-22 21:15:44,973   INFO       client.py    3: receiver process started
+2021-11-22 21:15:44,973   INFO       client.py    3: interface process started
+2021-11-22 21:15:44,989   DEBUG      client.py    Function: user_interaction, args: (<__main__.Client object at 0x00000197075C7640>,), kwargs: {}, called from function: run
+2021-11-22 21:15:44,989   DEBUG      client.py    Function: listen_server, args: (<__main__.Client object at 0x00000197075C7640>,), kwargs: {}, called from function: run
+2021-11-22 21:15:44,989   DEBUG      client.py    Function: user_interaction, args: (<__main__.Client object at 0x000002A949747640>,), kwargs: {}, called from function: run
+2021-11-22 21:15:44,989   DEBUG      client.py    Function: listen_server, args: (<__main__.Client object at 0x000002A949747640>,), kwargs: {}, called from function: run
+2021-11-22 21:15:45,989   DEBUG      client.py    Function: handle_response, args: (<__main__.Client object at 0x0000023657D87640>, {'response': 200, 'alert': 'ok'}), kwargs: {}, called from function: set_up
+2021-11-22 21:15:45,989   INFO       client.py    2: the response from the server is being handled
+2021-11-22 21:15:45,989   DEBUG      client.py    2: server response: OK
+2021-11-22 21:15:45,989   INFO       client.py    2: receiver process started
+2021-11-22 21:15:45,989   INFO       client.py    2: interface process started
+2021-11-22 21:15:45,989   DEBUG      client.py    Function: listen_server, args: (<__main__.Client object at 0x0000023657D87640>,), kwargs: {}, called from function: run
+2021-11-22 21:15:45,989   DEBUG      client.py    Function: user_interaction, args: (<__main__.Client object at 0x0000023657D87640>,), kwargs: {}, called from function: run
+2021-11-22 21:16:23,343   INFO       client.py    Client module started
+2021-11-22 21:16:23,343   INFO       client.py    guest1: trying to connect to server at 127.0.0.1:7777
+2021-11-22 21:16:23,374   DEBUG      client.py    Function: create_presence, args: (<__main__.Client object at 0x0000027EAE4275E0>,), kwargs: {}, called from function: set_up
+2021-11-22 21:16:23,374   INFO       client.py    guest1: presence message is created
+2021-11-22 21:16:23,390   INFO       client.py    Client module started
+2021-11-22 21:16:23,390   INFO       client.py    guest1: presence message was sent to the server
+2021-11-22 21:16:23,390   INFO       client.py    Client module started
+2021-11-22 21:16:23,390   INFO       client.py    guest3: trying to connect to server at 127.0.0.1:7777
+2021-11-22 21:16:23,390   INFO       client.py    guest2: trying to connect to server at 127.0.0.1:7777
+2021-11-22 21:16:23,390   DEBUG      client.py    Function: handle_response, args: (<__main__.Client object at 0x0000027EAE4275E0>, {'response': 200, 'alert': 'ok'}), kwargs: {}, called from function: set_up
+2021-11-22 21:16:23,390   INFO       client.py    guest1: the response from the server is being handled
+2021-11-22 21:16:23,390   DEBUG      client.py    guest1: server response: OK
+2021-11-22 21:16:23,390   INFO       client.py    guest1: receiver process started
+2021-11-22 21:16:23,390   DEBUG      client.py    Function: listen_server, args: (<__main__.Client object at 0x0000027EAE4275E0>,), kwargs: {}, called from function: run
+2021-11-22 21:16:23,390   INFO       client.py    guest1: interface process started
+2021-11-22 21:16:23,405   DEBUG      client.py    Function: user_interaction, args: (<__main__.Client object at 0x0000027EAE4275E0>,), kwargs: {}, called from function: run
+2021-11-22 21:16:23,421   DEBUG      client.py    Function: create_presence, args: (<__main__.Client object at 0x0000022E26AE75E0>,), kwargs: {}, called from function: set_up
+2021-11-22 21:16:23,421   INFO       client.py    guest3: presence message is created
+2021-11-22 21:16:23,421   INFO       client.py    guest3: presence message was sent to the server
+2021-11-22 21:16:23,421   DEBUG      client.py    Function: create_presence, args: (<__main__.Client object at 0x000001AEE8DC75E0>,), kwargs: {}, called from function: set_up
+2021-11-22 21:16:23,421   INFO       client.py    guest2: presence message is created
+2021-11-22 21:16:23,421   INFO       client.py    guest2: presence message was sent to the server
+2021-11-22 21:16:24,390   DEBUG      client.py    Function: handle_response, args: (<__main__.Client object at 0x0000022E26AE75E0>, {'response': 200, 'alert': 'ok'}), kwargs: {}, called from function: set_up
+2021-11-22 21:16:24,390   INFO       client.py    guest3: the response from the server is being handled
+2021-11-22 21:16:24,390   DEBUG      client.py    guest3: server response: OK
+2021-11-22 21:16:24,390   INFO       client.py    guest3: receiver process started
+2021-11-22 21:16:24,390   DEBUG      client.py    Function: handle_response, args: (<__main__.Client object at 0x000001AEE8DC75E0>, {'response': 200, 'alert': 'ok'}), kwargs: {}, called from function: set_up
+2021-11-22 21:16:24,390   INFO       client.py    guest2: the response from the server is being handled
+2021-11-22 21:16:24,390   DEBUG      client.py    guest2: server response: OK
+2021-11-22 21:16:24,390   INFO       client.py    guest3: interface process started
+2021-11-22 21:16:24,390   INFO       client.py    guest2: receiver process started
+2021-11-22 21:16:24,390   INFO       client.py    guest2: interface process started
+2021-11-22 21:16:24,390   DEBUG      client.py    Function: listen_server, args: (<__main__.Client object at 0x0000022E26AE75E0>,), kwargs: {}, called from function: run
+2021-11-22 21:16:24,390   DEBUG      client.py    Function: user_interaction, args: (<__main__.Client object at 0x0000022E26AE75E0>,), kwargs: {}, called from function: run
+2021-11-22 21:16:24,405   DEBUG      client.py    Function: listen_server, args: (<__main__.Client object at 0x000001AEE8DC75E0>,), kwargs: {}, called from function: run
+2021-11-22 21:16:24,405   DEBUG      client.py    Function: user_interaction, args: (<__main__.Client object at 0x000001AEE8DC75E0>,), kwargs: {}, called from function: run

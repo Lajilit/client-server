@@ -1,4 +1,5 @@
 import json
+import sys
 from enum import Enum
 from constants import DEFAULT_IP, DEFAULT_PORT, ENCODING, MAX_PACKAGE_LENGTH
 
@@ -8,12 +9,35 @@ class SocketType(Enum):
     CLIENT = 'Client'
 
 
+class CheckServerPort:
+    def __init__(self, name):
+        self.name = "_" + name
+        self.value = None
+
+    def __get__(self, instance, instance_type):
+        if instance is None:
+            return self
+        return int(f'{getattr(instance, self.name)}')
+
+    def __set__(self, instance, value):
+        try:
+            value = int(value)
+            if not (1024 <= value <= 65535):
+                raise ValueError
+        except ValueError:
+            print('Номер порта должен быть целым числом в пределах от 1024 до 65535')
+            sys.exit(1)
+        else:
+            setattr(instance, self.name, value)
+
+    def __delete__(self, instance):
+        raise AttributeError('Невозможно удалить атрибут')
+
+
 class Socket:
 
-    def __init__(self, host=DEFAULT_IP, port=DEFAULT_PORT):
+    def __init__(self):
         self.socket = None
-        self.host = host
-        self.port = port
 
     @staticmethod
     def send_data(message, socket_to_send=None):

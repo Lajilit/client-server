@@ -6,7 +6,8 @@ import time
 from socket import socket, AF_INET, SOCK_STREAM
 
 from constants import ACTION, PRESENCE, TIME, USER, \
-    ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT
+    ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT, DEFAULT_IP, \
+    DEFAULT_PORT
 from socket_verifier import SocketVerifier
 from socket_include import Socket, SocketType
 from project_logging.config.log_config import client_logger
@@ -19,9 +20,12 @@ class ClientMeta(metaclass=SocketVerifier):
 class Client(ClientMeta, Socket):
     socket_type = SocketType('Client')
 
-    def __init__(self, username):
-        self.name = username
+    def __init__(self, name, server_ip_address, server_port):
         super().__init__()
+        self.name = name
+        self.port = server_port
+        self.host = server_ip_address
+
 
     @staticmethod
     def log(some_function):
@@ -212,10 +216,16 @@ class Client(ClientMeta, Socket):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-
+    parser.add_argument('-a', '--address', default=DEFAULT_IP, nargs='?',
+                        help=f'server ip-address, default - {DEFAULT_IP}')
+    parser.add_argument('-p', '--port', default=DEFAULT_PORT, type=int, nargs='?',
+                        help=f'server port, default - {DEFAULT_PORT}')
     parser.add_argument('-n', '--name', default='Guest', nargs='?',
                         help='user name, default - Guest')
-    name = parser.parse_args().name
-    client = Client(name)
+    args = parser.parse_args()
+    ip_address = args.address
+    port = args.port
+    username = args.name
 
+    client = Client(username, ip_address, port)
     client.set_up()

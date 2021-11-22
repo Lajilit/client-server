@@ -1,12 +1,14 @@
+import argparse
 import inspect
+import sys
 import time
 import select
 from socket import socket, AF_INET, SOCK_STREAM
 
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
-    USER, ACCOUNT_NAME, STATUS, RESPONSE, ALERT, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR
+    USER, ACCOUNT_NAME, STATUS, RESPONSE, ALERT, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT
 from socket_verifier import SocketVerifier
-from socket_include import Socket, SocketType
+from socket_include import Socket, SocketType, CheckServerPort
 from project_logging.config.log_config import server_logger
 
 
@@ -16,12 +18,16 @@ class ServerMeta(metaclass=SocketVerifier):
 
 class Server(ServerMeta, Socket):
     socket_type = SocketType('Server')
+    port = CheckServerPort('port')
 
-    def __init__(self):
+    def __init__(self, server_ip, server_port):
+        super().__init__()
         self.client_usernames = {}
         self.messages = []
         self.clients = []
-        super().__init__()
+        self.port = server_port
+        self.host = server_ip
+
 
     @staticmethod
     def log(some_function):
@@ -160,5 +166,14 @@ class Server(ServerMeta, Socket):
 
 
 if __name__ == '__main__':
-    s = Server()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-a', '--address', default=DEFAULT_IP, nargs='?',
+                        help=f'server ip-address, default - {DEFAULT_IP}')
+    parser.add_argument('-p', '--port', default=DEFAULT_PORT, type=int, nargs='?',
+                        help=f'server port, default - {DEFAULT_PORT}')
+
+    args = parser.parse_args()
+    ip_address = args.address
+    port = args.port
+    s = Server(ip_address, port)
     s.set_up()
