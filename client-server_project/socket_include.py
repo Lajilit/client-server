@@ -1,7 +1,7 @@
 import json
 import sys
 from enum import Enum
-from constants import DEFAULT_IP, DEFAULT_PORT, ENCODING, MAX_PACKAGE_LENGTH
+from constants import ENCODING, MAX_PACKAGE_LENGTH
 
 
 class SocketType(Enum):

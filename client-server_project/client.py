@@ -26,7 +26,6 @@ class Client(ClientMeta, Socket):
         self.port = server_port
         self.host = server_ip_address
 
-
     @staticmethod
     def log(some_function):
         def wrapper(*args, **kwargs):
@@ -222,10 +221,10 @@ if __name__ == '__main__':
                         help=f'server port, default - {DEFAULT_PORT}')
     parser.add_argument('-n', '--name', default='Guest', nargs='?',
                         help='user name, default - Guest')
-    args = parser.parse_args()
-    ip_address = args.address
-    port = args.port
-    username = args.name
+    cmd_args = parser.parse_args()
+    ip_address = cmd_args.address
+    port = cmd_args.port
+    username = cmd_args.name
 
     client = Client(username, ip_address, port)
     client.set_up()

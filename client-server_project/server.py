@@ -1,6 +1,5 @@
 import argparse
 import inspect
-import sys
 import time
 import select
 from socket import socket, AF_INET, SOCK_STREAM
@@ -27,7 +26,6 @@ class Server(ServerMeta, Socket):
         self.clients = []
         self.port = server_port
         self.host = server_ip
-
 
     @staticmethod
     def log(some_function):
@@ -172,8 +170,8 @@ if __name__ == '__main__':
     parser.add_argument('-p', '--port', default=DEFAULT_PORT, type=int, nargs='?',
                         help=f'server port, default - {DEFAULT_PORT}')
 
-    args = parser.parse_args()
-    ip_address = args.address
-    port = args.port
+    cmd_args = parser.parse_args()
+    ip_address = cmd_args.address
+    port = cmd_args.port
     s = Server(ip_address, port)
     s.set_up()
