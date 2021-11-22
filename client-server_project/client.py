@@ -7,9 +7,9 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 from constants import ACTION, PRESENCE, TIME, USER, \
     ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT
-from meta import SocketVerifier
+from socket_verifier import SocketVerifier
+from socket_include import Socket, SocketType
 from project_logging.config.log_config import client_logger
-from socket_include import Socket
 
 
 class ClientMeta(metaclass=SocketVerifier):
@@ -17,6 +17,7 @@ class ClientMeta(metaclass=SocketVerifier):
 
 
 class Client(ClientMeta, Socket):
+    socket_type = SocketType('Client')
 
     def __init__(self, username):
         self.name = username

@@ -1,6 +1,11 @@
 import json
-
+from enum import Enum
 from constants import DEFAULT_IP, DEFAULT_PORT, ENCODING, MAX_PACKAGE_LENGTH
+
+
+class SocketType(Enum):
+    SERVER = 'Server'
+    CLIENT = 'Client'
 
 
 class Socket:

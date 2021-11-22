@@ -1,15 +1,13 @@
 import inspect
 import time
-from socket import socket, AF_INET, SOCK_STREAM
-
 import select
+from socket import socket, AF_INET, SOCK_STREAM
 
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, STATUS, RESPONSE, ALERT, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR
-from meta import SocketVerifier
+from socket_verifier import SocketVerifier
+from socket_include import Socket, SocketType
 from project_logging.config.log_config import server_logger
-
-from socket_include import Socket
 
 
 class ServerMeta(metaclass=SocketVerifier):
@@ -17,6 +15,8 @@ class ServerMeta(metaclass=SocketVerifier):
 
 
 class Server(ServerMeta, Socket):
+    socket_type = SocketType('Server')
+
     def __init__(self):
         self.client_usernames = {}
         self.messages = []
