@@ -77,7 +77,7 @@ class Client(Base):
 
     chat = relationship('Chat', secondary=associated_table_user_chat, backref='user')
     message = relationship('Message', backref='owner')
-    history = relationship('UserHistory', backref='owner')
+    history = relationship('ClientLogin', backref='owner')
 
     def __init__(self, client):
         self.username = client.get('username')
