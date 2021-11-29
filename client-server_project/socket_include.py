@@ -56,5 +56,5 @@ class Socket:
             raise ValueError
         raise ValueError
 
-    def set_up(self):
+    def start(self):
         raise NotImplementedError
