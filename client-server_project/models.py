@@ -14,8 +14,8 @@ class CoreMixin:
     # https://docs.sqlalchemy.org/en/14/orm/declarative_mixins.html
 
     @declared_attr
-    def __tablename__(cls):
-        return f'{cls.__name__.lower()}s'
+    def __tablename__(self):
+        return f'{self.__name__.lower()}s'
 
     id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
