@@ -6,6 +6,8 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, STATUS, RESPONSE, ALERT, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT
+from db_config import ServerDB
+from models import Base
 from socket_verifier import SocketVerifier
 from socket_include import Socket, SocketType, CheckServerPort
 from project_logging.config.log_config import server_logger
@@ -26,6 +28,8 @@ class Server(ServerMeta, Socket):
         self.clients = []
         self.port = server_port
         self.host = server_ip
+        self.db = None
+        self.socket = None
 
     @staticmethod
     def log(some_function):
@@ -96,7 +100,9 @@ class Server(ServerMeta, Socket):
             self.send_data(response, socket)
             server_logger.info(ERROR)
 
-    def set_up(self):
+    @log
+    def make_connection(self):
+        """Создаёт сокет и устанавливает соединение"""
         self.socket = socket(AF_INET, SOCK_STREAM)
         self.socket.bind((self.host, self.port))
         self.socket.settimeout(1)
@@ -107,16 +113,31 @@ class Server(ServerMeta, Socket):
         else:
             server_logger.info(f'server started at {self.port} and listened all ip')
 
-        while True:
+    @log
+    def accept_connection(self):
+        """Принимает подключение от клиента"""
+        try:
+            client, client_address = self.socket.accept()
+        except OSError:
+            pass
+        else:
+            server_logger.info(
+                f'{client.getpeername()}: client connection established')
+            self.clients.append(client)
 
-            try:
-                client, client_address = self.socket.accept()
-            except OSError:
-                pass
-            else:
-                server_logger.info(
-                    f'{client.getpeername()}: client connection established')
-                self.clients.append(client)
+    def init_db(self):
+        """Подключение к базе данных"""
+        db_name = 'db_server.sqlite'
+        self.db = ServerDB(Base, db_name)
+        self.db.setup()
+        print(self.db.engine)
+
+    def start(self):
+        self.make_connection()
+        self.init_db()
+
+        while True:
+            self.accept_connection()
             clients_senders = []
             clients_receivers = []
 
@@ -174,4 +195,4 @@ if __name__ == '__main__':
     ip_address = cmd_args.address
     port = cmd_args.port
     s = Server(ip_address, port)
-    s.set_up()
+    s.start()

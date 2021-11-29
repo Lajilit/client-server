@@ -166,7 +166,7 @@ class Client(ClientMeta, Socket):
             else:
                 self.help_function()
 
-    def set_up(self):
+    def start(self):
         # Запуск клиента
         print('Client module')
         client_logger.info(
@@ -227,4 +227,4 @@ if __name__ == '__main__':
     username = cmd_args.name
 
     client = Client(username, ip_address, port)
-    client.set_up()
+    client.start()
