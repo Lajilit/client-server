@@ -4,3 +4,4 @@
 *.sqlite
 logs/
 test.py
+__pycache__/
