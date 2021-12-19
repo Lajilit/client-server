@@ -1,23 +1,25 @@
 import argparse
-import hashlib
 import inspect
-import logging
 import socket
 import sys
 import threading
 import time
-from datetime import datetime
+from socket import socket, AF_INET, SOCK_STREAM
 
-from constants import DEFAULT_IP, DEFAULT_PORT, MAX_PACKAGE_LENGTH, ENCODING, ACTION, PRESENCE, TIME, USER, \
+from constants import DEFAULT_IP, DEFAULT_PORT,  ACTION, PRESENCE, TIME, USER, \
     ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT
 from project_logging.config.log_config import client_logger
-from server import Server
+from socket_include import Socket, SocketType
 
 
-class Client(Server):
-    def __init__(self, name):
-        self.name = name
+class Client(Socket):
+    socket_type = SocketType('Client')
+
+    def __init__(self, name, server_ip_address, server_port):
         super().__init__()
+        self.name = name
+        self.port = server_port
+        self.host = server_ip_address
 
     @staticmethod
     def log(some_function):
@@ -159,7 +161,7 @@ class Client(Server):
             else:
                 self.help_function()
 
-    def set_up(self):
+    def start(self):
         # Запуск клиента
         print('Client module')
         client_logger.info(
@@ -168,6 +170,7 @@ class Client(Server):
 
         # Подключение к серверу и отправка сообщения от присутствии
         try:
+            self.socket = socket(AF_INET, SOCK_STREAM)
             self.socket.connect((self.host, self.port))
             client_logger.info(
                 f'{self.name}: trying to connect to server at '
@@ -183,8 +186,7 @@ class Client(Server):
             )
         except ConnectionRefusedError:
             client_logger.critical(
-                f'{self.name}: no connection could be made because '
-                f'the target machine actively refused it')
+                f'{self.name}: no connection could be made because the target machine actively refused it')
             sys.exit(1)
         # Работа с пользователем
 
@@ -206,12 +208,17 @@ class Client(Server):
 
 
 if __name__ == '__main__':
-
     parser = argparse.ArgumentParser()
-
+    parser.add_argument('-a', '--address', default=DEFAULT_IP, nargs='?',
+                        help=f'server ip-address, default - {DEFAULT_IP}')
+    parser.add_argument('-p', '--port', default=DEFAULT_PORT, type=int, nargs='?',
+                        help=f'server port, default - {DEFAULT_PORT}')
     parser.add_argument('-n', '--name', default='Guest', nargs='?',
                         help='user name, default - Guest')
-    name = parser.parse_args().name
-    client = Client(name)
+    cmd_args = parser.parse_args()
+    ip_address = cmd_args.address
+    port = cmd_args.port
+    username = cmd_args.name
 
-    client.set_up()
+    client = Client(username, ip_address, port)
+    client.start()

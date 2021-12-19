@@ -1,48 +1,26 @@
+import argparse
 import inspect
-import json
 import time
+import select
 from socket import socket, AF_INET, SOCK_STREAM
 
-import select
-
-from constants import DEFAULT_IP, DEFAULT_PORT, ENCODING, MAX_PACKAGE_LENGTH, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
-    USER, ACCOUNT_NAME, STATUS, RESPONSE, ALERT, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR
+from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
+    USER, ACCOUNT_NAME, STATUS, RESPONSE, ALERT, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT
+from socket_include import Socket, SocketType
 from project_logging.config.log_config import server_logger
 
 
-class Socket:
-    def __init__(self, host=DEFAULT_IP, port=DEFAULT_PORT):
-        self.socket = socket(AF_INET, SOCK_STREAM)
-        self.host = host
-        self.port = port
-
-    @staticmethod
-    def send_data(message, socket_to_send=None):
-        json_message = json.dumps(message)
-        encoded_message = json_message.encode(ENCODING)
-        socket_to_send.send(encoded_message)
-
-    @staticmethod
-    def receive_data(socket_to_recv=None):
-        encoded_message = socket_to_recv.recv(MAX_PACKAGE_LENGTH)
-        if isinstance(encoded_message, bytes):
-            decoded_message = encoded_message.decode(ENCODING)
-            message = json.loads(decoded_message)
-            if isinstance(message, dict):
-                return message
-            raise ValueError
-        raise ValueError
-
-    def set_up(self):
-        raise NotImplementedError
-
-
 class Server(Socket):
-    def __init__(self):
+    socket_type = SocketType('Server')
+
+    def __init__(self, server_ip, server_port):
         super().__init__()
+        self.port = server_port
+        self.host = server_ip
+        self.socket = None
+        self.clients = []
         self.client_usernames = {}
         self.messages = []
-        self.clients = []
 
     @staticmethod
     def log(some_function):
@@ -114,7 +92,9 @@ class Server(Socket):
             server_logger.info(ERROR)
 
     @log
-    def set_up(self):
+    def make_connection(self):
+        """Создаёт сокет и устанавливает соединение"""
+        self.socket = socket(AF_INET, SOCK_STREAM)
         self.socket.bind((self.host, self.port))
         self.socket.settimeout(1)
         self.socket.listen(MAX_CONNECTIONS)
@@ -124,19 +104,26 @@ class Server(Socket):
         else:
             server_logger.info(f'server started at {self.port} and listened all ip')
 
-        while True:
+    @log
+    def accept_connection(self):
+        """Принимает подключение от клиента"""
+        try:
+            client, client_address = self.socket.accept()
+        except OSError:
+            pass
+        else:
+            server_logger.info(
+                f'{client.getpeername()}: client connection established')
+            self.clients.append(client)
 
-            try:
-                client, client_address = self.socket.accept()
-            except OSError:
-                pass
-            else:
-                server_logger.info(
-                    f'{client.getpeername()}: client connection established')
-                self.clients.append(client)
+    @log
+    def start(self):
+        self.make_connection()
+
+        while True:
+            self.accept_connection()
             clients_senders = []
             clients_receivers = []
-
             try:
                 if self.clients:
                     clients_senders, clients_receivers, e = select.select(
@@ -144,6 +131,7 @@ class Server(Socket):
                     )
             except OSError:
                 pass
+
             if clients_senders:
                 for client in clients_senders:
                     try:
@@ -153,7 +141,6 @@ class Server(Socket):
                         server_logger.info(
                             f'{client.getpeername()}: client disconnected'
                         )
-                        server_logger.info(e)
                         self.clients.remove(client)
 
             if self.messages and clients_receivers:
@@ -172,14 +159,22 @@ class Server(Socket):
                             client == self.client_usernames[client_name]:
                         try:
                             self.send_data(data_to_send, client)
-                        except Exception as e:
+                        except Exception:
                             server_logger.info(
                                 f'{client.getpeername()}: client disconnected'
                             )
-                            server_logger.info(e)
                             self.clients.remove(client)
 
 
 if __name__ == '__main__':
-    s = Server()
-    s.set_up()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-a', '--address', default=DEFAULT_IP, nargs='?',
+                        help=f'server ip-address, default - {DEFAULT_IP}')
+    parser.add_argument('-p', '--port', default=DEFAULT_PORT, type=int, nargs='?',
+                        help=f'server port, default - {DEFAULT_PORT}')
+
+    cmd_args = parser.parse_args()
+    ip_address = cmd_args.address
+    port = cmd_args.port
+    s = Server(ip_address, port)
+    s.start()

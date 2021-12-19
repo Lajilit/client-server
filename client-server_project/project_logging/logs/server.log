@@ -354,3 +354,276 @@
 2021-11-21 01:05:09,400   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
 2021-11-21 01:05:11,424   INFO       server.py    ('127.0.0.1', 51319): client disconnected
 2021-11-21 01:05:11,424   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:05:39,142   DEBUG      server.py    Function: set_up, args: (<__main__.Server object at 0x0000023672FC4640>,), kwargs: {}, called from function: <module>
+2021-12-19 23:05:39,142   INFO       server.py    server started at 7777 and listened all ip
+2021-12-19 23:05:39,144   INFO       server.py    ('127.0.0.1', 59687): client connection established
+2021-12-19 23:05:39,144   INFO       server.py    ('127.0.0.1', 59688): client connection established
+2021-12-19 23:05:39,145   INFO       server.py    ('127.0.0.1', 59689): client connection established
+2021-12-19 23:05:39,145   INFO       server.py    ('127.0.0.1', 59690): client connection established
+2021-12-19 23:05:39,180   INFO       server.py    ('127.0.0.1', 59691): client connection established
+2021-12-19 23:05:39,180   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x0000023672FC4640>, {'action': 'presence', 'time': 1639944339.1518195, 'user': {'account_name': '1', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=472, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59687)>), kwargs: {}, called from function: set_up
+2021-12-19 23:05:39,180   INFO       server.py    ('127.0.0.1', 59687): the message from the client is being handled
+2021-12-19 23:05:39,180   INFO       server.py    ('127.0.0.1', 59687): name '1' status 'online'
+2021-12-19 23:05:39,180   INFO       server.py    ('127.0.0.1', 59687): name '1' added into clients_usernames
+2021-12-19 23:05:39,180   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x0000023672FC4640>, {'action': 'presence', 'time': 1639944339.1518195, 'user': {'account_name': '3', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=432, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59688)>), kwargs: {}, called from function: set_up
+2021-12-19 23:05:39,180   INFO       server.py    ('127.0.0.1', 59688): the message from the client is being handled
+2021-12-19 23:05:39,195   INFO       server.py    ('127.0.0.1', 59688): name '3' status 'online'
+2021-12-19 23:05:39,195   INFO       server.py    ('127.0.0.1', 59688): name '3' added into clients_usernames
+2021-12-19 23:05:39,196   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x0000023672FC4640>, {'action': 'presence', 'time': 1639944339.1518195, 'user': {'account_name': '5', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=476, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59689)>), kwargs: {}, called from function: set_up
+2021-12-19 23:05:39,196   INFO       server.py    ('127.0.0.1', 59689): the message from the client is being handled
+2021-12-19 23:05:39,196   INFO       server.py    ('127.0.0.1', 59689): name '5' status 'online'
+2021-12-19 23:05:39,196   INFO       server.py    ('127.0.0.1', 59689): name '5' added into clients_usernames
+2021-12-19 23:05:39,196   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x0000023672FC4640>, {'action': 'presence', 'time': 1639944339.1518195, 'user': {'account_name': '4', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=468, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59690)>), kwargs: {}, called from function: set_up
+2021-12-19 23:05:39,196   INFO       server.py    ('127.0.0.1', 59690): the message from the client is being handled
+2021-12-19 23:05:39,196   INFO       server.py    ('127.0.0.1', 59690): name '4' status 'online'
+2021-12-19 23:05:39,196   INFO       server.py    ('127.0.0.1', 59690): name '4' added into clients_usernames
+2021-12-19 23:05:40,208   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x0000023672FC4640>, {'action': 'presence', 'time': 1639944339.1969318, 'user': {'account_name': '2', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=464, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59691)>), kwargs: {}, called from function: set_up
+2021-12-19 23:05:40,208   INFO       server.py    ('127.0.0.1', 59691): the message from the client is being handled
+2021-12-19 23:05:40,208   INFO       server.py    ('127.0.0.1', 59691): name '2' status 'online'
+2021-12-19 23:05:40,208   INFO       server.py    ('127.0.0.1', 59691): name '2' added into clients_usernames
+2021-12-19 23:05:57,353   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x0000023672FC4640>, {'action': 'message', 'time': 1639944356.3750324, 'to': '2', 'from': '1', 'message_text': '1'}, <socket.socket fd=464, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59691)>), kwargs: {}, called from function: set_up
+2021-12-19 23:05:57,353   INFO       server.py    ('127.0.0.1', 59691): the message from the client is being handled
+2021-12-19 23:05:57,353   INFO       server.py    message: 1 from: 2 to: 1 appended into messages_list
+2021-12-19 23:06:04,411   INFO       server.py    ('127.0.0.1', 59687): client disconnected
+2021-12-19 23:06:04,411   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:06:06,423   INFO       server.py    ('127.0.0.1', 59691): client disconnected
+2021-12-19 23:06:06,423   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:06:07,426   INFO       server.py    ('127.0.0.1', 59690): client disconnected
+2021-12-19 23:06:07,426   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:06:09,448   INFO       server.py    ('127.0.0.1', 59688): client disconnected
+2021-12-19 23:06:09,448   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:06:11,461   INFO       server.py    ('127.0.0.1', 59689): client disconnected
+2021-12-19 23:06:11,461   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:37:41,524   DEBUG      server.py    Function: start, args: (<__main__.Server object at 0x000001FFC0D630D0>,), kwargs: {}, called from function: <module>
+2021-12-19 23:37:41,524   DEBUG      server.py    Function: make_connection, args: (<__main__.Server object at 0x000001FFC0D630D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:41,524   INFO       server.py    server started at 7777 and listened all ip
+2021-12-19 23:37:41,524   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000001FFC0D630D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:42,533   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000001FFC0D630D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:43,535   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000001FFC0D630D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:44,544   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000001FFC0D630D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:45,557   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000001FFC0D630D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:46,566   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000001FFC0D630D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:48,382   DEBUG      server.py    Function: start, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: <module>
+2021-12-19 23:37:48,382   DEBUG      server.py    Function: make_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:48,382   INFO       server.py    server started at 7777 and listened all ip
+2021-12-19 23:37:48,382   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:48,382   INFO       server.py    ('127.0.0.1', 59846): client connection established
+2021-12-19 23:37:48,382   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:48,382   INFO       server.py    ('127.0.0.1', 59847): client connection established
+2021-12-19 23:37:48,382   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:48,396   INFO       server.py    ('127.0.0.1', 59848): client connection established
+2021-12-19 23:37:48,397   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:48,397   INFO       server.py    ('127.0.0.1', 59849): client connection established
+2021-12-19 23:37:48,397   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:48,397   INFO       server.py    ('127.0.0.1', 59850): client connection established
+2021-12-19 23:37:48,397   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x00000241856A30D0>, {'action': 'presence', 'time': 1639946268.397071, 'user': {'account_name': '1', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=428, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59846)>), kwargs: {}, called from function: start
+2021-12-19 23:37:48,397   INFO       server.py    ('127.0.0.1', 59846): the message from the client is being handled
+2021-12-19 23:37:48,397   INFO       server.py    ('127.0.0.1', 59846): name '1' status 'online'
+2021-12-19 23:37:48,397   INFO       server.py    ('127.0.0.1', 59846): name '1' added into clients_usernames
+2021-12-19 23:37:48,397   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:49,402   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x00000241856A30D0>, {'action': 'presence', 'time': 1639946268.397071, 'user': {'account_name': '4', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59847)>), kwargs: {}, called from function: start
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59847): the message from the client is being handled
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59847): name '4' status 'online'
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59847): name '4' added into clients_usernames
+2021-12-19 23:37:49,402   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x00000241856A30D0>, {'action': 'presence', 'time': 1639946268.397071, 'user': {'account_name': '2', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=332, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59848)>), kwargs: {}, called from function: start
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59848): the message from the client is being handled
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59848): name '2' status 'online'
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59848): name '2' added into clients_usernames
+2021-12-19 23:37:49,402   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x00000241856A30D0>, {'action': 'presence', 'time': 1639946268.4145625, 'user': {'account_name': '5', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=348, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59849)>), kwargs: {}, called from function: start
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59849): the message from the client is being handled
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59849): name '5' status 'online'
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59849): name '5' added into clients_usernames
+2021-12-19 23:37:49,402   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x00000241856A30D0>, {'action': 'presence', 'time': 1639946268.4155667, 'user': {'account_name': '3', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=328, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59850)>), kwargs: {}, called from function: start
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59850): the message from the client is being handled
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59850): name '3' status 'online'
+2021-12-19 23:37:49,402   INFO       server.py    ('127.0.0.1', 59850): name '3' added into clients_usernames
+2021-12-19 23:37:49,402   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:50,411   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:51,411   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:52,421   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:53,430   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:54,439   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:55,439   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:56,451   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:57,460   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:58,469   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:37:59,472   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:00,481   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x00000241856A30D0>, {'action': 'message', 'time': 1639946279.872275, 'to': '3', 'from': '1', 'message_text': '1'}, <socket.socket fd=328, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59850)>), kwargs: {}, called from function: start
+2021-12-19 23:38:00,481   INFO       server.py    ('127.0.0.1', 59850): the message from the client is being handled
+2021-12-19 23:38:00,481   INFO       server.py    message: 1 from: 3 to: 1 appended into messages_list
+2021-12-19 23:38:00,481   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:01,491   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:02,499   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:03,509   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x00000241856A30D0>, {'action': 'exit', 'time': 1639946283.2120929, 'account_name': '3'}, <socket.socket fd=328, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59850)>), kwargs: {}, called from function: start
+2021-12-19 23:38:03,509   INFO       server.py    ('127.0.0.1', 59850): the message from the client is being handled
+2021-12-19 23:38:03,509   INFO       server.py    ('127.0.0.1', 59850): client disconnected
+2021-12-19 23:38:03,509   INFO       server.py    descriptor 'send' for '_socket.socket' objects doesn't apply to a 'bytes' object
+2021-12-19 23:38:03,509   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:04,518   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:05,520   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:06,531   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:07,531   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:08,540   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:09,549   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:10,549   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:11,558   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:12,567   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:13,570   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:14,585   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:15,590   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:16,605   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:17,614   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:18,622   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:19,632   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:20,634   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:21,643   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:22,653   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:23,662   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:24,671   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:25,683   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:26,699   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:27,708   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:28,710   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:29,719   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:30,734   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:31,744   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:32,755   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:33,763   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:34,772   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:35,781   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:36,785   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:37,801   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:38,809   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:39,819   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:40,828   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:41,828   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:42,836   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:43,846   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:44,855   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:45,864   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:46,873   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:47,880   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:48,884   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:49,884   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:50,891   INFO       server.py    ('127.0.0.1', 59849): client disconnected
+2021-12-19 23:38:50,891   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:38:50,891   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:51,902   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:52,908   INFO       server.py    ('127.0.0.1', 59847): client disconnected
+2021-12-19 23:38:52,908   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:38:52,908   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:53,912   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:54,921   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:55,921   INFO       server.py    ('127.0.0.1', 59846): client disconnected
+2021-12-19 23:38:55,921   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:38:55,921   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:56,929   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:57,929   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:58,934   INFO       server.py    ('127.0.0.1', 59848): client disconnected
+2021-12-19 23:38:58,934   INFO       server.py    [WinError 10054] Удаленный хост принудительно разорвал существующее подключение
+2021-12-19 23:38:58,934   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:38:59,943   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:00,959   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:01,968   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:02,976   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:03,978   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:04,994   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:06,003   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:07,013   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:08,022   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:09,024   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:10,033   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:11,041   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:12,050   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:13,050   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:14,052   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:15,056   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:16,065   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:17,081   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:18,083   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:19,095   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:20,111   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:21,120   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:22,129   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:23,146   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:24,149   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:25,158   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:26,163   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:27,172   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:28,180   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:29,184   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:30,193   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:31,202   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:32,218   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:33,219   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:34,221   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:35,229   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:36,230   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x00000241856A30D0>,), kwargs: {}, called from function: start
+2021-12-19 23:39:38,309   DEBUG      server.py    Function: start, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: <module>
+2021-12-19 23:39:38,325   DEBUG      server.py    Function: make_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:38,325   INFO       server.py    server started at 7777 and listened all ip
+2021-12-19 23:39:38,325   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:38,338   INFO       server.py    ('127.0.0.1', 59856): client connection established
+2021-12-19 23:39:38,338   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:38,338   INFO       server.py    ('127.0.0.1', 59857): client connection established
+2021-12-19 23:39:38,338   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:38,338   INFO       server.py    ('127.0.0.1', 59858): client connection established
+2021-12-19 23:39:38,338   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:38,338   INFO       server.py    ('127.0.0.1', 59859): client connection established
+2021-12-19 23:39:38,338   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59855): client connection established
+2021-12-19 23:39:38,827   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x000002348E7EB070>, {'action': 'presence', 'time': 1639946378.3582468, 'user': {'account_name': '4', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=444, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59856)>), kwargs: {}, called from function: start
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59856): the message from the client is being handled
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59856): name '4' status 'online'
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59856): name '4' added into clients_usernames
+2021-12-19 23:39:38,827   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x000002348E7EB070>, {'action': 'presence', 'time': 1639946378.3582468, 'user': {'account_name': '2', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=452, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59857)>), kwargs: {}, called from function: start
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59857): the message from the client is being handled
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59857): name '2' status 'online'
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59857): name '2' added into clients_usernames
+2021-12-19 23:39:38,827   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x000002348E7EB070>, {'action': 'presence', 'time': 1639946378.3582468, 'user': {'account_name': '3', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=448, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59858)>), kwargs: {}, called from function: start
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59858): the message from the client is being handled
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59858): name '3' status 'online'
+2021-12-19 23:39:38,827   INFO       server.py    ('127.0.0.1', 59858): name '3' added into clients_usernames
+2021-12-19 23:39:38,831   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x000002348E7EB070>, {'action': 'presence', 'time': 1639946378.3582468, 'user': {'account_name': '5', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59859)>), kwargs: {}, called from function: start
+2021-12-19 23:39:38,831   INFO       server.py    ('127.0.0.1', 59859): the message from the client is being handled
+2021-12-19 23:39:38,831   INFO       server.py    ('127.0.0.1', 59859): name '5' status 'online'
+2021-12-19 23:39:38,831   INFO       server.py    ('127.0.0.1', 59859): name '5' added into clients_usernames
+2021-12-19 23:39:38,832   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:39,836   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x000002348E7EB070>, {'action': 'presence', 'time': 1639946378.8395827, 'user': {'account_name': '1', 'status': 'online'}, 'type': 'status'}, <socket.socket fd=500, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59855)>), kwargs: {}, called from function: start
+2021-12-19 23:39:39,836   INFO       server.py    ('127.0.0.1', 59855): the message from the client is being handled
+2021-12-19 23:39:39,836   INFO       server.py    ('127.0.0.1', 59855): name '1' status 'online'
+2021-12-19 23:39:39,836   INFO       server.py    ('127.0.0.1', 59855): name '1' added into clients_usernames
+2021-12-19 23:39:39,836   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:40,847   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:41,847   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:42,856   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:43,868   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:44,871   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:45,871   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:46,880   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:47,889   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x000002348E7EB070>, {'action': 'message', 'time': 1639946387.365114, 'to': '5', 'from': '2', 'message_text': '2'}, <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59859)>), kwargs: {}, called from function: start
+2021-12-19 23:39:47,889   INFO       server.py    ('127.0.0.1', 59859): the message from the client is being handled
+2021-12-19 23:39:47,889   INFO       server.py    message: 2 from: 5 to: 2 appended into messages_list
+2021-12-19 23:39:47,889   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:48,891   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:49,891   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:50,903   DEBUG      server.py    Function: handle_message, args: (<__main__.Server object at 0x000002348E7EB070>, {'action': 'exit', 'time': 1639946389.8919501, 'account_name': '5'}, <socket.socket fd=296, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 59859)>), kwargs: {}, called from function: start
+2021-12-19 23:39:50,903   INFO       server.py    ('127.0.0.1', 59859): the message from the client is being handled
+2021-12-19 23:39:50,903   INFO       server.py    ('127.0.0.1', 59859): client disconnected
+2021-12-19 23:39:50,903   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:51,917   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:52,925   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:53,925   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:54,936   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:55,945   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:56,954   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:57,954   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:58,963   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:39:59,973   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:40:00,973   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:40:01,982   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:40:02,986   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:40:03,988   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:40:04,997   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:40:06,006   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
+2021-12-19 23:40:07,019   DEBUG      server.py    Function: accept_connection, args: (<__main__.Server object at 0x000002348E7EB070>,), kwargs: {}, called from function: start
