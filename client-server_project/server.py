@@ -7,10 +7,15 @@ from socket import socket, AF_INET, SOCK_STREAM
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, STATUS, RESPONSE, ALERT, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT
 from socket_include import Socket, SocketType, CheckServerPort
+from socket_verifier import SocketVerifier
 from project_logging.config.log_config import server_logger
 
 
-class Server(Socket):
+class ServerMeta(metaclass=SocketVerifier):
+    pass
+
+
+class Server(ServerMeta, Socket):
     socket_type = SocketType('Server')
     port = CheckServerPort()
 
