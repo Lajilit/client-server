@@ -33,7 +33,7 @@ class Client(Socket):
 
         return wrapper
 
-    @log
+    # @log
     def create_presence(self):
         output_message = {
             ACTION: PRESENCE,
@@ -47,7 +47,7 @@ class Client(Socket):
         client_logger.info(f'{self.name}: {PRESENCE} message is created')
         return output_message
 
-    @log
+    # @log
     def handle_response(self, message):
         client_logger.info(
             f'{self.name}: the response from the server is being handled'
@@ -59,7 +59,7 @@ class Client(Socket):
 
         return f'{self.name}: the response from server is incorrect'
 
-    @log
+    # @log
     def create_message(self):
 
         input_destination = input(
@@ -89,7 +89,7 @@ class Client(Socket):
             )
             sys.exit(1)
 
-    @log
+    # @log
     def listen_server(self):
         while True:
             try:
@@ -117,7 +117,7 @@ class Client(Socket):
                 )
                 break
 
-    @log
+    # @log
     def create_exit_message(self):
         message = {
             ACTION: EXIT,
@@ -146,7 +146,7 @@ class Client(Socket):
         print('message - command to send message')
         print('exit - command to exit')
 
-    @log
+    # @log
     def user_interaction(self):
         self.help_function()
 

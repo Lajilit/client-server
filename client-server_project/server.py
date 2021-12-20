@@ -31,10 +31,9 @@ class Server(Socket):
             )
             result = some_function(*args, **kwargs)
             return result
-
         return wrapper
 
-    @log
+    # @log
     def handle_message(self, message, client_socket):
         """
         The function takes a message from the client and processes it.
@@ -91,7 +90,7 @@ class Server(Socket):
             self.send_data(response, socket)
             server_logger.info(ERROR)
 
-    @log
+    # @log
     def make_connection(self):
         """Создаёт сокет и устанавливает соединение"""
         self.socket = socket(AF_INET, SOCK_STREAM)
@@ -104,7 +103,7 @@ class Server(Socket):
         else:
             server_logger.info(f'server started at {self.port} and listened all ip')
 
-    @log
+    # @log
     def accept_connection(self):
         """Принимает подключение от клиента"""
         try:
@@ -116,7 +115,7 @@ class Server(Socket):
                 f'{client.getpeername()}: client connection established')
             self.clients.append(client)
 
-    @log
+    # @log
     def start(self):
         self.make_connection()
 
@@ -137,7 +136,7 @@ class Server(Socket):
                     try:
                         received_message = self.receive_data(client)
                         self.handle_message(received_message, client)
-                    except Exception as e:
+                    except Exception:
                         server_logger.info(
                             f'{client.getpeername()}: client disconnected'
                         )
