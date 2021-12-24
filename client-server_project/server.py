@@ -8,6 +8,7 @@ from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, STATUS, RESPONSE, ALERT, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT
 from socket_include import Socket, SocketType, CheckServerPort
 from socket_verifier import SocketVerifier
+from server_database import ServerDB
 from project_logging.config.log_config import server_logger
 
 
@@ -21,6 +22,7 @@ class Server(ServerMeta, Socket):
 
     def __init__(self, server_ip, server_port):
         super().__init__()
+        self.db = None
         self.port = server_port
         self.host = server_ip
         self.socket = None
@@ -121,6 +123,13 @@ class Server(ServerMeta, Socket):
                 f'{client.getpeername()}: client connection established')
             self.clients.append(client)
 
+    def init_db(self):
+        """Подключение к базе данных"""
+        db_name = 'db_server.sqlite'
+        self.db = ServerDB(db_name)
+        self.db.setup()
+        print(self.db.engine)
+        
     # @log
     def start(self):
         self.make_connection()
