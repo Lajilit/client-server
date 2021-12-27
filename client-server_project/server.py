@@ -1,7 +1,7 @@
 import argparse
 import inspect
 import select
-from socket import socket, AF_INET, SOCK_STREAM
+from socket import socket, AF_INET, SOCK_STREAM, SO_REUSEADDR, SOL_SOCKET
 from sqlite3 import IntegrityError
 
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
@@ -101,6 +101,7 @@ class Server(ServerMeta, Socket):
     def make_connection(self):
         """Создаёт сокет и устанавливает соединение"""
         self.socket = socket(AF_INET, SOCK_STREAM)
+        self.socket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
         self.socket.bind((self.host, self.port))
         self.socket.settimeout(1)
         self.socket.listen(MAX_CONNECTIONS)
