@@ -8,9 +8,21 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 from constants import DEFAULT_IP, DEFAULT_PORT,  ACTION, PRESENCE, TIME, USER, \
     ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT
-from project_logging.config.log_config import client_logger
+from project_logging.config.log_config import client_logger as logger
 from socket_verifier import SocketVerifier
 from socket_include import Socket, SocketType
+
+
+def log(some_function):
+    def wrapper(*args, **kwargs):
+        logger.debug(
+            f'Function: {some_function.__name__}, args: {args}, kwargs: {kwargs}, '
+            f'called from function: {inspect.stack()[1][3]}'
+        )
+        result = some_function(*args, **kwargs)
+        return result
+
+    return wrapper
 
 
 class ClientMeta(metaclass=SocketVerifier):
@@ -26,19 +38,7 @@ class Client(ClientMeta, Socket):
         self.port = server_port
         self.host = server_ip_address
 
-    @staticmethod
-    def log(some_function):
-        def wrapper(*args, **kwargs):
-            client_logger.debug(
-                f'Function: {some_function.__name__}, args: {args}, kwargs: {kwargs}, '
-                f'called from function: {inspect.stack()[1][3]}'
-            )
-            result = some_function(*args, **kwargs)
-            return result
-
-        return wrapper
-
-    # @log
+    @log
     def create_presence(self):
         output_message = {
             ACTION: PRESENCE,
@@ -49,12 +49,12 @@ class Client(ClientMeta, Socket):
             },
             TYPE: STATUS
         }
-        client_logger.info(f'{self.name}: {PRESENCE} message is created')
+        logger.info(f'{self.name}: {PRESENCE} message is created')
         return output_message
 
-    # @log
+    @log
     def handle_response(self, message):
-        client_logger.info(
+        logger.info(
             f'{self.name}: the response from the server is being handled'
         )
         if RESPONSE in message:
@@ -80,26 +80,26 @@ class Client(ClientMeta, Socket):
             DESTINATION: input_destination,
             MESSAGE_TEXT: input_message
         }
-        client_logger.debug(
+        logger.debug(
             f'{self.name}: message is created: {message}'
         )
         try:
             self.send_data(message, self.socket)
-            client_logger.debug(
+            logger.debug(
                 f'{self.name}: message was sent to user {input_destination}'
             )
         except ConnectionRefusedError:
-            client_logger.critical(
+            logger.critical(
                 f'{self.name}: server connection lost'
             )
             sys.exit(1)
 
-    # @log
+    @log
     def listen_server(self):
         while True:
             try:
                 message = self.receive_data(self.socket)
-                client_logger.debug(
+                logger.debug(
                     f'{self.name}: the message {message} is being handled'
                 )
                 if ACTION in message and \
@@ -107,43 +107,43 @@ class Client(ClientMeta, Socket):
                         SENDER in message and \
                         MESSAGE_TEXT in message and \
                         DESTINATION in message:
-                    client_logger.debug(
+                    logger.debug(
                         f'{self.name}: Received a message from the user '
                         f'{message[SENDER]}: {message[MESSAGE_TEXT]}'
                     )
                     print(f'{message[SENDER]}: {message[MESSAGE_TEXT]}')
                 else:
-                    client_logger.info(
+                    logger.info(
                         f'{self.name}: the message from server is incorrect:'
                         f' {message}')
             except ConnectionRefusedError:
-                client_logger.critical(
+                logger.critical(
                     f'{self.name}: server connection lost'
                 )
                 break
 
-    # @log
+    @log
     def create_exit_message(self):
         message = {
             ACTION: EXIT,
             TIME: time.time(),
             ACCOUNT_NAME: self.name
         }
-        client_logger.info(
+        logger.info(
             f'{self.name}: {EXIT} message is created'
         )
         try:
             self.send_data(message, self.socket)
-            client_logger.info(
+            logger.info(
                 f'{self.name}: {EXIT} message was sent to the server'
             )
         except ConnectionRefusedError:
-            client_logger.critical(
+            logger.critical(
                 f'{self.name}: server connection lost'
             )
             sys.exit(1)
         print('Connection closed')
-        client_logger.info(f'{self.name}: connection closed')
+        logger.info(f'{self.name}: connection closed')
 
     @staticmethod
     def help_function():
@@ -151,7 +151,7 @@ class Client(ClientMeta, Socket):
         print('message - command to send message')
         print('exit - command to exit')
 
-    # @log
+    @log
     def user_interaction(self):
         self.help_function()
 
@@ -169,7 +169,7 @@ class Client(ClientMeta, Socket):
     def start(self):
         # Запуск клиента
         print('Client module')
-        client_logger.info(
+        logger.info(
             f'Client module started'
         )
 
@@ -177,20 +177,20 @@ class Client(ClientMeta, Socket):
         try:
             self.socket = socket(AF_INET, SOCK_STREAM)
             self.socket.connect((self.host, self.port))
-            client_logger.info(
+            logger.info(
                 f'{self.name}: trying to connect to server at '
                 f'{self.host}:{self.port}'
             )
             self.send_data(self.create_presence(), self.socket)
-            client_logger.info(
+            logger.info(
                 f'{self.name}: presence message was sent to the server'
             )
             answer = self.handle_response(self.receive_data(self.socket))
-            client_logger.debug(
+            logger.debug(
                 f'{self.name}: server response: {answer}'
             )
         except ConnectionRefusedError:
-            client_logger.critical(
+            logger.critical(
                 f'{self.name}: no connection could be made because the target machine actively refused it')
             sys.exit(1)
         # Работа с пользователем
@@ -198,12 +198,12 @@ class Client(ClientMeta, Socket):
         receiver = threading.Thread(target=self.listen_server)
         receiver.daemon = True
         receiver.start()
-        client_logger.info(f'{self.name}: receiver process started')
+        logger.info(f'{self.name}: receiver process started')
 
         interface = threading.Thread(target=self.user_interaction)
         interface.daemon = True
         interface.start()
-        client_logger.info(f'{self.name}: interface process started')
+        logger.info(f'{self.name}: interface process started')
 
         while True:
             time.sleep(1)
