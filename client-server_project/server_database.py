@@ -56,7 +56,7 @@ class ServerDB:
         self.Base.metadata.create_all(bind=self.engine)
         self.session = sessionmaker(bind=self.engine)()
 
-        self.session.query(self.User).delete()
+        self.session.query(self.ActiveUser).delete()
         self.session.commit()
 
     def user_login(self, username, ip_address, port):

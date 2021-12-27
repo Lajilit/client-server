@@ -160,7 +160,11 @@ class Client(ClientMeta, Socket):
             if command == 'message':
                 self.create_message()
             elif command == 'exit':
-                self.create_exit_message()
+                try:
+                    self.create_exit_message()
+                except:
+                    pass
+                print('Завершение соединения')
                 time.sleep(0.5)
                 break
             else:

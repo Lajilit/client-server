@@ -25,3 +25,11 @@ DESTINATION = 'from'
 EXIT = 'exit'
 ALERT = 'alert'
 ERROR = 'error'
+RESPONSE_200 = {
+    RESPONSE: 200,
+    ALERT: 'ok'
+}
+RESPONSE_400 = {
+    RESPONSE: 400,
+    ERROR: 'Bad Request'
+}

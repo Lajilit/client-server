@@ -26,8 +26,8 @@ def get_subprocess(file_with_args):
     return subprocess.Popen(args, preexec_fn=os.setpgrp)
 
 
-process = [get_subprocess("server.py")]
+process = [get_subprocess("server.py -p 10000")]
 
 for i in range(args.count):
-    process.append(get_subprocess(f"client.py -n test{i+1}"))
+    process.append(get_subprocess(f"client.py -p 10000 -n test{i+1}"))
 
