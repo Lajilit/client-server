@@ -1,5 +1,6 @@
 import argparse
 import inspect
+import json
 import socket
 import sys
 import threading
@@ -116,6 +117,8 @@ class Client(ClientMeta, Socket):
                     logger.info(
                         f'{self.name}: the message from server is incorrect:'
                         f' {message}')
+            except json.decoder.JSONDecodeError:
+                logger.debug('Не удалось декодировать полученную Json строку.')
             except ConnectionRefusedError:
                 logger.critical(
                     f'{self.name}: server connection lost'
@@ -193,9 +196,12 @@ class Client(ClientMeta, Socket):
             logger.debug(
                 f'{self.name}: server response: {answer}'
             )
-        except ConnectionRefusedError:
+        except json.decoder.JSONDecodeError:
+            logger.error('Не удалось декодировать полученную Json строку.')
+            exit(1)
+        except (ConnectionRefusedError, ConnectionError):
             logger.critical(
-                f'{self.name}: no connection could be made because the target machine actively refused it')
+                f'{self.host}:{self.port}: no connection could be made because the target machine actively refused it')
             sys.exit(1)
         # Работа с пользователем
 

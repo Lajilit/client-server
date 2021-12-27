@@ -1,6 +1,7 @@
 import argparse
 import inspect
 import select
+import threading
 from socket import socket, AF_INET, SOCK_STREAM, SO_REUSEADDR, SOL_SOCKET
 from sqlite3 import IntegrityError
 
@@ -29,7 +30,7 @@ class ServerMeta(metaclass=SocketVerifier):
     pass
 
 
-class Server(ServerMeta, Socket):
+class Server(threading.Thread, ServerMeta, Socket):
     socket_type = SocketType('Server')
     port = CheckServerPort()
 
@@ -124,7 +125,7 @@ class Server(ServerMeta, Socket):
             self.clients.append(client)
 
     @log
-    def start(self):
+    def run(self):
         self.make_connection()
 
         while True:

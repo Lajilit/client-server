@@ -59,5 +59,3 @@ class Socket:
             raise ValueError
         raise ValueError
 
-    def start(self):
-        raise NotImplementedError
