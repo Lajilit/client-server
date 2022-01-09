@@ -12,7 +12,11 @@ from constants import DEFAULT_IP, DEFAULT_PORT,  ACTION, PRESENCE, TIME, USER, \
 from project_logging.config.log_config import client_logger as logger
 from socket_verifier import SocketVerifier
 from socket_include import Socket, SocketType
+from errors import RequiredFieldMissingError
 
+
+socket_lock = threading.Lock()
+database_lock = threading.Lock()
 
 def log(some_function):
     def wrapper(*args, **kwargs):
@@ -62,8 +66,8 @@ class Client(ClientMeta, Socket):
             if message[RESPONSE] == 200:
                 return f'OK'
             return f'{message[ERROR]}'
+        raise RequiredFieldMissingError(RESPONSE)
 
-        return f'{self.name}: the response from server is incorrect'
 
     # @log
     def create_message(self):
