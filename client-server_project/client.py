@@ -12,10 +12,11 @@ from constants import DEFAULT_IP, DEFAULT_PORT,  ACTION, PRESENCE, TIME, USER, \
 from project_logging.config.log_config import client_logger as logger
 from socket_verifier import SocketVerifier
 from socket_include import Socket, SocketType
-from errors import RequiredFieldMissingError, ServerError
+from errors import RequiredFieldMissedError, ServerError, IncorrectDataReceivedError
 
 socket_lock = threading.Lock()
 database_lock = threading.Lock()
+
 
 def log(some_function):
     def wrapper(*args, **kwargs):
@@ -65,47 +66,101 @@ class Client(ClientMeta, Socket):
             if message[RESPONSE] == 200:
                 return f'OK'
             return f'{message[ERROR]}'
-        raise RequiredFieldMissingError(RESPONSE)
+        raise RequiredFieldMissedError(RESPONSE)
 
+    @staticmethod
+    def help_function():
+        print('Commands used:')
+        print('message - command to send message')
+        print('exit - command to exit')
 
-    # @log
+    @log
     def create_message(self):
 
-        input_destination = input(
+        destination = input(
             'Message recipient: '
         )
-        input_message = input(
+        message_text = input(
             'Enter your message text or press enter to shutdown: ')
 
         message = {
             ACTION: MESSAGE,
             TIME: time.time(),
             SENDER: self.name,
-            DESTINATION: input_destination,
-            MESSAGE_TEXT: input_message
+            DESTINATION: destination,
+            MESSAGE_TEXT: message_text
         }
         logger.debug(
             f'{self.name}: message is created: {message}'
         )
-        try:
-            self.send_data(message, self.socket)
-            logger.debug(
-                f'{self.name}: message was sent to user {input_destination}'
-            )
-        except ConnectionRefusedError:
-            logger.critical(
-                f'{self.name}: server connection lost'
-            )
-            sys.exit(1)
+        return message, destination
+
+    @log
+    def create_exit_message(self):
+        message = {
+            ACTION: EXIT,
+            TIME: time.time(),
+            ACCOUNT_NAME: self.name
+        }
+        logger.info(
+            f'{self.name}: {EXIT} message is created'
+        )
+        return message
+
+    @log
+    def user_interaction(self):
+        self.help_function()
+
+        while True:
+            command = input('Enter command [message, exit]: ')
+            if command == 'message':
+                message, destination = self.create_message()
+                try:
+                    self.send_data(message, self.socket)
+                    logger.debug(
+                        f'{self.name}: message was sent to user {destination}'
+                    )
+                except ConnectionRefusedError:
+                    logger.critical(
+                        f'{self.name}: server connection lost'
+                    )
+                    sys.exit(1)
+
+            elif command == 'exit':
+                message = self.create_exit_message()
+                try:
+                    self.send_data(message, self.socket)
+                    logger.info(
+                        f'{self.name}: {EXIT} message was sent to the server'
+                    )
+                except ConnectionRefusedError:
+                    logger.critical(
+                        f'{self.name}: server connection lost'
+                    )
+                    sys.exit(1)
+                print('Connection closed')
+                logger.info(f'{self.name}: connection closed')
+                time.sleep(0.5)
+                break
+            else:
+                self.help_function()
 
     @log
     def listen_server(self):
         while True:
             try:
                 message = self.receive_data(self.socket)
-                logger.debug(
-                    f'{self.name}: the message {message} is being handled'
-                )
+            except IncorrectDataReceivedError as e:
+                logger.debug(e)
+            except OSError as e:
+                if e.errno:
+                    logger.critical(f'{self.name}: server connection lost')
+                    break
+            except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.decoder.JSONDecodeError):
+                logger.critical(f'{self.name}: server connection lost')
+                break
+            else:
+                logger.debug(f'{self.name}: the message {message} is being handled')
                 if ACTION in message and \
                         message[ACTION] == MESSAGE and \
                         SENDER in message and \
@@ -120,61 +175,6 @@ class Client(ClientMeta, Socket):
                     logger.info(
                         f'{self.name}: the message from server is incorrect:'
                         f' {message}')
-            except json.decoder.JSONDecodeError:
-                logger.debug('Не удалось декодировать полученную Json строку.')
-            except ConnectionRefusedError:
-                logger.critical(
-                    f'{self.name}: server connection lost'
-                )
-                break
-
-    @log
-    def create_exit_message(self):
-        message = {
-            ACTION: EXIT,
-            TIME: time.time(),
-            ACCOUNT_NAME: self.name
-        }
-        logger.info(
-            f'{self.name}: {EXIT} message is created'
-        )
-        try:
-            self.send_data(message, self.socket)
-            logger.info(
-                f'{self.name}: {EXIT} message was sent to the server'
-            )
-        except ConnectionRefusedError:
-            logger.critical(
-                f'{self.name}: server connection lost'
-            )
-            sys.exit(1)
-        print('Connection closed')
-        logger.info(f'{self.name}: connection closed')
-
-    @staticmethod
-    def help_function():
-        print('Commands used:')
-        print('message - command to send message')
-        print('exit - command to exit')
-
-    @log
-    def user_interaction(self):
-        self.help_function()
-
-        while True:
-            command = input('Enter command [message, exit]: ')
-            if command == 'message':
-                self.create_message()
-            elif command == 'exit':
-                try:
-                    self.create_exit_message()
-                except:
-                    pass
-                print('Завершение соединения')
-                time.sleep(0.5)
-                break
-            else:
-                self.help_function()
 
     def start(self):
         # Запуск клиента
@@ -205,8 +205,8 @@ class Client(ClientMeta, Socket):
         except ServerError as e:
             logger.error(f'При установке соединения сервер вернул ошибку: {e.error_text}')
             sys.exit(1)
-        except RequiredFieldMissingError as e:
-            logger.error(f'В ответе сервера отсутствует необходимое поле {e.missing_field}')
+        except RequiredFieldMissedError as e:
+            logger.error(f'В ответе сервера отсутствует необходимое поле {e.missed_field}')
             sys.exit(1)
         except (ConnectionRefusedError, ConnectionError):
             logger.critical(

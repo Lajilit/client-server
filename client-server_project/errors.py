@@ -1,9 +1,9 @@
-class RequiredFieldMissingError(Exception):
-    def __init__(self, missing_field):
-        self.missing_field = missing_field
+class RequiredFieldMissedError(Exception):
+    def __init__(self, missed_field):
+        self.missed_field = missed_field
 
     def __str__(self):
-        return f'В принятом словаре отсутствует обязательное поле {self.missing_field}'
+        return f'Missed field {self.missed_field}'
 
 
 class ServerError(Exception):
@@ -12,3 +12,13 @@ class ServerError(Exception):
 
     def __str__(self):
         return self.error_text
+
+
+class IncorrectDataReceivedError(Exception):
+    def __str__(self):
+        return 'Reseived message is incorrect'
+
+
+class NonDictDataError(Exception):
+    def __str__(self):
+        return 'Data to send should be a dictionary'
