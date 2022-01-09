@@ -12,8 +12,7 @@ from constants import DEFAULT_IP, DEFAULT_PORT,  ACTION, PRESENCE, TIME, USER, \
 from project_logging.config.log_config import client_logger as logger
 from socket_verifier import SocketVerifier
 from socket_include import Socket, SocketType
-from errors import RequiredFieldMissingError
-
+from errors import RequiredFieldMissingError, ServerError
 
 socket_lock = threading.Lock()
 database_lock = threading.Lock()
@@ -202,7 +201,13 @@ class Client(ClientMeta, Socket):
             )
         except json.decoder.JSONDecodeError:
             logger.error('Не удалось декодировать полученную Json строку.')
-            exit(1)
+            sys.exit(1)
+        except ServerError as e:
+            logger.error(f'При установке соединения сервер вернул ошибку: {e.error_text}')
+            sys.exit(1)
+        except RequiredFieldMissingError as e:
+            logger.error(f'В ответе сервера отсутствует необходимое поле {e.missing_field}')
+            sys.exit(1)
         except (ConnectionRefusedError, ConnectionError):
             logger.critical(
                 f'{self.host}:{self.port}: no connection could be made because the target machine actively refused it')
