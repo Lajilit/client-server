@@ -47,7 +47,6 @@ class ServerDB:
             self.port = port
             self.last_connection = last_connection
 
-    # Класс - отображение таблицы контактов пользователей
     class UserContact(Base):
         __tablename__ = 'user_contacts'
         id = Column(Integer, primary_key=True)
@@ -58,7 +57,6 @@ class ServerDB:
             self.user = user
             self.contact = contact
 
-    # Класс отображение таблицы истории действий
     class UserMessageHistory(Base):
         __tablename__ = 'user_message_history'
         id = Column(Integer, primary_key=True)
