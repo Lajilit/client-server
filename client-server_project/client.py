@@ -199,14 +199,14 @@ class Client(ClientMeta, Socket):
             logger.debug(
                 f'{self.name}: server response: {answer}'
             )
-        except json.decoder.JSONDecodeError:
-            logger.error('Не удалось декодировать полученную Json строку.')
+        except json.decoder.JSONDecodeError as e:
+            logger.error(f'JSONDecodeError: {e}')
             sys.exit(1)
         except ServerError as e:
-            logger.error(f'При установке соединения сервер вернул ошибку: {e.error_text}')
+            logger.error(f'Server error: {e}')
             sys.exit(1)
         except RequiredFieldMissedError as e:
-            logger.error(f'В ответе сервера отсутствует необходимое поле {e.missed_field}')
+            logger.error(f'RequiredFieldMissedError: {e}')
             sys.exit(1)
         except (ConnectionRefusedError, ConnectionError):
             logger.critical(

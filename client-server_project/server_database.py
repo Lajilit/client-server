@@ -47,6 +47,33 @@ class ServerDB:
             self.port = port
             self.last_connection = last_connection
 
+    # Класс - отображение таблицы контактов пользователей
+    class UserContact(Base):
+        __tablename__ = 'user_contacts'
+        id = Column(Integer, primary_key=True)
+        user = Column(Integer, ForeignKey('users.id'))
+        contact = Column(Integer, ForeignKey('users.id'))
+
+        def __init__(self, user, contact):
+            self.user = user
+            self.contact = contact
+
+    # Класс отображение таблицы истории действий
+    class UserMessageHistory(Base):
+        __tablename__ = 'user_message_history'
+        id = Column(Integer, primary_key=True)
+        user = Column(Integer, ForeignKey('users.id'))
+        sent = Column(Integer)
+        accepted = Column(Integer)
+
+        def __init__(self, user):
+            self.user = user
+            self.sent = 0
+            self.accepted = 0
+
+        def __str__(self):
+            return f'sent {self.sent}, accepted {self.accepted}'
+
     def __init__(self):
         self.engine = create_engine(
             'sqlite:///db_server.sqlite',
@@ -106,20 +133,73 @@ class ServerDB:
             history = history.filter(self.User.username == username)
         return history.all()
 
+    def add_contact(self, user, contact):
+        user = self.session.query(self.User).filter_by(username=user).first()
+        contact = self.session.query(self.User).filter_by(username=contact).first()
+        if contact and not self.session.query(self.UserContact).filter_by(user=user.id, contact=contact.id).count():
+            new_user_contact = self.UserContact(user.id, contact.id)
+            self.session.add(new_user_contact)
+            self.session.commit()
+
+    def remove_contact(self, user, contact):
+        user = self.session.query(self.User).filter_by(username=user).first()
+        contact = self.session.query(self.User).filter_by(username=contact).first()
+        if contact:
+            self.session.query(self.UserContact).filter(
+                self.UserContact.user == user.id,
+                self.UserContact.contact == contact.id
+            ).delete()
+            self.session.commit()
+
+    def get_contacts(self, user):
+        user = self.session.query(self.User).filter_by(username=user).first()
+        user_contacts = self.session.query(self.UserContact, self.User.username).\
+            filter_by(user=user.id).\
+            join(self.User, self.UserContact.contact == self.User.id).all()
+        return [username for contact, username in user_contacts]
+
+    def database_handle_message(self, sender, recipient):
+        sender = self.session.query(self.User).filter_by(username=sender).first().id
+        recipient = self.session.query(self.User).filter_by(username=recipient).first().id
+        sender_history = self.session.query(self.UserMessageHistory).filter_by(user=sender).first()
+        if not sender_history:
+            sender_history = self.UserMessageHistory(sender)
+            self.session.add(sender_history)
+            self.session.commit()
+        sender_history.sent += 1
+        recipient_history = self.session.query(self.UserMessageHistory).filter_by(user=recipient).first()
+        if not recipient_history:
+            recipient_history = self.UserMessageHistory(recipient)
+            self.session.add(recipient_history)
+            self.session.commit()
+        recipient_history.accepted += 1
+        self.session.commit()
+
+    def get_message_history(self, username=None):
+        message_history = self.session.query(
+            self.User.username,
+            self.UserMessageHistory.sent,
+            self.UserMessageHistory.accepted
+        ).join(self.User)
+        if username:
+            message_history = message_history.filter(self.User.username == username)
+        return message_history.all()
+
 
 if __name__ == '__main__':
     db = ServerDB()
     db.user_login('lajil', '192.168.1.4', 8888)
     db.user_login('lajil2', '192.168.1.6', 7777)
     print(db.get_all_users())
+    print(db.get_active_users())
     db.user_logout('lajil')
     print(db.get_all_users())
     print(db.get_active_users())
-    db.user_logout('lajil2')
-    print(db.get_all_users())
-    print(db.get_active_users())
-
     pprint(db.login_history('lajil'))
     pprint(db.login_history())
-
-    print(db.get_all_users())
+    db.add_contact('lajil', 'lajil2')
+    print(db.get_contacts('lajil'))
+    db.remove_contact('lajil', 'lajil2')
+    print(db.get_contacts('lajil'))
+    db.database_handle_message('lajil', 'lajil2')
+    print(db.get_message_history())
