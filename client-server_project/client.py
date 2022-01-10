@@ -7,12 +7,13 @@ import threading
 import time
 from socket import socket, AF_INET, SOCK_STREAM
 
+from client_database import ClientDB
 from constants import DEFAULT_IP, DEFAULT_PORT,  ACTION, PRESENCE, TIME, USER, \
     ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT
 from project_logging.config.log_config import client_logger as logger
 from socket_verifier import SocketVerifier
 from socket_include import Socket, SocketType
-from errors import RequiredFieldMissedError, ServerError, IncorrectDataReceivedError
+from errors import RequiredFieldMissedError, ServerError, IncorrectDataReceivedError, UnknownUserError
 
 socket_lock = threading.Lock()
 database_lock = threading.Lock()
@@ -42,6 +43,7 @@ class Client(ClientMeta, Socket):
         self.name = name
         self.port = server_port
         self.host = server_ip_address
+        self.database = ClientDB(self.name)
 
     @log
     def create_presence(self):
@@ -77,12 +79,11 @@ class Client(ClientMeta, Socket):
     @log
     def create_message(self):
 
-        destination = input(
-            'Message recipient: '
-        )
-        message_text = input(
-            'Enter your message text or press enter to shutdown: ')
-
+        destination = input('Message recipient: ')
+        message_text = input('Enter your message text or press enter to shutdown: ')
+        with database_lock:
+            if not self.database.check_user_is_known(destination):
+                raise UnknownUserError({destination})
         message = {
             ACTION: MESSAGE,
             TIME: time.time(),
@@ -93,6 +94,9 @@ class Client(ClientMeta, Socket):
         logger.debug(
             f'{self.name}: message is created: {message}'
         )
+        with database_lock:
+            self.database.save_message(self.name, destination, message_text)
+            print(message, destination)
         return message, destination
 
     @log
@@ -114,32 +118,44 @@ class Client(ClientMeta, Socket):
         while True:
             command = input('Enter command [message, exit]: ')
             if command == 'message':
-                message, destination = self.create_message()
                 try:
-                    self.send_data(message, self.socket)
-                    logger.debug(
-                        f'{self.name}: message was sent to user {destination}'
-                    )
-                except ConnectionRefusedError:
-                    logger.critical(
-                        f'{self.name}: server connection lost'
-                    )
-                    sys.exit(1)
+                    message, destination = self.create_message()
+                except UnknownUserError as e:
+                    logger.error(f'Unknown user: {e}')
+                    continue
+                with socket_lock:
+                    try:
+                        self.send_data(message, self.socket)
+                        logger.debug(
+                            f'{self.name}: message was sent to user {destination}'
+                        )
+                    except ConnectionRefusedError:
+                        logger.critical(
+                            f'{self.name}: server connection lost'
+                        )
+                        sys.exit(1)
+                    except OSError as e:
+                        if e.errno:
+                            logger.critical(f'{self.name}: server connection lost')
+                            sys.exit(1)
+                        else:
+                            logger.error(f'{self.name}: Connection timeout')
 
             elif command == 'exit':
                 message = self.create_exit_message()
-                try:
-                    self.send_data(message, self.socket)
-                    logger.info(
-                        f'{self.name}: {EXIT} message was sent to the server'
-                    )
-                except ConnectionRefusedError:
-                    logger.critical(
-                        f'{self.name}: server connection lost'
-                    )
-                    sys.exit(1)
-                print('Connection closed')
-                logger.info(f'{self.name}: connection closed')
+                with socket_lock:
+                    try:
+                        self.send_data(message, self.socket)
+                        logger.info(
+                            f'{self.name}: {EXIT} message was sent to the server'
+                        )
+                    except ConnectionRefusedError:
+                        logger.critical(
+                            f'{self.name}: server connection lost'
+                        )
+                        sys.exit(1)
+                    print('Connection closed')
+                    logger.info(f'{self.name}: connection closed')
                 time.sleep(0.5)
                 break
             else:
@@ -148,33 +164,44 @@ class Client(ClientMeta, Socket):
     @log
     def listen_server(self):
         while True:
-            try:
-                message = self.receive_data(self.socket)
-            except IncorrectDataReceivedError as e:
-                logger.debug(e)
-            except OSError as e:
-                if e.errno:
+            time.sleep(1)
+            with socket_lock:
+                try:
+                    message = self.receive_data(self.socket)
+                except IncorrectDataReceivedError as e:
+                    logger.debug(e)
+                except OSError as e:
+                    if e.errno:
+                        logger.critical(f'{self.name}: server connection lost')
+                        break
+                    else:
+                        logger.error(f'{self.name}: Connection timeout')
+                except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.decoder.JSONDecodeError):
                     logger.critical(f'{self.name}: server connection lost')
                     break
-            except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.decoder.JSONDecodeError):
-                logger.critical(f'{self.name}: server connection lost')
-                break
-            else:
-                logger.debug(f'{self.name}: the message {message} is being handled')
-                if ACTION in message and \
-                        message[ACTION] == MESSAGE and \
-                        SENDER in message and \
-                        MESSAGE_TEXT in message and \
-                        DESTINATION in message:
-                    logger.debug(
-                        f'{self.name}: Received a message from the user '
-                        f'{message[SENDER]}: {message[MESSAGE_TEXT]}'
-                    )
-                    print(f'{message[SENDER]}: {message[MESSAGE_TEXT]}')
                 else:
-                    logger.info(
-                        f'{self.name}: the message from server is incorrect:'
-                        f' {message}')
+                    logger.debug(f'{self.name}: the message {message} is being handled')
+                    if ACTION in message and \
+                            message[ACTION] == MESSAGE and \
+                            SENDER in message and \
+                            MESSAGE_TEXT in message and \
+                            DESTINATION in message and \
+                            message[DESTINATION] == self.name:
+                        logger.debug(
+                            f'{self.name}: Received a message from the user '
+                            f'{message[SENDER]}: {message[MESSAGE_TEXT]}'
+                        )
+                        print(f'{message[SENDER]}: {message[MESSAGE_TEXT]}')
+                        with database_lock:
+                            try:
+                                self.database.save_message(message[SENDER], self.name, message[MESSAGE_TEXT])
+                            except Exception as e:
+                                print(e)
+                                logger.error('Database error')
+                    else:
+                        logger.info(
+                            f'{self.name}: the message from server is incorrect:'
+                            f' {message}')
 
     def start(self):
         # Запуск клиента

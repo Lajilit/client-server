@@ -22,3 +22,11 @@ class IncorrectDataReceivedError(Exception):
 class NonDictDataError(Exception):
     def __str__(self):
         return 'Data to send should be a dictionary'
+
+
+class UnknownUserError(Exception):
+    def __init__(self, username):
+        self.unknown_user = username
+
+    def __str__(self):
+        return f'Unknown user: {self.unknown_user}'
