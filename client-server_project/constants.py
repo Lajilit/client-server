@@ -33,3 +33,5 @@ RESPONSE_400 = {
     RESPONSE: 400,
     ERROR: 'Bad Request'
 }
+ADD_CONTACT = 'add_contact'
+REMOVE_CONTACT = 'remove_contact'

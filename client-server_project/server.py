@@ -4,6 +4,7 @@ import select
 import threading
 from socket import socket, AF_INET, SOCK_STREAM, SO_REUSEADDR, SOL_SOCKET
 from sqlite3 import IntegrityError
+from json.decoder import JSONDecodeError
 
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, STATUS, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
@@ -95,7 +96,7 @@ class Server(threading.Thread, ServerMeta, Socket):
             del self.client_usernames[client_username]
 
         else:
-            self.send_data(RESPONSE_400, socket)
+            self.send_data(RESPONSE_400, client_socket)
             logger.info(ERROR)
 
     @log
@@ -147,6 +148,9 @@ class Server(threading.Thread, ServerMeta, Socket):
                         self.handle_message(received_message, client)
                     except IntegrityError:
                         logger.info(f'{client.getpeername()}: disconnected')
+                        self.clients.remove(client)
+                    except JSONDecodeError:
+                        logger.info(f'{client.getpeername()}: connection lost')
                         self.clients.remove(client)
 
             if self.messages and clients_receivers:
