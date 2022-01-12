@@ -136,6 +136,20 @@ class Client(MySocket):
         else:
             logger.error('Contact does not exist')
 
+    def print_history(self,):
+        contact_name = input('Enter contact name to show its message history oe press Enter to show all message history ')
+        if contact_name:
+            if not self.database.check_user_is_known(contact_name):
+                raise UnknownUserError({contact_name})
+            history_list = self.database.get_user_message_history(self.name, contact_name)
+        else:
+            history_list = self.database.get_user_message_history(self.name)
+        if history_list:
+            for user_from, user_to, message_text, message_time in history_list:
+                print(f'\n{message_time}\nFrom: {user_from} to {user_to}:\n{message_text}')
+        else:
+            print('Message history is empty')
+
     def user_interaction(self):
         self.help_function()
         while True:
@@ -196,7 +210,10 @@ class Client(MySocket):
                 except ServerError as e:
                     print(e)
             elif command == 'history':
-                pass
+                try:
+                    self.print_history()
+                except UnknownUserError as e:
+                    print(e)
             elif command == 'help':
                 self.help_function()
             else:
