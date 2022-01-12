@@ -9,7 +9,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 from client_database import ClientDB
 from constants import DEFAULT_IP, DEFAULT_PORT, ACTION, PRESENCE, TIME, USER, \
     ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT, ADD_CONTACT, \
-    REMOVE_CONTACT
+    REMOVE_CONTACT, GET_USERS, LIST_INFO, GET_CONTACTS
 from project_logging.config.log_config import client_logger as logger
 from socket_include import MySocket, SocketType
 from errors import RequiredFieldMissedError, ServerError, IncorrectDataReceivedError, UnknownUserError
@@ -23,30 +23,7 @@ class Client(MySocket):
         self.name = name
         self.port = server_port
         self.host = server_ip_address
-        self.database = ClientDB(self.name)
-
-    def create_presence(self):
-        output_message = {
-            ACTION: PRESENCE,
-            TIME: time.time(),
-            USER: {
-                ACCOUNT_NAME: self.name,
-                STATUS: 'online'
-            },
-            TYPE: STATUS
-        }
-        logger.info(f'{self.name}: {PRESENCE} message is created')
-        return output_message
-
-    def handle_response(self, message):
-        logger.info(
-            f'{self.name}: the response from the server is being handled'
-        )
-        if RESPONSE in message:
-            if message[RESPONSE] == 200:
-                return f'OK'
-            return f'{message[ERROR]}'
-        raise RequiredFieldMissedError(RESPONSE)
+        self.database = None
 
     @staticmethod
     def help_function():
@@ -58,8 +35,65 @@ class Client(MySocket):
         print('del - remove contact from list')
         print('exit - command to exit')
 
-    def create_message(self):
+    def load_data(self):
+        try:
+            users_list = self.communicate_server(self.create_get_users())
+            logger.debug(f'{self.name}: server response: {users_list}')
+        except ServerError as e:
+            logger.error(e)
+        else:
+            self.database.refresh_known_users(users_list)
+        try:
+            contacts_list = self.communicate_server(self.create_get_contacts())
+            logger.debug(f'{self.name}: server response: {contacts_list}')
 
+        except ServerError as e:
+            logger.error(e)
+        else:
+            for contact in contacts_list:
+                self.database.add_contact(contact)
+
+    def create_presence(self):
+        message = {
+            ACTION: PRESENCE,
+            TIME: time.time(),
+            ACCOUNT_NAME: self.name,
+        }
+        logger.info(f'{self.name}: {PRESENCE} message is created')
+        return message
+
+    def create_get_users(self):
+        logger.debug(f'{self.name}: get all users list from server')
+        message = {
+            ACTION: GET_USERS,
+            TIME: time.time(),
+            ACCOUNT_NAME: self.name
+        }
+        return message
+
+    def create_get_contacts(self):
+        logger.debug(f'{self.name}: get user contacts list from server')
+        message = {
+            ACTION: GET_CONTACTS,
+            TIME: time.time(),
+            ACCOUNT_NAME: self.name
+        }
+        return message
+
+    def handle_response(self, message):
+        logger.info(
+            f'{self.name}: the response from the server is being handled'
+        )
+        if RESPONSE in message:
+            if message[RESPONSE] == 200:
+                return f'OK'
+            elif message[RESPONSE] == 202:
+                return message[LIST_INFO]
+            else:
+                raise ServerError(message[ERROR])
+        raise RequiredFieldMissedError(RESPONSE)
+
+    def create_message(self):
         destination = input('Message recipient: ')
         message_text = input('Enter your message text or press enter to shutdown: ')
         if not self.database.check_user_is_known(destination):
@@ -136,8 +170,9 @@ class Client(MySocket):
         else:
             logger.error('Contact does not exist')
 
-    def print_history(self,):
-        contact_name = input('Enter contact name to show its message history oe press Enter to show all message history ')
+    def print_history(self, ):
+        contact_name = input(
+            'Enter contact name to show its message history oe press Enter to show all message history ')
         if contact_name:
             if not self.database.check_user_is_known(contact_name):
                 raise UnknownUserError({contact_name})
@@ -258,6 +293,11 @@ class Client(MySocket):
                         f'{self.name}: the message from server is incorrect:'
                         f' {message}')
 
+    def communicate_server(self, message):
+        self.send_data(message, self.socket)
+        logger.info(f'{self.name}: {message[ACTION]} message was sent to the server')
+        return self.handle_response(self.receive_data(self.socket))
+
     def start(self):
         print('Client module')
         logger.info(f'Client module started')
@@ -265,12 +305,8 @@ class Client(MySocket):
             self.socket = socket(AF_INET, SOCK_STREAM)
             self.socket.connect((self.host, self.port))
             logger.info(f'{self.name}: trying to connect to server at {self.host}:{self.port}')
-            self.send_data(self.create_presence(), self.socket)
-            logger.info(f'{self.name}: presence message was sent to the server')
-            answer = self.handle_response(self.receive_data(self.socket))
-            logger.debug(
-                f'{self.name}: server response: {answer}'
-            )
+            answer = self.communicate_server(self.create_presence())
+            logger.debug(f'{self.name}: server response: {answer}')
         except json.decoder.JSONDecodeError as e:
             logger.error(f'JSONDecodeError: {e}')
             sys.exit(1)
@@ -284,6 +320,9 @@ class Client(MySocket):
             logger.critical(
                 f'{self.host}:{self.port}: no connection could be made because the target machine actively refused it')
             sys.exit(1)
+
+        self.database = ClientDB(self.name)
+        self.load_data()
 
         receiver = threading.Thread(target=self.listen_server)
         receiver.daemon = True

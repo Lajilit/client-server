@@ -35,3 +35,6 @@ RESPONSE_400 = {
 }
 ADD_CONTACT = 'add_contact'
 REMOVE_CONTACT = 'remove_contact'
+GET_USERS = 'get_users'
+LIST_INFO = 'list_info'
+GET_CONTACTS = 'get_contacts'

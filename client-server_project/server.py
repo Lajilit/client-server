@@ -41,12 +41,12 @@ class Server(threading.Thread, MySocket):
         logger.info(
             f'{client_socket.getpeername()}: the message from the client is being handled'
         )
-        if ACTION in message and message[ACTION] == PRESENCE and TIME in message and USER in message:
-            client_username = message[USER][ACCOUNT_NAME]
+        if ACTION in message and message[ACTION] == PRESENCE and TIME in message and ACCOUNT_NAME in message:
+            client_username = message[ACCOUNT_NAME]
             client_ip, client_port = client_socket.getpeername()
             if client_username not in self.client_usernames.keys():
                 logger.info(
-                    f'{client_ip}:{client_port}: name \'{client_username}\' status \'{message[USER][STATUS]}\'')
+                    f'{client_ip}:{client_port}: name \'{client_username}\'')
                 self.client_usernames[client_username] = client_socket
                 logger.info(
                     f'{client_ip}:{client_port}: '
