@@ -1,5 +1,4 @@
 import argparse
-import inspect
 import json
 import socket
 import sys
@@ -12,31 +11,11 @@ from constants import DEFAULT_IP, DEFAULT_PORT, ACTION, PRESENCE, TIME, USER, \
     ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT, ADD_CONTACT, \
     REMOVE_CONTACT
 from project_logging.config.log_config import client_logger as logger
-from socket_verifier import SocketVerifier
-from socket_include import Socket, SocketType
+from socket_include import MySocket, SocketType
 from errors import RequiredFieldMissedError, ServerError, IncorrectDataReceivedError, UnknownUserError
 
-socket_lock = threading.Lock()
-database_lock = threading.Lock()
 
-
-def log(some_function):
-    def wrapper(*args, **kwargs):
-        logger.debug(
-            f'Function: {some_function.__name__}, args: {args}, kwargs: {kwargs}, '
-            f'called from function: {inspect.stack()[1][3]}'
-        )
-        result = some_function(*args, **kwargs)
-        return result
-
-    return wrapper
-
-
-class ClientMeta(metaclass=SocketVerifier):
-    pass
-
-
-class Client(ClientMeta, Socket):
+class Client(MySocket):
     socket_type = SocketType('Client')
 
     def __init__(self, name, server_ip_address, server_port):
@@ -46,7 +25,6 @@ class Client(ClientMeta, Socket):
         self.host = server_ip_address
         self.database = ClientDB(self.name)
 
-    @log
     def create_presence(self):
         output_message = {
             ACTION: PRESENCE,
@@ -60,7 +38,6 @@ class Client(ClientMeta, Socket):
         logger.info(f'{self.name}: {PRESENCE} message is created')
         return output_message
 
-    @log
     def handle_response(self, message):
         logger.info(
             f'{self.name}: the response from the server is being handled'
@@ -81,14 +58,12 @@ class Client(ClientMeta, Socket):
         print('del - remove contact from list')
         print('exit - command to exit')
 
-    @log
     def create_message(self):
 
         destination = input('Message recipient: ')
         message_text = input('Enter your message text or press enter to shutdown: ')
-        with database_lock:
-            if not self.database.check_user_is_known(destination):
-                raise UnknownUserError({destination})
+        if not self.database.check_user_is_known(destination):
+            raise UnknownUserError({destination})
         message = {
             ACTION: MESSAGE,
             TIME: time.time(),
@@ -99,12 +74,10 @@ class Client(ClientMeta, Socket):
         logger.debug(
             f'{self.name}: message is created: {message}'
         )
-        with database_lock:
-            self.database.save_message(self.name, destination, message_text)
-            print(message, destination)
+        self.database.save_message(self.name, destination, message_text)
+        print(message, destination)
         return message, destination
 
-    @log
     def create_exit_message(self):
         message = {
             ACTION: EXIT,
@@ -119,56 +92,50 @@ class Client(ClientMeta, Socket):
     def add_contact(self):
         new_contact = input('Enter new contact username: ')
         if not self.database.check_user_is_a_contact(new_contact):
-            with database_lock:
-                self.database.add_contact(new_contact)
-            with socket_lock:
-                request = {
-                    ACTION: ADD_CONTACT,
-                    TIME: time.time(),
-                    USER: username,
-                    ACCOUNT_NAME: new_contact
-                }
-                try:
-                    self.send_data(request, self.socket)
-                except ServerError:
-                    logger.error('Error sending information to the server')
+            self.database.add_contact(new_contact)
+            request = {
+                ACTION: ADD_CONTACT,
+                TIME: time.time(),
+                USER: username,
+                ACCOUNT_NAME: new_contact
+            }
+            try:
+                self.send_data(request, self.socket)
+            except ServerError:
+                logger.error('Error sending information to the server')
+            else:
+                answer = self.receive_data(self.socket)
+                if RESPONSE in answer and answer[RESPONSE] == 200:
+                    print('Contact created successfully')
                 else:
-                    answer = self.receive_data(self.socket)
-                    if RESPONSE in answer and answer[RESPONSE] == 200:
-                        print('Contact created successfully')
-                    else:
-                        raise ServerError('Contact creation error')
+                    raise ServerError('Contact creation error')
         else:
             logger.error('Contact already exists')
 
     def remove_contact(self):
         contact_to_delete = input('Enter username of the contact to delete: ')
-        with database_lock:
-            if self.database.check_user_is_a_contact(contact_to_delete):
-                with database_lock:
-                    self.database.remove_contact(contact_to_delete)
-                    logger.debug(f'{self.name}: the contact {contact_to_delete} is removed from database')
-                with socket_lock:
-                    request = {
-                        ACTION: REMOVE_CONTACT,
-                        TIME: time.time(),
-                        USER: username,
-                        ACCOUNT_NAME: contact_to_delete
-                    }
-                    try:
-                        self.send_data(request, self.socket)
-                    except ServerError:
-                        logger.error('Error sending information to the server')
-                    else:
-                        answer = self.receive_data(self.socket)
-                        if RESPONSE in answer and answer[RESPONSE] == 200:
-                            print('Contact is removed successfully')
-                        else:
-                            raise ServerError('Contact removing error')
+        if self.database.check_user_is_a_contact(contact_to_delete):
+            self.database.remove_contact(contact_to_delete)
+            logger.debug(f'{self.name}: the contact {contact_to_delete} is removed from database')
+            request = {
+                ACTION: REMOVE_CONTACT,
+                TIME: time.time(),
+                USER: username,
+                ACCOUNT_NAME: contact_to_delete
+            }
+            try:
+                self.send_data(request, self.socket)
+            except ServerError:
+                logger.error('Error sending information to the server')
             else:
-                logger.error('Contact does not exist')
+                answer = self.receive_data(self.socket)
+                if RESPONSE in answer and answer[RESPONSE] == 200:
+                    print('Contact is removed successfully')
+                else:
+                    raise ServerError('Contact removing error')
+        else:
+            logger.error('Contact does not exist')
 
-    @log
     def user_interaction(self):
         self.help_function()
         while True:
@@ -179,45 +146,40 @@ class Client(ClientMeta, Socket):
                 except UnknownUserError as e:
                     logger.error(f'Unknown user: {e}')
                     continue
-                with socket_lock:
-                    try:
-                        self.send_data(message, self.socket)
-                        logger.debug(
-                            f'{self.name}: message was sent to user {destination}'
-                        )
-                    except ConnectionRefusedError:
-                        logger.critical(
-                            f'{self.name}: server connection lost'
-                        )
+                try:
+                    self.send_data(message, self.socket)
+                    logger.debug(
+                        f'{self.name}: message was sent to user {destination}'
+                    )
+                except ConnectionRefusedError:
+                    logger.critical(
+                        f'{self.name}: server connection lost'
+                    )
+                    sys.exit(1)
+                except OSError as e:
+                    if e.errno:
+                        logger.critical(f'{self.name}: server connection lost')
                         sys.exit(1)
-                    except OSError as e:
-                        if e.errno:
-                            logger.critical(f'{self.name}: server connection lost')
-                            sys.exit(1)
-                        else:
-                            logger.error(f'{self.name}: Connection timeout')
+                    else:
+                        logger.error(f'{self.name}: Connection timeout')
             elif command == 'exit':
                 message = self.create_exit_message()
-                print(1)
-                with socket_lock:
-                    print(2)
-                    try:
-                        self.send_data(message, self.socket)
-                        logger.info(
-                            f'{self.name}: {EXIT} message was sent to the server'
-                        )
-                    except ConnectionRefusedError:
-                        logger.critical(
-                            f'{self.name}: server connection lost'
-                        )
-                        sys.exit(1)
-                    print('Connection closed')
-                    logger.info(f'{self.name}: connection closed')
+                try:
+                    self.send_data(message, self.socket)
+                    logger.info(
+                        f'{self.name}: {EXIT} message was sent to the server'
+                    )
+                except ConnectionRefusedError:
+                    logger.critical(
+                        f'{self.name}: server connection lost'
+                    )
+                    sys.exit(1)
+                print('Connection closed')
+                logger.info(f'{self.name}: connection closed')
                 time.sleep(0.5)
                 break
             elif command == 'contacts':
-                with database_lock:
-                    contacts_list = self.database.get_contacts()
+                contacts_list = self.database.get_contacts()
                 if contacts_list:
                     for contact in contacts_list:
                         print(contact)
@@ -240,11 +202,9 @@ class Client(ClientMeta, Socket):
             else:
                 print('Wrong command. Print help to show available commands')
 
-    @log
     def listen_server(self):
         while True:
             time.sleep(1)
-            # with socket_lock: TODO!!!
             try:
                 message = self.receive_data(self.socket)
             except IncorrectDataReceivedError as e:
@@ -271,12 +231,11 @@ class Client(ClientMeta, Socket):
                         f'{message[SENDER]}: {message[MESSAGE_TEXT]}'
                     )
                     print(f'{message[SENDER]}: {message[MESSAGE_TEXT]}')
-                    with database_lock:
-                        try:
-                            self.database.save_message(message[SENDER], self.name, message[MESSAGE_TEXT])
-                        except Exception as e:
-                            print(e)
-                            logger.error('Database error')
+                    try:
+                        self.database.save_message(message[SENDER], self.name, message[MESSAGE_TEXT])
+                    except Exception as e:
+                        print(e)
+                        logger.error('Database error')
                 else:
                     logger.info(
                         f'{self.name}: the message from server is incorrect:'

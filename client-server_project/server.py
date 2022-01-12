@@ -1,5 +1,4 @@
 import argparse
-import inspect
 import select
 import threading
 from socket import socket, AF_INET, SOCK_STREAM, SO_REUSEADDR, SOL_SOCKET
@@ -9,29 +8,12 @@ from json.decoder import JSONDecodeError
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USER, ACCOUNT_NAME, STATUS, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
     RESPONSE_200, RESPONSE_400, EXIT
-from socket_include import Socket, SocketType, CheckServerPort
-from socket_verifier import SocketVerifier
+from socket_include import MySocket, SocketType, CheckServerPort
 from server_database import ServerDB
 from project_logging.config.log_config import server_logger as logger
 
 
-def log(some_function):
-    def wrapper(*args, **kwargs):
-        logger.debug(
-            f'Function: {some_function.__name__}, args: {args}, kwargs: {kwargs}, '
-            f'called from function: {inspect.stack()[1][3]}'
-        )
-        result = some_function(*args, **kwargs)
-        return result
-
-    return wrapper
-
-
-class ServerMeta(metaclass=SocketVerifier):
-    pass
-
-
-class Server(threading.Thread, ServerMeta, Socket):
+class Server(threading.Thread, MySocket):
     socket_type = SocketType('Server')
     port = CheckServerPort()
 
@@ -45,7 +27,6 @@ class Server(threading.Thread, ServerMeta, Socket):
         self.messages = []
         self.database = db
 
-    @log
     def handle_message(self, message, client_socket):
         """
         The function takes a message from the client and processes it.
@@ -99,7 +80,6 @@ class Server(threading.Thread, ServerMeta, Socket):
             self.send_data(RESPONSE_400, client_socket)
             logger.info(ERROR)
 
-    @log
     def make_connection(self):
         """Создаёт сокет и устанавливает соединение"""
         self.socket = socket(AF_INET, SOCK_STREAM)
@@ -113,7 +93,6 @@ class Server(threading.Thread, ServerMeta, Socket):
         else:
             logger.info(f'server started at {self.port} and listened all ip')
 
-    @log
     def accept_connection(self):
         """Принимает подключение от клиента"""
         try:
@@ -125,7 +104,6 @@ class Server(threading.Thread, ServerMeta, Socket):
                 f'{client.getpeername()}: client connection established')
             self.clients.append(client)
 
-    @log
     def run(self):
         self.make_connection()
 
@@ -161,14 +139,14 @@ class Server(threading.Thread, ServerMeta, Socket):
                             client == self.client_usernames[client_name]:
                         try:
                             self.send_data(data_to_send, client)
-                        except:
-                            logger.info(f'{client.getpeername()}: connection lost')
+                        except Exception as e:
+                            logger.info(f'{client.getpeername()}: connection lost: {e.args}')
                             self.clients.remove(client)
                             del self.client_usernames[client_name]
 
 
 def print_help():
-    print('Поддерживаемые комманды:')
+    print('Поддерживаемые команды:')
     print('users - список известных пользователей')
     print('connected - список подключённых пользователей')
     print('history - история входов пользователя')

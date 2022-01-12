@@ -11,9 +11,6 @@ class SocketType(Enum):
 
 
 class CheckServerPort:
-    # def __init__(self, name):
-    #     self.name = "_" + name
-    #     self.value = None
 
     def __set_name__(self, owner, name):
         self.name = "_" + name
@@ -38,7 +35,7 @@ class CheckServerPort:
         raise AttributeError('Невозможно удалить атрибут')
 
 
-class Socket:
+class MySocket:
 
     def __init__(self):
         self.socket = None
