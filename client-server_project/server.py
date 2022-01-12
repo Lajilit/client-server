@@ -6,7 +6,7 @@ from sqlite3 import IntegrityError
 from json.decoder import JSONDecodeError
 
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
-    USER, ACCOUNT_NAME, STATUS, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
+    ACCOUNT_NAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
     RESPONSE_200, RESPONSE_400, EXIT
 from socket_include import MySocket, SocketType, CheckServerPort
 from server_database import ServerDB

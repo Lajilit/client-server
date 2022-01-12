@@ -8,7 +8,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 from client_database import ClientDB
 from constants import DEFAULT_IP, DEFAULT_PORT, ACTION, PRESENCE, TIME, USER, \
-    ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT, ADD_CONTACT, \
+    ACCOUNT_NAME, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT, ADD_CONTACT, \
     REMOVE_CONTACT, GET_USERS, LIST_INFO, GET_CONTACTS
 from project_logging.config.log_config import client_logger as logger
 from socket_include import MySocket, SocketType
