@@ -7,9 +7,9 @@ import time
 from socket import socket, AF_INET, SOCK_STREAM
 
 from client_database import ClientDB
-from constants import DEFAULT_IP, DEFAULT_PORT, ACTION, PRESENCE, TIME, USER, \
-    ACCOUNT_NAME, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT, ADD_CONTACT, \
-    REMOVE_CONTACT, GET_USERS, LIST_INFO, GET_CONTACTS
+from constants import DEFAULT_IP, DEFAULT_PORT, ACTION, PRESENCE, TIME, \
+    USERNAME, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT, ADD_CONTACT, \
+    REMOVE_CONTACT, GET_ALL_USERS, LIST_INFO, GET_CONTACTS, GET_ACTIVE_USERS, CONTACT_NAME, ALERT
 from project_logging.config.log_config import client_logger as logger
 from socket_include import MySocket, SocketType
 from errors import RequiredFieldMissedError, ServerError, IncorrectDataReceivedError, UnknownUserError
@@ -60,14 +60,13 @@ class Client(MySocket):
                 f'{self.name}: message is created: {message}'
             )
             self.database.save_message(self.name, destination, message_text)
-            print(message, destination)
             return message, destination
 
         def create_exit_message(self):
             message = {
                 ACTION: EXIT,
                 TIME: time.time(),
-                ACCOUNT_NAME: self.name
+                USERNAME: self.name
             }
             logger.info(
                 f'{self.name}: {EXIT} message is created'
@@ -81,8 +80,8 @@ class Client(MySocket):
                 request = {
                     ACTION: ADD_CONTACT,
                     TIME: time.time(),
-                    USER: username,
-                    ACCOUNT_NAME: new_contact
+                    USERNAME: username,
+                    CONTACT_NAME: new_contact
                 }
                 try:
                     self.send_data(request, self.socket)
@@ -105,8 +104,8 @@ class Client(MySocket):
                 request = {
                     ACTION: REMOVE_CONTACT,
                     TIME: time.time(),
-                    USER: username,
-                    ACCOUNT_NAME: contact_to_delete
+                    USERNAME: username,
+                    CONTACT_NAME: contact_to_delete
                 }
                 try:
                     self.send_data(request, self.socket)
@@ -255,7 +254,7 @@ class Client(MySocket):
         message = {
             ACTION: PRESENCE,
             TIME: time.time(),
-            ACCOUNT_NAME: self.name,
+            USERNAME: self.name,
         }
         logger.info(f'{self.name}: {PRESENCE} message is created')
         return message
@@ -266,19 +265,28 @@ class Client(MySocket):
         )
         if RESPONSE in message:
             if message[RESPONSE] == 200:
-                return f'OK'
+                return message[ALERT]
             elif message[RESPONSE] == 202:
                 return message[LIST_INFO]
             else:
                 raise ServerError(message[ERROR])
         raise RequiredFieldMissedError(RESPONSE)
 
-    def create_get_users(self):
+    def create_get_all_users(self):
         logger.debug(f'{self.name}: get all users list from server')
         message = {
-            ACTION: GET_USERS,
+            ACTION: GET_ALL_USERS,
             TIME: time.time(),
-            ACCOUNT_NAME: self.name
+            USERNAME: self.name
+        }
+        return message
+
+    def create_get_active_users(self):
+        logger.debug(f'{self.name}: get all users list from server')
+        message = {
+            ACTION: GET_ACTIVE_USERS,
+            TIME: time.time(),
+            USERNAME: self.name
         }
         return message
 
@@ -287,7 +295,7 @@ class Client(MySocket):
         message = {
             ACTION: GET_CONTACTS,
             TIME: time.time(),
-            ACCOUNT_NAME: self.name
+            USERNAME: self.name
         }
         return message
 
@@ -298,7 +306,7 @@ class Client(MySocket):
 
     def load_data(self):
         try:
-            users_list = self.communicate_server(self.create_get_users())
+            users_list = self.communicate_server(self.create_get_all_users())
             logger.debug(f'{self.name}: server response: {users_list}')
         except ServerError as e:
             logger.error(e)

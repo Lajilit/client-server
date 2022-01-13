@@ -5,6 +5,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 
+from errors import ServerError
+
 
 class ServerDB:
     Base = declarative_base()
@@ -131,17 +133,19 @@ class ServerDB:
             history = history.filter(self.User.username == username)
         return history.all()
 
-    def add_contact(self, user, contact):
-        user = self.session.query(self.User).filter_by(username=user).first()
-        contact = self.session.query(self.User).filter_by(username=contact).first()
+    def add_contact(self, username, contact_name):
+        user = self.session.query(self.User).filter_by(username=username).first()
+        contact = self.session.query(self.User).filter_by(username=contact_name).first()
         if contact and not self.session.query(self.UserContact).filter_by(user=user.id, contact=contact.id).count():
             new_user_contact = self.UserContact(user.id, contact.id)
             self.session.add(new_user_contact)
             self.session.commit()
+        else:
+            raise ServerError(f'{contact_name} is not a user')
 
-    def remove_contact(self, user, contact):
-        user = self.session.query(self.User).filter_by(username=user).first()
-        contact = self.session.query(self.User).filter_by(username=contact).first()
+    def remove_contact(self, username, contact_name):
+        user = self.session.query(self.User).filter_by(username=username).first()
+        contact = self.session.query(self.User).filter_by(username=contact_name).first()
         if contact:
             self.session.query(self.UserContact).filter(
                 self.UserContact.user == user.id,

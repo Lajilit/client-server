@@ -12,9 +12,9 @@ ENCODING = 'utf-8'
 # Ключи:
 ACTION = 'action'
 TIME = 'time'
-USER = 'user'
+USERNAME = 'username'
+CONTACT_NAME = 'contact_name'
 TYPE = 'type'
-ACCOUNT_NAME = 'account_name'
 STATUS = 'status'
 PRESENCE = 'presence'
 RESPONSE = 'response'
@@ -25,6 +25,13 @@ DESTINATION = 'from'
 EXIT = 'exit'
 ALERT = 'alert'
 ERROR = 'error'
+LIST_INFO = 'list_info'
+ADD_CONTACT = 'add_contact'
+REMOVE_CONTACT = 'remove_contact'
+GET_ALL_USERS = 'get_all_users'
+GET_ACTIVE_USERS = 'get_active_users'
+GET_CONTACTS = 'get_contacts'
+
 RESPONSE_200 = {
     RESPONSE: 200,
     ALERT: 'ok'
@@ -33,8 +40,7 @@ RESPONSE_400 = {
     RESPONSE: 400,
     ERROR: 'Bad Request'
 }
-ADD_CONTACT = 'add_contact'
-REMOVE_CONTACT = 'remove_contact'
-GET_USERS = 'get_users'
-LIST_INFO = 'list_info'
-GET_CONTACTS = 'get_contacts'
+RESPONSE_202 = {
+    RESPONSE: 202,
+    LIST_INFO: []
+}

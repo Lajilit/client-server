@@ -6,8 +6,10 @@ from sqlite3 import IntegrityError
 from json.decoder import JSONDecodeError
 
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
-    ACCOUNT_NAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
-    RESPONSE_200, RESPONSE_400, EXIT
+    USERNAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
+    RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
+    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS
+from errors import ServerError
 from socket_include import MySocket, SocketType, CheckServerPort
 from server_database import ServerDB
 from project_logging.config.log_config import server_logger as logger
@@ -26,59 +28,6 @@ class Server(threading.Thread, MySocket):
         self.client_usernames = {}
         self.messages = []
         self.database = db
-
-    def handle_message(self, message, client_socket):
-        """
-        The function takes a message from the client and processes it.
-        If message is presence-message, function returns a response message
-        from the server
-        If message is not presence function appends this message into messages_list
-
-        :param message: received message: dict
-        :param client_socket: client_socket
-
-        """
-        logger.info(
-            f'{client_socket.getpeername()}: the message from the client is being handled'
-        )
-        if ACTION in message and message[ACTION] == PRESENCE and TIME in message and ACCOUNT_NAME in message:
-            client_username = message[ACCOUNT_NAME]
-            client_ip, client_port = client_socket.getpeername()
-            if client_username not in self.client_usernames.keys():
-                logger.info(
-                    f'{client_ip}:{client_port}: name \'{client_username}\'')
-                self.client_usernames[client_username] = client_socket
-                logger.info(
-                    f'{client_ip}:{client_port}: '
-                    f'name \'{client_username}\' added into clients_usernames'
-                )
-                self.send_data(RESPONSE_200, client_socket)
-                self.database.user_login(client_username, client_ip, client_port)
-                logger.info(f'{client_username} login')
-
-            else:
-                response = RESPONSE_400
-                response[ERROR] = 'Имя пользователя уже занято'
-                self.send_data(response, client_socket)
-                self.clients.remove(client_socket)
-                client_socket.close()
-
-        elif ACTION in message and message[ACTION] == MESSAGE and TIME in message and \
-                SENDER in message and DESTINATION in message and MESSAGE_TEXT in message:
-            self.messages.append(message)
-            logger.info(f'message from: {message[SENDER]} to: {message[DESTINATION]} appended into messages_list')
-
-        elif ACTION in message and message[ACTION] == EXIT and ACCOUNT_NAME in message:
-            client_username = message[ACCOUNT_NAME]
-            logger.info(f'{client_username} exit')
-            self.database.user_logout(client_username)
-            self.clients.remove(self.client_usernames[client_username])
-            self.client_usernames[client_username].close()
-            del self.client_usernames[client_username]
-
-        else:
-            self.send_data(RESPONSE_400, client_socket)
-            logger.info(ERROR)
 
     def make_connection(self):
         """Создаёт сокет и устанавливает соединение"""
@@ -104,6 +53,109 @@ class Server(threading.Thread, MySocket):
                 f'{client.getpeername()}: client connection established')
             self.clients.append(client)
 
+    def handle_message(self, message, client_socket):
+        """
+        The function takes a message from the client and processes it.
+        If message is presence-message, function returns a response message
+        from the server
+        If message is not presence function appends this message into messages_list
+
+        :param message: received message: dict
+        :param client_socket: client_socket
+
+        """
+        logger.info(
+            f'{client_socket.getpeername()}: the message from the client is being handled'
+        )
+        if ACTION in message and message[ACTION] == PRESENCE and TIME in message and USERNAME in message:
+            client_username = message[USERNAME]
+            client_ip, client_port = client_socket.getpeername()
+            if client_username not in self.client_usernames.keys():
+                logger.info(
+                    f'{client_ip}:{client_port}: name \'{client_username}\'')
+                self.client_usernames[client_username] = client_socket
+                logger.info(
+                    f'{client_ip}:{client_port}: '
+                    f'name \'{client_username}\' added into clients_usernames'
+                )
+                self.send_data(RESPONSE_200, client_socket)
+                self.database.user_login(client_username, client_ip, client_port)
+                logger.info(f'{client_username} login')
+
+            else:
+                response = RESPONSE_400
+                response[ERROR] = 'Username already in use'
+                self.send_data(response, client_socket)
+                self.clients.remove(client_socket)
+                client_socket.close()
+
+        elif ACTION in message and message[ACTION] == MESSAGE and TIME in message and \
+                SENDER in message and DESTINATION in message and MESSAGE_TEXT in message:
+            self.messages.append(message)
+            self.database.database_handle_message(
+                message[SENDER], message[DESTINATION])
+            logger.info(
+                f'message from: {message[SENDER]} to: {message[DESTINATION]} appended into messages_list')
+
+        elif ACTION in message and message[ACTION] == EXIT and USERNAME in message:
+            client_username = message[USERNAME]
+            logger.info(f'{client_username} exit')
+            self.database.user_logout(client_username)
+            self.clients.remove(client_socket)
+            client_socket.close()
+            del self.client_usernames[client_username]
+
+        elif ACTION in message and message[ACTION] == GET_CONTACTS and USERNAME in message:
+            client_username = message[USERNAME]
+            response = RESPONSE_202
+            response[LIST_INFO] = self.database.get_contacts(client_username)
+            self.send_data(response, client_socket)
+
+        elif ACTION in message and message[ACTION] == GET_ALL_USERS and USERNAME in message:
+            response = RESPONSE_202
+            response[LIST_INFO] = [username for username, last_connection_time in self.database.get_all_users()]
+            self.send_data(response, client_socket)
+
+        elif ACTION in message and message[ACTION] == GET_ACTIVE_USERS and USERNAME in message:
+            response = RESPONSE_202
+            response[LIST_INFO] = [
+                username for username, ip, port, last_connection_time in self.database.get_active_users()
+            ]
+            self.send_data(response, client_socket)
+
+        elif ACTION in message and message[ACTION] == ADD_CONTACT and USERNAME in message and CONTACT_NAME in message:
+            client_username = message[USERNAME]
+            contact_username = message[CONTACT_NAME]
+            try:
+                self.database.add_contact(client_username, contact_username)
+            except ServerError as e:
+                response = RESPONSE_400
+                response[ERROR] = f'{e.args}'
+                self.send_data(response, client_socket)
+                logger.info(e)
+            else:
+                logger.info(f'{client_username} add contact {contact_username}')
+                self.send_data(RESPONSE_200, client_socket)
+
+        elif ACTION in message and message[ACTION] == REMOVE_CONTACT and USERNAME in message and CONTACT_NAME in message:
+            client_username = message[USERNAME]
+            contact_username = message[CONTACT_NAME]
+            logger.info(f'{client_username} removed contact {contact_username}')
+            self.database.remove_contact(client_username, contact_username)
+            self.send_data(RESPONSE_200, client_socket)
+
+        else:
+            self.send_data(RESPONSE_400, client_socket)
+            logger.info(ERROR)
+
+    def client_logout(self, client):
+        for username in self.client_usernames:
+            if self.client_usernames[username] == client:
+                self.database.user_logout(username)
+                del self.client_usernames[username]
+                break
+        self.clients.remove(client)
+
     def run(self):
         self.make_connection()
 
@@ -116,33 +168,35 @@ class Server(threading.Thread, MySocket):
                     clients_senders, clients_receivers, e = select.select(
                         self.clients, self.clients, [], 0
                     )
-            except OSError:
-                pass
+            except OSError as e:
+                logger.error(f'Socket error: {e.args}')
 
             if clients_senders:
                 for client in clients_senders:
                     try:
                         received_message = self.receive_data(client)
                         self.handle_message(received_message, client)
-                    except IntegrityError:
-                        logger.info(f'{client.getpeername()}: disconnected')
-                        self.clients.remove(client)
-                    except JSONDecodeError:
-                        logger.info(f'{client.getpeername()}: connection lost')
-                        self.clients.remove(client)
+                    except IntegrityError as e:
+                        logger.info(f'{client.getpeername()}: disconnected {e.args}')
+                        self.client_logout(client)
+                    except OSError as e:
+                        logger.info(f'{client.getpeername()}: disconnected {e.args}')
+                        self.client_logout(client)
+                    except JSONDecodeError as e:
+                        logger.info(f'{client.getpeername()}: connection lost {e.args}')
+                        self.client_logout(client)
 
             if self.messages and clients_receivers:
                 data_to_send = self.messages.pop(0)
+                client_name = data_to_send[DESTINATION]
                 for client in clients_receivers:
-                    client_name = data_to_send[DESTINATION]
                     if client_name in self.client_usernames.keys() and \
                             client == self.client_usernames[client_name]:
                         try:
                             self.send_data(data_to_send, client)
                         except Exception as e:
                             logger.info(f'{client.getpeername()}: connection lost: {e.args}')
-                            self.clients.remove(client)
-                            del self.client_usernames[client_name]
+                            self.client_logout(client)
 
 
 def print_help():
