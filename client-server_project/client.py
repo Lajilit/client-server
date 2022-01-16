@@ -33,7 +33,6 @@ class Client(MySocket):
             self.socket = client_socket
             self.database = client_db
 
-
         @staticmethod
         def help_function():
             print('Commands used:')
@@ -59,8 +58,30 @@ class Client(MySocket):
             logger.debug(
                 f'{self.name}: message is created: {message}'
             )
-            self.database.save_message(self.name, destination, message_text)
-            return message, destination
+            return message
+
+        def send_message(self, message):
+            try:
+                self.send_data(message, self.socket)
+            except ConnectionRefusedError:
+                logger.critical(
+                    f'{self.name}: server connection lost'
+                )
+                sys.exit(1)
+            except OSError as e:
+                if e.errno:
+                    logger.critical(f'{self.name}: server connection lost')
+                    sys.exit(1)
+                else:
+                    logger.error(f'{self.name}: Connection timeout')
+            else:
+                answer = self.receive_data(self.socket)
+                if RESPONSE in answer:
+                    if answer[RESPONSE] == 200:
+                        logger.debug(f'{self.name}: message was sent to user {message[DESTINATION]}')
+                        self.database.save_message(self.name, message[DESTINATION], message[MESSAGE_TEXT])
+                    elif answer[RESPONSE] == 400:
+                        logger.debug(answer[ERROR])
 
         def create_exit_message(self):
             message = {
@@ -73,10 +94,29 @@ class Client(MySocket):
             )
             return message
 
+        def get_active_users(self):
+            logger.debug(f'{self.name}: get active users list from server')
+            request = {
+                ACTION: GET_ACTIVE_USERS,
+                TIME: time.time(),
+                USERNAME: self.name
+            }
+            try:
+                self.send_data(request, self.socket)
+            except ServerError:
+                logger.error('Error sending information to the server')
+            else:
+                answer = self.receive_data(self.socket)
+                if RESPONSE in answer:
+                    if answer[RESPONSE] == 202:
+                        return answer[LIST_INFO]
+                    else:
+                        raise ServerError(answer[ERROR])
+                raise RequiredFieldMissedError(RESPONSE)
+
         def add_contact(self):
             new_contact = input('Enter new contact username: ')
             if not self.database.check_user_is_a_contact(new_contact):
-                self.database.add_contact(new_contact)
                 request = {
                     ACTION: ADD_CONTACT,
                     TIME: time.time(),
@@ -91,15 +131,15 @@ class Client(MySocket):
                     answer = self.receive_data(self.socket)
                     if RESPONSE in answer and answer[RESPONSE] == 200:
                         print('Contact created successfully')
+                        self.database.add_contact(new_contact)
                     else:
-                        raise ServerError('Contact creation error')
+                        raise ServerError(answer[ERROR])
             else:
                 logger.error('Contact already exists')
 
         def remove_contact(self):
             contact_to_delete = input('Enter username of the contact to delete: ')
             if self.database.check_user_is_a_contact(contact_to_delete):
-                self.database.remove_contact(contact_to_delete)
                 logger.debug(f'{self.name}: the contact {contact_to_delete} is removed from database')
                 request = {
                     ACTION: REMOVE_CONTACT,
@@ -115,6 +155,7 @@ class Client(MySocket):
                     answer = self.receive_data(self.socket)
                     if RESPONSE in answer and answer[RESPONSE] == 200:
                         print('Contact is removed successfully')
+                        self.database.remove_contact(contact_to_delete)
                     else:
                         raise ServerError('Contact removing error')
             else:
@@ -141,26 +182,18 @@ class Client(MySocket):
                 command = input('Enter command: ')
                 if command == 'message':
                     try:
-                        message, destination = self.create_message()
-                    except UnknownUserError as e:
-                        logger.error(f'Unknown user: {e}')
-                        continue
+                        active_users = self.get_active_users()
+                    except (ServerError, RequiredFieldMissedError) as e:
+                        logger.error(e)
+                    else:
+                        print(f'Known users are: {active_users}')
                     try:
-                        self.send_data(message, self.socket)
-                        logger.debug(
-                            f'{self.name}: message was sent to user {destination}'
-                        )
-                    except ConnectionRefusedError:
-                        logger.critical(
-                            f'{self.name}: server connection lost'
-                        )
-                        sys.exit(1)
-                    except OSError as e:
-                        if e.errno:
-                            logger.critical(f'{self.name}: server connection lost')
-                            sys.exit(1)
-                        else:
-                            logger.error(f'{self.name}: Connection timeout')
+                        message = self.create_message()
+                    except UnknownUserError as e:
+                        logger.error(e)
+                        continue
+                    self.send_message(message)
+
                 elif command == 'exit':
                     message = self.create_exit_message()
                     try:
@@ -168,11 +201,11 @@ class Client(MySocket):
                         logger.info(
                             f'{self.name}: {EXIT} message was sent to the server'
                         )
-                    except ConnectionRefusedError:
+                    except ConnectionRefusedError as e:
+                        logger.critical(e)
                         logger.critical(
                             f'{self.name}: server connection lost'
                         )
-                        sys.exit(1)
                     print('Connection closed')
                     logger.info(f'{self.name}: connection closed')
                     time.sleep(0.5)
@@ -250,7 +283,7 @@ class Client(MySocket):
                             f'{self.name}: the message from server is incorrect:'
                             f' {message}')
 
-    def create_presence(self):
+    def create_presence_message(self):
         message = {
             ACTION: PRESENCE,
             TIME: time.time(),
@@ -272,7 +305,7 @@ class Client(MySocket):
                 raise ServerError(message[ERROR])
         raise RequiredFieldMissedError(RESPONSE)
 
-    def create_get_all_users(self):
+    def create_get_all_users_request(self):
         logger.debug(f'{self.name}: get all users list from server')
         message = {
             ACTION: GET_ALL_USERS,
@@ -281,16 +314,7 @@ class Client(MySocket):
         }
         return message
 
-    def create_get_active_users(self):
-        logger.debug(f'{self.name}: get all users list from server')
-        message = {
-            ACTION: GET_ACTIVE_USERS,
-            TIME: time.time(),
-            USERNAME: self.name
-        }
-        return message
-
-    def create_get_contacts(self):
+    def create_get_contacts_request(self):
         logger.debug(f'{self.name}: get user contacts list from server')
         message = {
             ACTION: GET_CONTACTS,
@@ -306,14 +330,14 @@ class Client(MySocket):
 
     def load_data(self):
         try:
-            users_list = self.communicate_server(self.create_get_all_users())
+            users_list = self.communicate_server(self.create_get_all_users_request())
             logger.debug(f'{self.name}: server response: {users_list}')
         except ServerError as e:
             logger.error(e)
         else:
             self.database.refresh_known_users(users_list)
         try:
-            contacts_list = self.communicate_server(self.create_get_contacts())
+            contacts_list = self.communicate_server(self.create_get_contacts_request())
             logger.debug(f'{self.name}: server response: {contacts_list}')
 
         except ServerError as e:
@@ -329,7 +353,7 @@ class Client(MySocket):
             self.socket = socket(AF_INET, SOCK_STREAM)
             self.socket.connect((self.host, self.port))
             logger.info(f'{self.name}: trying to connect to server at {self.host}:{self.port}')
-            answer = self.communicate_server(self.create_presence())
+            answer = self.communicate_server(self.create_presence_message())
             logger.debug(f'{self.name}: server response: {answer}')
         except json.decoder.JSONDecodeError as e:
             logger.error(f'JSONDecodeError: {e}')

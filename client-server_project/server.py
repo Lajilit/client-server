@@ -8,7 +8,7 @@ from json.decoder import JSONDecodeError
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USERNAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
     RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
-    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS
+    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, ALERT
 from errors import ServerError
 from socket_include import MySocket, SocketType, CheckServerPort
 from server_database import ServerDB
@@ -53,22 +53,22 @@ class Server(threading.Thread, MySocket):
                 f'{client.getpeername()}: client connection established')
             self.clients.append(client)
 
-    def handle_message(self, message, client_socket):
+    def handle_request(self, request, client_socket):
         """
         The function takes a message from the client and processes it.
         If message is presence-message, function returns a response message
         from the server
         If message is not presence function appends this message into messages_list
 
-        :param message: received message: dict
+        :param request: received message: dict
         :param client_socket: client_socket
 
         """
         logger.info(
             f'{client_socket.getpeername()}: the message from the client is being handled'
         )
-        if ACTION in message and message[ACTION] == PRESENCE and TIME in message and USERNAME in message:
-            client_username = message[USERNAME]
+        if ACTION in request and request[ACTION] == PRESENCE and TIME in request and USERNAME in request:
+            client_username = request[USERNAME]
             client_ip, client_port = client_socket.getpeername()
             if client_username not in self.client_usernames.keys():
                 logger.info(
@@ -83,63 +83,72 @@ class Server(threading.Thread, MySocket):
                 logger.info(f'{client_username} login')
 
             else:
-                response = RESPONSE_400
-                response[ERROR] = 'Username already in use'
-                self.send_data(response, client_socket)
+                request = RESPONSE_400
+                request[ERROR] = 'Username already in use'
+                self.send_data(request, client_socket)
                 self.clients.remove(client_socket)
                 client_socket.close()
 
-        elif ACTION in message and message[ACTION] == MESSAGE and TIME in message and \
-                SENDER in message and DESTINATION in message and MESSAGE_TEXT in message:
-            self.messages.append(message)
-            self.database.database_handle_message(
-                message[SENDER], message[DESTINATION])
-            logger.info(
-                f'message from: {message[SENDER]} to: {message[DESTINATION]} appended into messages_list')
+        elif ACTION in request and request[ACTION] == MESSAGE and TIME in request and \
+                SENDER in request and DESTINATION in request and MESSAGE_TEXT in request:
+            if request[DESTINATION] in self.client_usernames.keys():
+                response = RESPONSE_200
+                response[ALERT] = request
+                self.messages.append(request)
+                self.database.database_handle_message(
+                    request[SENDER], request[DESTINATION])
+                logger.info(
+                    f'message from: {request[SENDER]} to: {request[DESTINATION]} appended into messages_list')
+            else:
+                response = RESPONSE_400
+                response[ERROR] = f'user {request[DESTINATION]} is not registered on the server'
+                logger.info(f'{request[SENDER]}: {response[ERROR]}')
+            self.send_data(response, client_socket)
 
-        elif ACTION in message and message[ACTION] == EXIT and USERNAME in message:
-            client_username = message[USERNAME]
+        elif ACTION in request and request[ACTION] == EXIT and USERNAME in request:
+            client_username = request[USERNAME]
             logger.info(f'{client_username} exit')
+            del self.client_usernames[client_username]
             self.database.user_logout(client_username)
             self.clients.remove(client_socket)
             client_socket.close()
-            del self.client_usernames[client_username]
 
-        elif ACTION in message and message[ACTION] == GET_CONTACTS and USERNAME in message:
-            client_username = message[USERNAME]
+        elif ACTION in request and request[ACTION] == GET_CONTACTS and USERNAME in request:
+            client_username = request[USERNAME]
             response = RESPONSE_202
             response[LIST_INFO] = self.database.get_contacts(client_username)
             self.send_data(response, client_socket)
 
-        elif ACTION in message and message[ACTION] == GET_ALL_USERS and USERNAME in message:
+        elif ACTION in request and request[ACTION] == GET_ALL_USERS and USERNAME in request:
             response = RESPONSE_202
             response[LIST_INFO] = [username for username, last_connection_time in self.database.get_all_users()]
             self.send_data(response, client_socket)
 
-        elif ACTION in message and message[ACTION] == GET_ACTIVE_USERS and USERNAME in message:
+        elif ACTION in request and request[ACTION] == GET_ACTIVE_USERS and USERNAME in request:
             response = RESPONSE_202
             response[LIST_INFO] = [
                 username for username, ip, port, last_connection_time in self.database.get_active_users()
             ]
             self.send_data(response, client_socket)
 
-        elif ACTION in message and message[ACTION] == ADD_CONTACT and USERNAME in message and CONTACT_NAME in message:
-            client_username = message[USERNAME]
-            contact_username = message[CONTACT_NAME]
+        elif ACTION in request and request[ACTION] == ADD_CONTACT and USERNAME in request and CONTACT_NAME in request:
+            client_username = request[USERNAME]
+            contact_username = request[CONTACT_NAME]
             try:
                 self.database.add_contact(client_username, contact_username)
             except ServerError as e:
                 response = RESPONSE_400
-                response[ERROR] = f'{e.args}'
+                response[ERROR] = f'{e}'
                 self.send_data(response, client_socket)
                 logger.info(e)
             else:
                 logger.info(f'{client_username} add contact {contact_username}')
                 self.send_data(RESPONSE_200, client_socket)
 
-        elif ACTION in message and message[ACTION] == REMOVE_CONTACT and USERNAME in message and CONTACT_NAME in message:
-            client_username = message[USERNAME]
-            contact_username = message[CONTACT_NAME]
+        elif ACTION in request and request[ACTION] == REMOVE_CONTACT and \
+                USERNAME in request and CONTACT_NAME in request:
+            client_username = request[USERNAME]
+            contact_username = request[CONTACT_NAME]
             logger.info(f'{client_username} removed contact {contact_username}')
             self.database.remove_contact(client_username, contact_username)
             self.send_data(RESPONSE_200, client_socket)
@@ -148,13 +157,13 @@ class Server(threading.Thread, MySocket):
             self.send_data(RESPONSE_400, client_socket)
             logger.info(ERROR)
 
-    def client_logout(self, client):
+    def client_logout(self, client_socket):
         for username in self.client_usernames:
-            if self.client_usernames[username] == client:
+            if self.client_usernames[username] == client_socket:
                 self.database.user_logout(username)
                 del self.client_usernames[username]
                 break
-        self.clients.remove(client)
+        self.clients.remove(client_socket)
 
     def run(self):
         self.make_connection()
@@ -175,7 +184,7 @@ class Server(threading.Thread, MySocket):
                 for client in clients_senders:
                     try:
                         received_message = self.receive_data(client)
-                        self.handle_message(received_message, client)
+                        self.handle_request(received_message, client)
                     except IntegrityError as e:
                         logger.info(f'{client.getpeername()}: disconnected {e.args}')
                         self.client_logout(client)
