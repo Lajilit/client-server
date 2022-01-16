@@ -65,7 +65,7 @@ class Server(threading.Thread, MySocket):
 
         """
         logger.info(
-            f'{client_socket.getpeername()}: the message from the client is being handled'
+            f'{client_socket.getpeername()}: the request from the client is being handled'
         )
         if ACTION in request and request[ACTION] == PRESENCE and TIME in request and USERNAME in request:
             client_username = request[USERNAME]
