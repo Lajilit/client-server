@@ -270,8 +270,6 @@ class Client(MySocket):
                         if e.errno:
                             logger.critical(f'{self.name}: server connection lost')
                             break
-                        else:
-                            logger.error(f'{self.name}: Connection timeout')
                     except (ConnectionError,
                             ConnectionAbortedError,
                             ConnectionResetError,
@@ -370,6 +368,7 @@ class Client(MySocket):
         logger.info(f'Client module started')
         try:
             self.socket = socket(AF_INET, SOCK_STREAM)
+            self.socket.settimeout(2)
             self.socket.connect((self.host, self.port))
             logger.info(f'{self.name}: trying to connect to server at {self.host}:{self.port}')
             answer = self.communicate_server(self.create_presence_message())
