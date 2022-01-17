@@ -28,8 +28,8 @@ def gui_create_active_users_table(database):
     return active_users_table
 
 
-def gui_create_message_history_table(database):
-    clients_statistics = database.get_message_history()
+def gui_create_clients_statistics_table(database):
+    clients_statistics = database.get_client_statistics()
 
     clients_statistics_table = QStandardItemModel()
     clients_statistics_table.setHorizontalHeaderLabels(
@@ -69,13 +69,13 @@ class MainWindow(QMainWindow):
 
         self.show_server_configuration_button = QAction(QIcon('img/config_btn.png'), 'Server configuration', self)
 
-        self.show_message_history_button = QAction(QIcon('img/message_history_btn.png'), 'Messages history', self)
+        self.show_clients_statistics_button = QAction(QIcon('img/message_history_btn.png'), 'Messages history', self)
 
         self.statusBar()
 
         self.toolbar = self.addToolBar('MainToolBar')
         self.toolbar.addAction(self.refresh_users_list_button)
-        self.toolbar.addAction(self.show_message_history_button)
+        self.toolbar.addAction(self.show_clients_statistics_button)
         self.toolbar.addAction(self.show_server_configuration_button)
         self.toolbar.addAction(exit_action)
 
@@ -115,7 +115,7 @@ class ClientStatisticsWindow(QDialog):
         self.show()
 
 
-class ConfigWindow(QDialog):
+class ServerConfigWindow(QDialog):
     def __init__(self):
         super().__init__()
 
