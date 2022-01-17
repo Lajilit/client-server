@@ -2,3 +2,4 @@
 *.zip
 logs/
 /client-server_project/project_logging/logs/
+test.py
