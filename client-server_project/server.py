@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import QApplication, QMessageBox
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USERNAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
     RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
-    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, ALERT
+    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, ALERT, RESPONSE_404
 from errors import ServerError
 from socket_include import MySocket, SocketType, CheckServerPort
 from server_database import ServerDB
@@ -111,10 +111,9 @@ class Server(threading.Thread, MySocket):
                 self.messages.append(request)
                 self.database.database_handle_message(
                     request[SENDER], request[DESTINATION])
-                logger.info(
-                    f'message from: {request[SENDER]} to: {request[DESTINATION]} appended into messages_list')
+                logger.info(f'message from: {request[SENDER]} to: {request[DESTINATION]} appended into messages_list')
             else:
-                response = RESPONSE_400
+                response = RESPONSE_404
                 response[ERROR] = f'user {request[DESTINATION]} is not registered on the server'
                 logger.info(f'{request[SENDER]}: {response[ERROR]}')
             self.send_data(response, client_socket)
@@ -222,15 +221,6 @@ class Server(threading.Thread, MySocket):
                         except Exception as e:
                             logger.info(f'{client.getpeername()}: connection lost: {e.args}')
                             self.client_logout(client)
-
-
-def print_help():
-    print('Поддерживаемые команды:')
-    print('users - список известных пользователей')
-    print('connected - список подключённых пользователей')
-    print('history - история входов пользователя')
-    print('exit - завершение работы сервера.')
-    print('help - вывод справки по поддерживаемым командам')
 
 
 def config_parser(default_ip, default_port):

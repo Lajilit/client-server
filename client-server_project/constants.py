@@ -36,11 +36,19 @@ RESPONSE_200 = {
     RESPONSE: 200,
     ALERT: 'ok'
 }
+# RESPONSE_201 = {
+#     RESPONSE: 201,
+#     ALERT: 'created'
+# }
+RESPONSE_202 = {
+    RESPONSE: 202,
+    LIST_INFO: []
+}
 RESPONSE_400 = {
     RESPONSE: 400,
     ERROR: 'Bad Request'
 }
-RESPONSE_202 = {
-    RESPONSE: 202,
-    LIST_INFO: []
+RESPONSE_404 = {
+    RESPONSE: 404,
+    ERROR: 'Not Found'
 }

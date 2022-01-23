@@ -40,16 +40,18 @@ class MySocket:
     def __init__(self):
         self.socket = None
 
-    @staticmethod
-    def send_data(message, socket_to_send=None):
+    def send_data(self, message, socket_to_send=None):
         if not isinstance(message, dict):
             raise NonDictDataError
         json_message = json.dumps(message)
         encoded_message = json_message.encode(ENCODING)
+        if not socket_to_send:
+            socket_to_send = self.socket
         socket_to_send.send(encoded_message)
 
-    @staticmethod
-    def receive_data(socket_to_receive=None):
+    def receive_data(self, socket_to_receive=None):
+        if not socket_to_receive:
+            socket_to_receive = self.socket
         encoded_message = socket_to_receive.recv(MAX_PACKAGE_LENGTH)
         if isinstance(encoded_message, bytes):
             decoded_message = encoded_message.decode(ENCODING)
