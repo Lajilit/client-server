@@ -3,7 +3,7 @@ import sys
 
 from PyQt5.QtWidgets import QMainWindow, qApp, QApplication
 
-from client.main_window_conv import Ui_MainClientWindow
+from client.main_window_gui import Ui_MainWindow
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
@@ -14,10 +14,10 @@ class ClientMainWindow(QMainWindow):
         self.database = database
         self.transport = transport
 
-        self.ui = Ui_MainClientWindow()
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.ui.menu_exit.triggered.connect(qApp.exit)
+        self.ui.action_exit.triggered.connect(qApp.exit)
 
         # self.ui.btn_send.clicked.connect(self.send_message)
 
