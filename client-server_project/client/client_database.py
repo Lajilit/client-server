@@ -88,17 +88,6 @@ class ClientDB:
             return True
         return False
 
-    def get_message_history(self, from_who=None, to_who=None):
-        message_history = self.session.query(self.MessageHistory)
-        if from_who:
-            message_history = message_history.filter_by(from_user=from_who)
-        if to_who:
-            message_history = message_history.filter_by(to_user=to_who)
-        return [(message.from_user,
-                 message.to_user,
-                 message.message_text,
-                 message.datetime) for message in message_history.all()]
-
     def get_user_message_history(self, username, contact_name=None):
         message_history = self.session.query(self.MessageHistory)
         if contact_name:

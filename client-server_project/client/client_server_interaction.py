@@ -6,7 +6,8 @@ from socket import socket, AF_INET, SOCK_STREAM
 from PyQt5.QtCore import QObject, pyqtSignal
 
 from constants import ACTION, PRESENCE, TIME, USERNAME, RESPONSE, ALERT, LIST_INFO, ERROR, MESSAGE, SENDER, \
-    MESSAGE_TEXT, DESTINATION, EXIT, GET_ACTIVE_USERS, GET_CONTACTS, ADD_CONTACT, CONTACT_NAME, REMOVE_CONTACT
+    MESSAGE_TEXT, DESTINATION, EXIT, GET_ACTIVE_USERS, GET_CONTACTS, ADD_CONTACT, CONTACT_NAME, REMOVE_CONTACT, \
+    GET_ALL_USERS
 from errors import ServerError
 from socket_include import MySocket
 from project_logging.config.log_config import client_logger as logger
@@ -83,17 +84,6 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         logger.info(f'{self.name}: {PRESENCE} message is created')
         return presence_message
 
-    def create_exit_request(self):
-        request = {
-            ACTION: EXIT,
-            TIME: time.time(),
-            USERNAME: self.name
-        }
-        logger.info(
-            f'{self.name}: {EXIT} request is created'
-        )
-        return request
-
     def handle_response(self, response):
         logger.info(f'{self.name}: the response from the server is being handled')
         if RESPONSE in response:
@@ -124,7 +114,7 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         else:
             logger.debug(f'{self.name}: the response from server is incorrect: {response}')
 
-    def create_message(self, destination, message_text):
+    def send_message(self, destination, message_text):
         message = {
             ACTION: MESSAGE,
             TIME: time.time(),
@@ -133,9 +123,6 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
             MESSAGE_TEXT: message_text
         }
         logger.debug(f'{self.name}: message is created: {message}')
-        return message
-
-    def send_message(self, message):
         server_response = self.communicate_server(message)
         if server_response == 'ok':
             logger.debug(f'{self.name}: message was sent to user {message[DESTINATION]}')
@@ -157,6 +144,20 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         else:
             return active_users_list
 
+    def get_all_users(self):
+        logger.debug(f'{self.name}: get all users list from server')
+        request = {
+            ACTION: GET_ALL_USERS,
+            TIME: time.time(),
+            USERNAME: self.name
+        }
+        try:
+            users_list = self.communicate_server(request)
+        except ServerError as e:
+            logger.error(f'{self.name}: failed to get list of active users: {e}')
+        else:
+            return users_list
+
     def get_contacts(self):
         logger.debug(f'{self.name}: get user contacts list from server')
         request = {
@@ -173,7 +174,7 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
 
     def load_data(self):
         try:
-            users_list = self.get_active_users()
+            users_list = self.get_all_users()
             logger.debug(f'{self.name}: server response: {users_list}')
         except ServerError as e:
             logger.error(e)
@@ -221,10 +222,18 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
             self.database.remove_contact(contact_name)
 
     def terminate_interaction(self):
+        request = {
+            ACTION: EXIT,
+            TIME: time.time(),
+            USERNAME: self.name
+        }
+        logger.info(
+            f'{self.name}: {EXIT} request is created'
+        )
         self.running = False
         with socket_lock:
             try:
-                self.send_data(self.create_exit_request())
+                self.send_data(request)
             except OSError:
                 pass
         logger.debug(f'{self.name}: server interaction process is terminated')
