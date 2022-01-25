@@ -7,16 +7,15 @@ from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QMessageBox
 
 from client.add_contact_dialog import AddContactDialog
 from client.main_window_gui import Ui_MainWindow
-from errors import ServerError
+
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from project_logging.config.log_config import client_logger as logger
 
 class ClientMainWindow(QMainWindow):
-    def __init__(self, database, server_interaction):
+    def __init__(self, db, server_interaction):
         super().__init__()
-        self.database = database
+        self.database = db
         self.server_interaction = server_interaction
 
         self.ui = Ui_MainWindow()
@@ -194,7 +193,7 @@ class ClientMainWindow(QMainWindow):
     #         if self.database.check_contact(sender):
     #             # Если есть, спрашиваем и желании открыть с ним чат и открываем при желании
     #             if self.messages.question(self, 'Новое сообщение', \
-    #                                       f'Получено новое сообщение от {sender}, открыть чат с ним?', QMessageBox.Yes,
+    #                                      f'Получено новое сообщение от {sender}, открыть чат с ним?', QMessageBox.Yes,
     #                                       QMessageBox.No) == QMessageBox.Yes:
     #                 self.current_chat = sender
     #                 self.set_active_user()

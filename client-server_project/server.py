@@ -4,23 +4,23 @@ import os
 import select
 import sys
 import threading
+from json.decoder import JSONDecodeError
 from socket import socket, AF_INET, SOCK_STREAM, SO_REUSEADDR, SOL_SOCKET
 from sqlite3 import IntegrityError
-from json.decoder import JSONDecodeError
 
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMessageBox
 
 from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
-    USERNAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, DEFAULT_PORT, \
-    RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
+    USERNAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, \
+    REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
     GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, ALERT, RESPONSE_404
 from errors import ServerError
-from socket_include import MySocket, SocketType, CheckServerPort
-from server_database import ServerDB
 from project_logging.config.log_config import server_logger as logger
+from server_database import ServerDB
 from server_gui import MainWindow, gui_create_active_users_table, ClientStatisticsWindow, \
     gui_create_clients_statistics_table, ServerConfigWindow
+from socket_include import MySocket, SocketType, CheckServerPort
 
 new_connection = False
 conflag_lock = threading.Lock()
@@ -245,8 +245,8 @@ def main():
         config['SETTINGS']['Listen_Address'], config['SETTINGS']['Default_port'])
 
     database_path = os.path.join(
-            config['SETTINGS']['Database_path'],
-            config['SETTINGS']['Database_file'])
+        config['SETTINGS']['Database_path'],
+        config['SETTINGS']['Database_file'])
     database = ServerDB(database_path)
 
     server = Server(listen_address, listen_port, database)
