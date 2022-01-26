@@ -1,13 +1,15 @@
+import json
 import os
 import sys
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QBrush, QColor
 from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QMessageBox
 
 from client.add_contact_dialog import AddContactDialog
 from client.main_window_gui import Ui_MainWindow
-
+from client.remove_contact_dialog import RemoveContactDialog
+from errors import ServerError
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
@@ -23,15 +25,14 @@ class ClientMainWindow(QMainWindow):
 
         self.ui.action_exit.triggered.connect(qApp.exit)
 
-        # self.ui.button_send_message.clicked.connect(self.send_message)
+        self.ui.button_send_message.clicked.connect(self.send_message)
 
         self.ui.button_add_contact.clicked.connect(self.add_contact_window)
         self.ui.action_add_contact.triggered.connect(self.add_contact_window)
-        #
-        # self.ui.btn_remove_contact.clicked.connect(self.delete_contact_window)
-        # self.ui.menu_del_contact.triggered.connect(self.delete_contact_window)
 
-        # Дополнительные требующиеся атрибуты
+        self.ui.button_remove_contact.clicked.connect(self.remove_contact)
+        self.ui.action_remove_contact.triggered.connect(self.remove_contact_window)
+
         self.contacts_model = None
         self.history_model = None
         self.messages = QMessageBox()
@@ -39,7 +40,7 @@ class ClientMainWindow(QMainWindow):
         self.ui.list_messages.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.ui.list_messages.setWordWrap(True)
 
-        self.ui.list_contacts.clicked.connect(self.set_current_contact)
+        self.ui.list_contacts.clicked.connect(self.select_contact)
 
         self.clients_list_update()
         self.set_disabled_input()
@@ -52,6 +53,7 @@ class ClientMainWindow(QMainWindow):
             self.history_model.clear()
 
         self.ui.button_send_message.setDisabled(True)
+        self.ui.button_remove_contact.setDisabled(True)
         self.ui.input_new_message.setDisabled(True)
 
     def update_message_history(self):
@@ -87,14 +89,16 @@ class ClientMainWindow(QMainWindow):
                 self.history_model.appendRow(message)
         self.ui.list_messages.scrollToBottom()
 
-    def set_current_contact(self):
+    def select_contact(self):
         self.current_contact = self.ui.list_contacts.currentIndex().data()
+        self.set_current_contact()
 
+    def set_current_contact(self):
         self.ui.label_contact_name.setText(f'{self.current_contact}:')
         self.ui.button_send_message.setDisabled(False)
         self.ui.input_new_message.setDisabled(False)
+        self.ui.button_remove_contact.setDisabled(False)
 
-        # Заполняем окно историю сообщений по требуемому пользователю.
         self.update_message_history()
 
     def clients_list_update(self):
@@ -113,122 +117,122 @@ class ClientMainWindow(QMainWindow):
         select_dialog.show()
 
     def add_contact_action(self, item):
-        new_contact = item.selector.currentText()
-        self.add_contact(new_contact)
+        new_contact_name = item.selector.currentText()
+        self.add_contact(new_contact_name)
         item.close()
 
-    def add_contact(self, new_contact):
+    def add_contact(self, new_contact_name):
         try:
-            self.server_interaction.add_contact(new_contact)
+            self.server_interaction.add_contact(new_contact_name)
         except OSError as e:
             if e.errno:
                 self.messages.critical(self, 'Error', 'Server connection lost')
                 self.close()
             self.messages.critical(self, 'Error', 'Connection timeout')
+        except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
+            self.messages.critical(self, 'Error', 'Server connection lost')
+            self.close()
         else:
-            new_contact = QStandardItem(new_contact)
+            new_contact = QStandardItem(new_contact_name)
             new_contact.setEditable(False)
             self.contacts_model.appendRow(new_contact)
-            self.messages.information(self, 'Success', f'Contact {new_contact} added successfully')
-    #
-    # # Функция удаления контакта
-    # def delete_contact_window(self):
-    #     global remove_dialog
-    #     remove_dialog = DelContactDialog(self.database)
-    #     remove_dialog.btn_ok.clicked.connect(lambda: self.delete_contact(remove_dialog))
-    #     remove_dialog.show()
-    #
-    # # Функция обработчик удаления контакта, сообщает на сервер, обновляет таблицу контактов
-    # def delete_contact(self, item):
-    #     selected = item.selector.currentText()
-    #     try:
-    #         self.transport.remove_contact(selected)
-    #     except ServerError as err:
-    #         self.messages.critical(self, 'Ошибка сервера', err.text)
-    #     except OSError as err:
-    #         if err.errno:
-    #             self.messages.critical(self, 'Ошибка', 'Потеряно соединение с сервером!')
-    #             self.close()
-    #         self.messages.critical(self, 'Ошибка', 'Таймаут соединения!')
-    #     else:
-    #         self.database.del_contact(selected)
-    #         self.clients_list_update()
-    #         logger.info(f'Успешно удалён контакт {selected}')
-    #         self.messages.information(self, 'Успех', 'Контакт успешно удалён.')
-    #         item.close()
-    #         # Если удалён активный пользователь, то деактивируем поля ввода.
-    #         if selected == self.current_contact:
-    #             self.current_contact = None
-    #             self.set_disabled_input()
+            self.messages.information(self, 'Success', f'Contact {new_contact_name} added successfully')
 
-    # def send_message(self):
-    #     message_text = self.ui.input_new_message.toPlainText()
-    #     if message_text:
-    #         try:
-    #             self.server_interaction.send_message(self.current_contact, message_text)
-    #             pass
-    #         except ServerError as err:
-    #             self.messages.critical(self, 'Ошибка', err.text)
-    #         except OSError as err:
-    #             if err.errno:
-    #                 self.messages.critical(self, 'Ошибка', 'Потеряно соединение с сервером!')
-    #                 self.close()
-    #             self.messages.critical(self, 'Ошибка', 'Таймаут соединения!')
-    #         except (ConnectionResetError, ConnectionAbortedError):
-    #             self.messages.critical(self, 'Ошибка', 'Потеряно соединение с сервером!')
-    #             self.close()
-    #         else:
-    #             self.database.save_message(self.current_contact, 'out', message_text)
-    #             logger.debug(f'Отправлено сообщение для {self.current_contact}: {message_text}')
-    #             self.update_message_history()
-    #     self.ui.input_new_message.clear()
-    #
-    # # Слот приёма нового сообщений
-    # @pyqtSlot(str)
-    # def message(self, sender):
-    #     if sender == self.current_chat:
-    #         self.history_list_update()
-    #     else:
-    #         # Проверим есть ли такой пользователь у нас в контактах:
-    #         if self.database.check_contact(sender):
-    #             # Если есть, спрашиваем и желании открыть с ним чат и открываем при желании
-    #             if self.messages.question(self, 'Новое сообщение', \
-    #                                      f'Получено новое сообщение от {sender}, открыть чат с ним?', QMessageBox.Yes,
-    #                                       QMessageBox.No) == QMessageBox.Yes:
-    #                 self.current_chat = sender
-    #                 self.set_active_user()
-    #         else:
-    #             print('NO')
-    #             # Раз нет, спрашиваем хотим ли добавить юзера в контакты.
-    #             if self.messages.question(self, 'Новое сообщение',
-    #                                       f'Получено новое сообщение от {sender}.\n '
-    #                                       f'Данного пользователя нет в вашем контакт-листе.\n'
-    #                                       f' Добавить в контакты и открыть чат с ним?',
-    #                                       QMessageBox.Yes,
-    #                                       QMessageBox.No) == QMessageBox.Yes:
-    #                 self.add_contact(sender)
-    #                 self.current_chat = sender
-    #                 self.set_active_user()
-    #
-    # # Слот потери соединения
-    # # Выдаёт сообщение об ошибке и завершает работу приложения
-    # @pyqtSlot()
-    # def connection_lost(self):
-    #     self.messages.warning(self, 'Сбой соединения', 'Потеряно соединение с сервером. ')
-    #     self.close()
-    #
-    # def make_connection(self, trans_obj):
-    #     trans_obj.new_message.connect(self.message)
-    #     trans_obj.connection_lost.connect(self.connection_lost)
+    def remove_contact_window(self):
+        global remove_dialog
+        remove_dialog = RemoveContactDialog(self.database)
+        remove_dialog.btn_ok.clicked.connect(lambda: self.remove_contact(remove_dialog))
+        remove_dialog.show()
+
+    def remove_contact_action(self, item):
+        contact_to_remove = item.selector.currentText()
+        self.remove_contact(contact_to_remove)
+        item.close()
+
+    def remove_contact(self, contact_to_remove=None):
+        if not contact_to_remove:
+            contact_to_remove = self.current_contact
+        try:
+            self.server_interaction.remove_contact(contact_to_remove)
+        except OSError as e:
+            if e.errno:
+                self.messages.critical(self, 'Error', 'Server connection lost')
+                self.close()
+            self.messages.critical(self, 'Error', 'Connection timeout')
+        except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
+            self.messages.critical(self, 'Error', 'Server connection lost')
+            self.close()
+        else:
+            self.database.remove_contact(contact_to_remove)
+            self.clients_list_update()
+
+            self.messages.information(self, 'Success', f'Contact {contact_to_remove} removed successfully')
+            if contact_to_remove == self.current_contact:
+                self.current_contact = None
+                self.set_disabled_input()
+
+    def send_message(self):
+        message_text = self.ui.input_new_message.toPlainText()
+        if message_text:
+            try:
+                self.server_interaction.send_message(self.current_contact, message_text)
+                pass
+            except ServerError as e:
+                self.messages.critical(self, 'Error', e.error_text)
+            except OSError as e:
+                if e.errno:
+                    self.messages.critical(self, 'Error', 'Server connection lost')
+                    self.close()
+                self.messages.critical(self, 'Error', 'Connection timeout')
+            except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
+                self.messages.critical(self, 'Error', 'Server connection lost')
+                self.close()
+            else:
+                self.database.save_message(self.server_interaction.name, self.current_contact, message_text)
+                self.update_message_history()
+        self.ui.input_new_message.clear()
+
+    @pyqtSlot(str)
+    def message(self, sender):
+        if sender == self.current_contact:
+            self.update_message_history()
+        else:
+            if self.database.check_user_is_a_contact(sender):
+                if self.messages.question(self,
+                                          'New message',
+                                          f'Received new message from {sender}, do you want to start messaging?',
+                                          QMessageBox.Yes,
+                                          QMessageBox.No) == QMessageBox.Yes:
+                    self.current_contact = sender
+                    self.select_contact()
+            else:
+                if self.messages.question(self,
+                                          'New message',
+                                          f'Received new message from {sender}.\n '
+                                          f'Do you want to add him to your contacts and start messaging?',
+                                          QMessageBox.Yes,
+                                          QMessageBox.No) == QMessageBox.Yes:
+                    self.add_contact(sender)
+                    self.current_contact = sender
+                    self.select_contact()
+
+    @pyqtSlot()
+    def connection_lost(self):
+        self.messages.warning(self, 'Connection failure', 'Server connection lost')
+        self.close()
+
+    def make_connection(self, trans_obj):
+        trans_obj.new_message.connect(self.message)
+        trans_obj.connection_lost.connect(self.connection_lost)
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     from client_database import ClientDB
 
-    database = ClientDB('test3')
-    from client_server_interaction import ClientServerInteraction
+    database = ClientDB('test30')
+    from server_interaction import ClientServerInteraction
 
-    transport = ClientServerInteraction('127.0.0.1', 7777, 'test3', database)
-    window = ClientMainWindow(database, transport)
+    server_int = ClientServerInteraction('127.0.0.1', 7777, 'test30', database)
+    window = ClientMainWindow(database, server_int)
     sys.exit(app.exec_())

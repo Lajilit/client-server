@@ -17,10 +17,10 @@ class Ui_MainWindow(object):
         MainWindow.resize(1000, 800)
         MainWindow.setMaximumSize(QtCore.QSize(2000, 2000))
 
-        self.mainwidget = QtWidgets.QWidget(MainWindow)
-        self.mainwidget.setObjectName("main_widget")
+        self.main_widget = QtWidgets.QWidget(MainWindow)
+        self.main_widget.setObjectName("main_widget")
 
-        self.layout_main_widget = QtWidgets.QGridLayout(self.mainwidget)
+        self.layout_main_widget = QtWidgets.QGridLayout(self.main_widget)
         self.layout_main_widget.setObjectName("layout_main_widget")
 
         self.layout_contacts = QtWidgets.QVBoxLayout()
@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.layout_search.setSpacing(0)
         self.layout_search.setObjectName("layout_search")
 
-        self.label_search = QtWidgets.QLabel(self.mainwidget)
+        self.label_search = QtWidgets.QLabel(self.main_widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
 
         self.layout_search.addWidget(self.label_search)
 
-        self.input_search = QtWidgets.QTextEdit(self.mainwidget)
+        self.input_search = QtWidgets.QTextEdit(self.main_widget)
         self.input_search.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
 
         self.layout_contacts.addLayout(self.layout_search)
 
-        self.list_contacts = QtWidgets.QListView(self.mainwidget)
+        self.list_contacts = QtWidgets.QListView(self.main_widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -73,7 +73,7 @@ class Ui_MainWindow(object):
 
         self.layout_contacts.addWidget(self.list_contacts)
 
-        self.button_add_contact = QtWidgets.QPushButton(self.mainwidget)
+        self.button_add_contact = QtWidgets.QPushButton(self.main_widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -86,10 +86,13 @@ class Ui_MainWindow(object):
 
         self.layout_main_widget.addLayout(self.layout_contacts, 0, 0, 1, 1)
 
-        self.messages = QtWidgets.QVBoxLayout()
-        self.messages.setObjectName("messages")
+        self.layout_messages = QtWidgets.QVBoxLayout()
+        self.layout_messages.setObjectName("messages")
 
-        self.label_contact_name = QtWidgets.QLabel(self.mainwidget)
+        self.layout_contact_name = QtWidgets.QHBoxLayout()
+        self.layout_contact_name.setObjectName("layout_contact_name")
+
+        self.label_contact_name = QtWidgets.QLabel(self.main_widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -98,16 +101,32 @@ class Ui_MainWindow(object):
         self.label_contact_name.setMinimumSize(QtCore.QSize(0, 30))
         self.label_contact_name.setObjectName("label_contact_name")
 
-        self.messages.addWidget(self.label_contact_name)
+        self.layout_contact_name.addWidget(self.label_contact_name)
 
-        self.list_messages = QtWidgets.QListView(self.mainwidget)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.layout_contact_name.addItem(spacerItem)
+
+        self.button_remove_contact = QtWidgets.QPushButton(self.main_widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.button_remove_contact.sizePolicy().hasHeightForWidth())
+        self.button_remove_contact.setSizePolicy(sizePolicy)
+        self.button_remove_contact.setMaximumSize(QtCore.QSize(200, 30))
+        self.button_remove_contact.setObjectName("button_remove_contact")
+
+        self.layout_contact_name.addWidget(self.button_remove_contact)
+
+        self.layout_messages.addLayout(self.layout_contact_name)
+
+        self.list_messages = QtWidgets.QListView(self.main_widget)
         self.list_messages.setMinimumSize(QtCore.QSize(500, 400))
         self.list_messages.setMaximumSize(QtCore.QSize(2000, 2000))
         self.list_messages.setObjectName("list_messages")
 
-        self.messages.addWidget(self.list_messages)
+        self.layout_messages.addWidget(self.list_messages)
 
-        self.input_new_message = QtWidgets.QTextEdit(self.mainwidget)
+        self.input_new_message = QtWidgets.QTextEdit(self.main_widget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(100)
@@ -117,7 +136,7 @@ class Ui_MainWindow(object):
         self.input_new_message.setMaximumSize(QtCore.QSize(2000, 100))
         self.input_new_message.setObjectName("input_new_message")
 
-        self.messages.addWidget(self.input_new_message)
+        self.layout_messages.addWidget(self.input_new_message)
 
         self.layout_send_message = QtWidgets.QHBoxLayout()
         self.layout_send_message.setSizeConstraint(QtWidgets.QLayout.SetMinimumSize)
@@ -125,16 +144,16 @@ class Ui_MainWindow(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.layout_send_message.addItem(spacerItem)
 
-        self.button_send_message = QtWidgets.QPushButton(self.mainwidget)
+        self.button_send_message = QtWidgets.QPushButton(self.main_widget)
         self.button_send_message.setObjectName("button_send_message")
 
         self.layout_send_message.addWidget(self.button_send_message)
 
-        self.messages.addLayout(self.layout_send_message)
+        self.layout_messages.addLayout(self.layout_send_message)
 
-        self.layout_main_widget.addLayout(self.messages, 0, 1, 1, 1)
+        self.layout_main_widget.addLayout(self.layout_messages, 0, 1, 1, 1)
 
-        MainWindow.setCentralWidget(self.mainwidget)
+        MainWindow.setCentralWidget(self.main_widget)
 
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 964, 22))
@@ -178,6 +197,7 @@ class Ui_MainWindow(object):
         ))
         self.button_add_contact.setText(_translate("MainWindow", "Add new contact"))
         self.label_contact_name.setText(_translate("MainWindow", "Choose contact to show history"))
+        self.button_remove_contact.setText(_translate("MainWindow", "Remove Contact"))
         self.button_send_message.setText(_translate("MainWindow", "Send message"))
         self.menu_file.setTitle(_translate("MainWindow", "File"))
         self.menu_contacts.setTitle(_translate("MainWindow", "Contacts"))

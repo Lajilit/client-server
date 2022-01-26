@@ -147,7 +147,7 @@ p, li { white-space: pre-wrap; }
         <property name="maximumSize">
          <size>
           <width>200</width>
-          <height>16777215</height>
+          <height>30</height>
          </size>
         </property>
         <property name="toolTipDuration">
@@ -161,28 +161,64 @@ p, li { white-space: pre-wrap; }
      </layout>
     </item>
     <item row="0" column="1">
-     <layout class="QVBoxLayout" name="messages">
+     <layout class="QVBoxLayout" name="layout_messages">
       <item>
-       <widget class="QLabel" name="label_contact_name">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="toolTipDuration">
-         <number>0</number>
-        </property>
-        <property name="text">
-         <string>Choose contact to show history</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="layout_contact_name">
+        <item>
+         <widget class="QLabel" name="label_contact_name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="toolTipDuration">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string>Choose contact to show history</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_remove_contact">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>200</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Delete Contact</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QListView" name="list_messages">
