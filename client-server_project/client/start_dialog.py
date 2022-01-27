@@ -1,6 +1,12 @@
+import os
+import sys
+
 from PyQt5.QtWidgets import QDialog, QApplication, qApp
 
-from client.start_dialog_ui import UI_StartDialog
+from client.start_dialog_gui import UI_StartDialog
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(BASE_DIR)
 
 
 class StartDialog(QDialog):
@@ -8,10 +14,11 @@ class StartDialog(QDialog):
         super().__init__()
         self.ui = UI_StartDialog()
         self.ui.setupUi(self)
+
         self.ok_pressed = False
 
         self.setWindowTitle('Hello!')
-        print(self.ui.__dict__)
+
         self.ui.button_ok.clicked.connect(self.click)
         self.ui.button_cancel.clicked.connect(qApp.exit)
 

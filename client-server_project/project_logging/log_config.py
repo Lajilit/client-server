@@ -1,7 +1,8 @@
 import os, sys
 
-parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-sys.path.append(parent_directory)
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(BASE_DIR)
+
 
 import logging, logging.handlers
 
@@ -9,7 +10,7 @@ logs_formatter = logging.Formatter(
     '%(asctime)-25s %(levelname)-10s %(filename)s    %(message)s'
 )
 
-logs_file = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+logs_file = os.path.dirname(__file__)
 
 console_handler = logging.StreamHandler(sys.stderr)
 console_handler.setFormatter(logs_formatter)

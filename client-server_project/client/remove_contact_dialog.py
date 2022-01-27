@@ -1,15 +1,11 @@
 import os
 import sys
-import logging
 
-sys.path.append('../')
 from PyQt5.QtWidgets import QDialog, QLabel, QComboBox, QPushButton, QApplication
 from PyQt5.QtCore import Qt
 
-
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-from project_logging.config.log_config import client_logger as logger
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(BASE_DIR)
 
 
 class RemoveContactDialog(QDialog):
@@ -44,7 +40,7 @@ class RemoveContactDialog(QDialog):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    from client_database import ClientDB
+    from client_old.client_database import ClientDB
     database = ClientDB('test30')
     database.add_contact('test1')
     database.add_contact('test6')

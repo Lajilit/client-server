@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 
-from errors import ServerError
+from common.errors import ServerError
 
 
 class ServerDB:

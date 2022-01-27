@@ -36,10 +36,6 @@ RESPONSE_200 = {
     RESPONSE: 200,
     ALERT: 'ok'
 }
-# RESPONSE_201 = {
-#     RESPONSE: 201,
-#     ALERT: 'created'
-# }
 RESPONSE_202 = {
     RESPONSE: 202,
     LIST_INFO: []

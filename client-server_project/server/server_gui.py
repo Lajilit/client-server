@@ -1,9 +1,12 @@
+import os
 import sys
 from PyQt5.QtWidgets import QMainWindow, QAction, qApp, QApplication, QLabel, QTableView, QDialog, QPushButton, \
     QLineEdit, QFileDialog
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QIcon
 from PyQt5.QtCore import Qt
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(BASE_DIR)
 
 def gui_create_active_users_table(database):
     active_users = database.get_active_users()
@@ -61,15 +64,18 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
 
-        exit_action = QAction(QIcon('img/exit_btn.png'), 'Exit', self)
+        exit_action = QAction(QIcon(os.path.join(BASE_DIR, 'server', 'img', 'exit_btn.png')), 'Exit', self)
         exit_action.setShortcut('Ctrl+Q')
         exit_action.triggered.connect(qApp.quit)
 
-        self.refresh_users_list_button = QAction(QIcon('img/refresh_btn.png'), 'Refresh active users list', self)
+        self.refresh_users_list_button = QAction(
+            QIcon(os.path.join(BASE_DIR, 'server', 'img', 'refresh_btn.png')), 'Refresh active users list', self)
 
-        self.show_server_configuration_button = QAction(QIcon('img/config_btn.png'), 'Server configuration', self)
+        self.show_server_configuration_button = QAction(
+            QIcon(os.path.join(BASE_DIR, 'server', 'img', 'config_btn.png')), 'Server configuration', self)
 
-        self.show_clients_statistics_button = QAction(QIcon('img/message_history_btn.png'), 'Messages history', self)
+        self.show_clients_statistics_button = QAction(
+            QIcon(os.path.join(BASE_DIR, 'server', 'img', 'message_history_btn.png')), 'Messages history', self)
 
         self.statusBar()
 
@@ -185,18 +191,18 @@ class ServerConfigWindow(QDialog):
 
 
 if __name__ == '__main__':
-    # app = QApplication(sys.argv)
-    # main_window = MainWindow()
-    # main_window.statusBar().showMessage('Test Statusbar Message')
-    # test_list = QStandardItemModel(main_window)
-    # test_list.setHorizontalHeaderLabels(['Имя Клиента', 'IP Адрес', 'Порт', 'Время подключения'])
-    # test_list.appendRow(
-    #     [QStandardItem('test1'), QStandardItem('192.198.0.5'), QStandardItem('23544'), QStandardItem('16:20:34')])
-    # test_list.appendRow(
-    #     [QStandardItem('test2'), QStandardItem('192.198.0.8'), QStandardItem('33245'), QStandardItem('16:22:11')])
-    # main_window.active_clients_table.setModel(test_list)
-    # main_window.active_clients_table.resizeColumnsToContents()
-    # app.exec_()
+    app = QApplication(sys.argv)
+    main_window = MainWindow()
+    main_window.statusBar().showMessage('Test Statusbar Message')
+    test_list = QStandardItemModel(main_window)
+    test_list.setHorizontalHeaderLabels(['Имя Клиента', 'IP Адрес', 'Порт', 'Время подключения'])
+    test_list.appendRow(
+        [QStandardItem('test1'), QStandardItem('192.198.0.5'), QStandardItem('23544'), QStandardItem('16:20:34')])
+    test_list.appendRow(
+        [QStandardItem('test2'), QStandardItem('192.198.0.8'), QStandardItem('33245'), QStandardItem('16:22:11')])
+    main_window.active_clients_table.setModel(test_list)
+    main_window.active_clients_table.resizeColumnsToContents()
+    app.exec_()
 
     # ----------------------------------------------------------
     # app = QApplication(sys.argv)
@@ -205,16 +211,16 @@ if __name__ == '__main__':
     # app.exec_()
 
     # ----------------------------------------------------------
-    app = QApplication(sys.argv)
-    window = ClientStatisticsWindow()
-    test_list = QStandardItemModel(window)
-    test_list.setHorizontalHeaderLabels(
-        ['Username', 'Last connection time', 'Messages sent', 'Messages received'])
-    test_list.appendRow(
-        [QStandardItem('test1'), QStandardItem('Fri Dec 12 16:20:34 2020'), QStandardItem('2'), QStandardItem('3')])
-    test_list.appendRow(
-        [QStandardItem('test2'), QStandardItem('Fri Dec 12 16:23:12 2020'), QStandardItem('8'), QStandardItem('5')])
-    window.clients_statistics_table.setModel(test_list)
-    window.clients_statistics_table.resizeColumnsToContents()
-
-    app.exec_()
+    # app = QApplication(sys.argv)
+    # window = ClientStatisticsWindow()
+    # test_list = QStandardItemModel(window)
+    # test_list.setHorizontalHeaderLabels(
+    #     ['Username', 'Last connection time', 'Messages sent', 'Messages received'])
+    # test_list.appendRow(
+    #     [QStandardItem('test1'), QStandardItem('Fri Dec 12 16:20:34 2020'), QStandardItem('2'), QStandardItem('3')])
+    # test_list.appendRow(
+    #     [QStandardItem('test2'), QStandardItem('Fri Dec 12 16:23:12 2020'), QStandardItem('8'), QStandardItem('5')])
+    # window.clients_statistics_table.setModel(test_list)
+    # window.clients_statistics_table.resizeColumnsToContents()
+    #
+    # app.exec_()

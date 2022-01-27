@@ -11,16 +11,18 @@ from sqlite3 import IntegrityError
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMessageBox
 
-from constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
+from common.constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USERNAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, \
     REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
     GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, ALERT, RESPONSE_404
-from errors import ServerError
-from project_logging.config.log_config import server_logger as logger
-from server_database import ServerDB
-from server_gui import MainWindow, gui_create_active_users_table, ClientStatisticsWindow, \
+from common.errors import ServerError
+from project_logging.log_config import server_logger as logger
+from server.server_database import ServerDB
+from server.server_gui import MainWindow, gui_create_active_users_table, ClientStatisticsWindow, \
     gui_create_clients_statistics_table, ServerConfigWindow
-from socket_include import MySocket, SocketType, CheckServerPort
+from common.socket_include import MySocket, SocketType, CheckServerPort
+
+BASE_DIR = os.path.dirname(__file__)
 
 new_connection = False
 conflag_lock = threading.Lock()
@@ -237,9 +239,10 @@ def config_parser(default_ip, default_port):
 
 
 def main():
-    base_dir = os.path.dirname(os.path.realpath(__file__))
+
+    config_path = os.path.join(BASE_DIR, 'server', 'server.ini')
     config = configparser.ConfigParser()
-    config.read(f"{base_dir}/{'server.ini'}")
+    config.read(config_path)
 
     listen_address, listen_port = config_parser(
         config['SETTINGS']['Listen_Address'], config['SETTINGS']['Default_port'])
@@ -298,7 +301,7 @@ def main():
             if 1023 < port < 65536:
                 config['SETTINGS']['Default_port'] = str(port)
                 print(port)
-                with open('server.ini', 'w') as conf:
+                with open(f'{BASE_DIR}/server/server.ini', 'w') as conf:
                     config.write(conf)
                     message.information(
                         config_window, 'Ok', 'Settings saved')

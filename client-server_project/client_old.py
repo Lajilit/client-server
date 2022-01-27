@@ -6,13 +6,13 @@ import threading
 import time
 from socket import socket, AF_INET, SOCK_STREAM
 
-from client_database import ClientDB
-from constants import DEFAULT_IP, DEFAULT_PORT, ACTION, PRESENCE, TIME, \
+from client_old.client_database import ClientDB
+from common.constants import DEFAULT_IP, DEFAULT_PORT, ACTION, PRESENCE, TIME, \
     USERNAME, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT, ADD_CONTACT, \
     REMOVE_CONTACT, GET_ALL_USERS, LIST_INFO, GET_CONTACTS, GET_ACTIVE_USERS, CONTACT_NAME, ALERT
-from project_logging.config.log_config import client_logger as logger
-from socket_include import MySocket, SocketType
-from errors import RequiredFieldMissedError, ServerError, IncorrectDataReceivedError, UnknownUserError
+from project_logging.log_config import client_logger as logger
+from common.socket_include import MySocket, SocketType
+from common.errors import RequiredFieldMissedError, ServerError, IncorrectDataReceivedError, UnknownUserError
 
 sock_lock = threading.Lock()
 database_lock = threading.Lock()

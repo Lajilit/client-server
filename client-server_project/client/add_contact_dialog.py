@@ -4,9 +4,10 @@ import sys
 from PyQt5.QtWidgets import QDialog, QLabel, QComboBox, QPushButton, QApplication
 from PyQt5.QtCore import Qt
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from project_logging.log_config import client_logger as logger
 
-from project_logging.config.log_config import client_logger as logger
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(BASE_DIR)
 
 
 class AddContactDialog(QDialog):
@@ -66,9 +67,11 @@ class AddContactDialog(QDialog):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    from client_database import ClientDB
+    from client_old.client_database import ClientDB
+
     database = ClientDB('test3')
     from server_interaction import ClientServerInteraction
+
     transport = ClientServerInteraction('127.0.0.1', 7777, 'test3', database)
     window = AddContactDialog(transport, database)
     window.show()

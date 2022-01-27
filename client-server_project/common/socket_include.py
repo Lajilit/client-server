@@ -1,8 +1,8 @@
 import json
 import sys
 from enum import Enum
-from constants import ENCODING, MAX_PACKAGE_LENGTH
-from errors import IncorrectDataReceivedError, NonDictDataError
+from common.constants import ENCODING, MAX_PACKAGE_LENGTH
+from common.errors import IncorrectDataReceivedError, NonDictDataError
 
 
 class SocketType(Enum):
