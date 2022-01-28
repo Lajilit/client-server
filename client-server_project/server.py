@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import QApplication, QMessageBox
 from common.constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     USERNAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, \
     REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
-    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, ALERT, RESPONSE_404
+    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, RESPONSE_404
 from common.errors import ServerError
 from project_logging.log_config import server_logger as logger
 from server.server_database import ServerDB
@@ -36,11 +36,11 @@ class Server(threading.Thread, MySocket):
         super().__init__()
         self.port = server_port
         self.host = server_ip
+        self.database = db
         self.socket = None
         self.clients = []
         self.client_usernames = {}
         self.messages = []
-        self.database = db
 
     def make_connection(self):
         """Создаёт сокет и устанавливает соединение"""
@@ -97,7 +97,6 @@ class Server(threading.Thread, MySocket):
                 logger.info(f'{client_username} login')
                 with conflag_lock:
                     new_connection = True
-
             else:
                 request = RESPONSE_400
                 request[ERROR] = 'Username already in use'
@@ -109,7 +108,6 @@ class Server(threading.Thread, MySocket):
                 SENDER in request and DESTINATION in request and MESSAGE_TEXT in request:
             if request[DESTINATION] in self.client_usernames.keys():
                 response = RESPONSE_200
-                response[ALERT] = request
                 self.messages.append(request)
                 self.database.database_handle_message(
                     request[SENDER], request[DESTINATION])
@@ -195,7 +193,7 @@ class Server(threading.Thread, MySocket):
                         self.clients, self.clients, [], 0
                     )
             except OSError as e:
-                logger.error(f'Socket error: {e.args}')
+                logger.e(f'Socket error: {e.args}')
 
             if clients_senders:
                 for client in clients_senders:
@@ -216,8 +214,7 @@ class Server(threading.Thread, MySocket):
                 data_to_send = self.messages.pop(0)
                 client_name = data_to_send[DESTINATION]
                 for client in clients_receivers:
-                    if client_name in self.client_usernames.keys() and \
-                            client == self.client_usernames[client_name]:
+                    if client_name in self.client_usernames.keys() and client == self.client_usernames[client_name]:
                         try:
                             self.send_data(data_to_send, client)
                         except Exception as e:

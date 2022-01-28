@@ -40,7 +40,7 @@ class RemoveContactDialog(QDialog):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    from client_old.client_database import ClientDB
+    from client.client_database import ClientDB
     database = ClientDB('test30')
     database.add_contact('test1')
     database.add_contact('test6')

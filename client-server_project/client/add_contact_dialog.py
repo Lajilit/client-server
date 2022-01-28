@@ -67,7 +67,7 @@ class AddContactDialog(QDialog):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    from client_old.client_database import ClientDB
+    from client.client_database import ClientDB
 
     database = ClientDB('test3')
     from server_interaction import ClientServerInteraction

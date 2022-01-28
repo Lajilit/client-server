@@ -1,10 +1,9 @@
-import os, sys
+import os
+import sys
+import logging.handlers
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(BASE_DIR)
-
-
-import logging, logging.handlers
 
 logs_formatter = logging.Formatter(
     '%(asctime)-25s %(levelname)-10s %(filename)s    %(message)s'
@@ -25,7 +24,6 @@ client_logger = logging.getLogger('client')
 client_logger.addHandler(console_handler)
 client_logger.addHandler(client_file_handler)
 client_logger.setLevel(logging.DEBUG)
-
 
 server_logs_file = os.path.join(logs_file, 'logs', 'server.log')
 server_file_handler = logging.handlers.TimedRotatingFileHandler(

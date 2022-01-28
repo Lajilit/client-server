@@ -113,7 +113,7 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
             try:
                 self.database.save_message(response[SENDER], self.name, response[MESSAGE_TEXT])
             except Exception as e:
-                logger.error(f'{self.name}: Database error: {e}')
+                logger.e(f'{self.name}: Database error: {e}')
             else:
                 self.new_message.emit(response[SENDER])
         else:
@@ -129,11 +129,12 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         }
         logger.debug(f'{self.name}: message is created: {message}')
         server_response = self.communicate_server(message)
-        if server_response == 'ok':
-            logger.debug(f'{self.name}: message was sent to user {message[DESTINATION]}')
-            self.database.save_message(self.name, message[DESTINATION], message[MESSAGE_TEXT])
-        else:
-            logger.debug(server_response)
+        return server_response
+        # if server_response == 'ok':
+        #     logger.debug(f'{self.name}: message was sent to user {message[DESTINATION]}')
+        #     self.database.save_message(self.name, message[DESTINATION], message[MESSAGE_TEXT])
+        # else:
+        #     logger.debug(server_response)
 
     def get_active_users(self):
         logger.debug(f'{self.name}: get active users list from server')
@@ -145,7 +146,7 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         try:
             active_users_list = self.communicate_server(request)
         except ServerError as e:
-            logger.error(f'{self.name}: failed to get list of active users: {e}')
+            logger.e(f'{self.name}: failed to get list of active users: {e}')
         else:
             return active_users_list
 
@@ -159,7 +160,7 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         try:
             users_list = self.communicate_server(request)
         except ServerError as e:
-            logger.error(f'{self.name}: failed to get list of active users: {e}')
+            logger.e(f'{self.name}: failed to get list of active users: {e}')
         else:
             return users_list
 
@@ -173,7 +174,7 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         try:
             user_contacts = self.communicate_server(request)
         except ServerError as e:
-            logger.error(f'{self.name}: failed to get contacts list: {e}')
+            logger.e(f'{self.name}: failed to get contacts list: {e}')
         else:
             return user_contacts
 
@@ -182,14 +183,14 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
             users_list = self.get_all_users()
             logger.debug(f'{self.name}: server response: {users_list}')
         except ServerError as e:
-            logger.error(e)
+            logger.e(e)
         else:
             self.database.refresh_known_users(users_list)
         try:
             contacts_list = self.get_contacts()
             logger.debug(f'{self.name}: server response: {contacts_list}')
         except ServerError as e:
-            logger.error(e)
+            logger.e(e)
         else:
             for contact in contacts_list:
                 self.database.add_contact(contact)
@@ -205,7 +206,7 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         try:
             result = self.communicate_server(request)
         except ServerError as e:
-            logger.error(f'{self.name}: failed to add new contact: {e}')
+            logger.e(f'{self.name}: failed to add new contact: {e}')
         else:
             logger.debug(f'{self.name}: contact {contact_name} added successfully: {result}')
             self.database.add_contact(contact_name)
@@ -221,7 +222,7 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         try:
             result = self.communicate_server(request)
         except ServerError as e:
-            logger.error(f'{self.name}: failed to remove contact: {e}')
+            logger.e(f'{self.name}: failed to remove contact: {e}')
         else:
             logger.debug(f'{self.name}: contact {contact_name} removed successfully: {result}')
             self.database.remove_contact(contact_name)

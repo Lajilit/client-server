@@ -176,7 +176,7 @@ class ClientMainWindow(QMainWindow):
         message_text = self.ui.input_new_message.toPlainText()
         if message_text:
             try:
-                self.server_interaction.send_message(self.current_contact, message_text)
+                result = self.server_interaction.send_message(self.current_contact, message_text)
                 pass
             except ServerError as e:
                 self.messages.critical(self, 'Error', e.error_text)
@@ -189,8 +189,12 @@ class ClientMainWindow(QMainWindow):
                 self.messages.critical(self, 'Error', 'Server connection lost')
                 self.close()
             else:
-                self.database.save_message(self.server_interaction.name, self.current_contact, message_text)
-                self.update_message_history()
+                if result == 'ok':
+                    self.database.save_message(self.server_interaction.name, self.current_contact, message_text)
+                    self.update_message_history()
+                else:
+                    self.messages.warning(self, 'Error', result)
+
         self.ui.input_new_message.clear()
 
     @pyqtSlot(str)
@@ -205,7 +209,7 @@ class ClientMainWindow(QMainWindow):
                                           QMessageBox.Yes,
                                           QMessageBox.No) == QMessageBox.Yes:
                     self.current_contact = sender
-                    self.select_contact()
+                    self.set_current_contact()
             else:
                 if self.messages.question(self,
                                           'New message',
@@ -215,7 +219,7 @@ class ClientMainWindow(QMainWindow):
                                           QMessageBox.No) == QMessageBox.Yes:
                     self.add_contact(sender)
                     self.current_contact = sender
-                    self.select_contact()
+                    self.set_current_contact()
 
     @pyqtSlot()
     def connection_lost(self):
@@ -229,7 +233,7 @@ class ClientMainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    from client_old.client_database import ClientDB
+    from client.client_database import ClientDB
 
     database = ClientDB('test30')
     from server_interaction import ClientServerInteraction

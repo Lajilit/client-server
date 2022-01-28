@@ -5,7 +5,6 @@ https://stackoverflow.com/questions/67348716/kill-process-do-not-kill-the-subpro
 """
 
 import os
-import signal
 import subprocess
 import sys
 from time import sleep
@@ -29,5 +28,4 @@ def get_subprocess(file_with_args):
 process = [get_subprocess("server.py")]
 
 for i in range(args.count):
-    process.append(get_subprocess(f"client_old.py -n test{i+1}"))
-
+    process.append(get_subprocess(f"client.py "))

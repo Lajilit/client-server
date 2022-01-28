@@ -39,7 +39,7 @@ class ClientDB:
 
     def __init__(self, username):
         self.engine = create_engine(
-            f'sqlite:///client_{username}.sqlite',
+            f'sqlite:///db_client_{username}.sqlite',
             echo=False,
             pool_recycle=7200,
             connect_args={'check_same_thread': False}
