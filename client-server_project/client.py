@@ -1,217 +1,68 @@
 import argparse
-import hashlib
-import inspect
-import logging
-import socket
 import sys
-import threading
-import time
-from datetime import datetime
+from PyQt5.QtWidgets import QApplication
 
-from constants import DEFAULT_IP, DEFAULT_PORT, MAX_PACKAGE_LENGTH, ENCODING, ACTION, PRESENCE, TIME, USER, \
-    ACCOUNT_NAME, STATUS, TYPE, RESPONSE, ERROR, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, EXIT
-from project_logging.config.log_config import client_logger
-from server import Server
+from common.constants import DEFAULT_IP, DEFAULT_PORT
+from common.errors import ServerError
+from client.client_database import ClientDB
+from client.server_interaction import ClientServerInteraction
+from client.main_window import ClientMainWindow
+from client.start_dialog import StartDialog
+
+from project_logging.log_config import client_logger as logger
 
 
-class Client(Server):
-    def __init__(self, name):
-        self.name = name
-        super().__init__()
+def arg_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-a', '--address', default=DEFAULT_IP, nargs='?',
+                        help=f'server ip-address, default - {DEFAULT_IP}')
+    parser.add_argument('-p', '--port', default=DEFAULT_PORT, type=int, nargs='?',
+                        help=f'server port, default - {DEFAULT_PORT}')
+    parser.add_argument('-n', '--name', default=None, nargs='?',
+                        help='user name, default - Guest')
+    cmd_args = parser.parse_args()
+    ip_address = cmd_args.address
+    port = cmd_args.port
+    username = cmd_args.name
 
-    @staticmethod
-    def log(some_function):
-        def wrapper(*args, **kwargs):
-            client_logger.debug(
-                f'Function: {some_function.__name__}, args: {args}, kwargs: {kwargs}, '
-                f'called from function: {inspect.stack()[1][3]}'
-            )
-            result = some_function(*args, **kwargs)
-            return result
+    # проверим подходящий номер порта
+    if not 1023 < port < 65536:
+        logger.critical(
+            f'Error. The port must be a number between 1024 and 65535. Client shutdown')
+        exit(1)
 
-        return wrapper
-
-    @log
-    def create_presence(self):
-        output_message = {
-            ACTION: PRESENCE,
-            TIME: time.time(),
-            USER: {
-                ACCOUNT_NAME: self.name,
-                STATUS: 'online'
-            },
-            TYPE: STATUS
-        }
-        client_logger.info(f'{self.name}: {PRESENCE} message is created')
-        return output_message
-
-    @log
-    def handle_response(self, message):
-        client_logger.info(
-            f'{self.name}: the response from the server is being handled'
-        )
-        if RESPONSE in message:
-            if message[RESPONSE] == 200:
-                return f'OK'
-            return f'{message[ERROR]}'
-
-        return f'{self.name}: the response from server is incorrect'
-
-    @log
-    def create_message(self):
-
-        input_destination = input(
-            'Message recipient: '
-        )
-        input_message = input(
-            'Enter your message text or press enter to shutdown: ')
-
-        message = {
-            ACTION: MESSAGE,
-            TIME: time.time(),
-            SENDER: self.name,
-            DESTINATION: input_destination,
-            MESSAGE_TEXT: input_message
-        }
-        client_logger.debug(
-            f'{self.name}: message is created: {message}'
-        )
-        try:
-            self.send_data(message, self.socket)
-            client_logger.debug(
-                f'{self.name}: message was sent to user {input_destination}'
-            )
-        except ConnectionRefusedError:
-            client_logger.critical(
-                f'{self.name}: server connection lost'
-            )
-            sys.exit(1)
-
-    @log
-    def listen_server(self):
-        while True:
-            try:
-                message = self.receive_data(self.socket)
-                client_logger.debug(
-                    f'{self.name}: the message {message} is being handled'
-                )
-                if ACTION in message and \
-                        message[ACTION] == MESSAGE and \
-                        SENDER in message and \
-                        MESSAGE_TEXT in message and \
-                        DESTINATION in message:
-                    client_logger.debug(
-                        f'{self.name}: Received a message from the user '
-                        f'{message[SENDER]}: {message[MESSAGE_TEXT]}'
-                    )
-                    print(f'{message[SENDER]}: {message[MESSAGE_TEXT]}')
-                else:
-                    client_logger.info(
-                        f'{self.name}: the message from server is incorrect:'
-                        f' {message}')
-            except ConnectionRefusedError:
-                client_logger.critical(
-                    f'{self.name}: server connection lost'
-                )
-                break
-
-    @log
-    def create_exit_message(self):
-        message = {
-            ACTION: EXIT,
-            TIME: time.time(),
-            ACCOUNT_NAME: self.name
-        }
-        client_logger.info(
-            f'{self.name}: {EXIT} message is created'
-        )
-        try:
-            self.send_data(message, self.socket)
-            client_logger.info(
-                f'{self.name}: {EXIT} message was sent to the server'
-            )
-        except ConnectionRefusedError:
-            client_logger.critical(
-                f'{self.name}: server connection lost'
-            )
-            sys.exit(1)
-        print('Connection closed')
-        client_logger.info(f'{self.name}: connection closed')
-
-    @staticmethod
-    def help_function():
-        print('Commands used:')
-        print('message - command to send message')
-        print('exit - command to exit')
-
-    @log
-    def user_interaction(self):
-        self.help_function()
-
-        while True:
-            command = input('Enter command [message, exit]: ')
-            if command == 'message':
-                self.create_message()
-            elif command == 'exit':
-                self.create_exit_message()
-                time.sleep(0.5)
-                break
-            else:
-                self.help_function()
-
-    def set_up(self):
-        # Запуск клиента
-        print('Client module')
-        client_logger.info(
-            f'Client module started'
-        )
-
-        # Подключение к серверу и отправка сообщения от присутствии
-        try:
-            self.socket.connect((self.host, self.port))
-            client_logger.info(
-                f'{self.name}: trying to connect to server at '
-                f'{self.host}:{self.port}'
-            )
-            self.send_data(self.create_presence(), self.socket)
-            client_logger.info(
-                f'{self.name}: presence message was sent to the server'
-            )
-            answer = self.handle_response(self.receive_data(self.socket))
-            client_logger.debug(
-                f'{self.name}: server response: {answer}'
-            )
-        except ConnectionRefusedError:
-            client_logger.critical(
-                f'{self.name}: no connection could be made because '
-                f'the target machine actively refused it')
-            sys.exit(1)
-        # Работа с пользователем
-
-        receiver = threading.Thread(target=self.listen_server)
-        receiver.daemon = True
-        receiver.start()
-        client_logger.info(f'{self.name}: receiver process started')
-
-        interface = threading.Thread(target=self.user_interaction)
-        interface.daemon = True
-        interface.start()
-        client_logger.info(f'{self.name}: interface process started')
-
-        while True:
-            time.sleep(1)
-            if receiver.is_alive() and interface.is_alive():
-                continue
-            break
+    return ip_address, port, username
 
 
 if __name__ == '__main__':
+    server_address, server_port, client_name = arg_parser()
+    client_app = QApplication(sys.argv)
 
-    parser = argparse.ArgumentParser()
+    if not client_name:
+        start_dialog = StartDialog()
+        client_app.exec_()
+        if start_dialog.ok_pressed:
+            client_name = start_dialog.ui.input_username.text()
+            del start_dialog
+        else:
+            exit(0)
 
-    parser.add_argument('-n', '--name', default='Guest', nargs='?',
-                        help='user name, default - Guest')
-    name = parser.parse_args().name
-    client = Client(name)
+    logger.info(f'{client_name}: Client started (server ip {server_address} , server port: {server_port})')
 
-    client.set_up()
+    database = ClientDB(client_name)
+    try:
+        server_int = ClientServerInteraction(server_address, server_port, client_name, database)
+    except ServerError as e:
+        logger.info(e)
+        exit(1)
+    else:
+        server_int.setDaemon(True)
+        server_int.start()
+
+        main_window = ClientMainWindow(database, server_int)
+        main_window.make_connection(server_int)
+        main_window.setWindowTitle(f'Messenger - user {client_name}')
+        client_app.exec_()
+
+        server_int.terminate_interaction()
+        server_int.join()
