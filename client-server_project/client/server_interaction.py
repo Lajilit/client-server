@@ -7,6 +7,9 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 from PyQt5.QtCore import QObject, pyqtSignal
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(BASE_DIR)
+
 from common.constants import ACTION, PRESENCE, TIME, USERNAME, RESPONSE, ALERT, LIST_INFO, ERROR, MESSAGE, SENDER, \
     MESSAGE_TEXT, DESTINATION, EXIT, GET_ACTIVE_USERS, GET_CONTACTS, ADD_CONTACT, CONTACT_NAME, REMOVE_CONTACT, \
     GET_ALL_USERS
@@ -14,8 +17,6 @@ from common.errors import ServerError
 from common.socket_include import MySocket
 from project_logging.log_config import client_logger as logger
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-sys.path.append(BASE_DIR)
 
 socket_lock = threading.Lock()
 

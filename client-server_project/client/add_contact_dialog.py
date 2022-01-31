@@ -4,10 +4,11 @@ import sys
 from PyQt5.QtWidgets import QDialog, QLabel, QComboBox, QPushButton, QApplication
 from PyQt5.QtCore import Qt
 
-from project_logging.log_config import client_logger as logger
-
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(BASE_DIR)
+
+from project_logging.log_config import client_logger as logger
+
 
 
 class AddContactDialog(QDialog):

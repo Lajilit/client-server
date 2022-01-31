@@ -6,13 +6,14 @@ from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QBrush, QColor
 from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QMessageBox
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(BASE_DIR)
+
 from client.add_contact_dialog import AddContactDialog
 from client.main_window_gui import Ui_MainWindow
 from client.remove_contact_dialog import RemoveContactDialog
 from common.errors import ServerError
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-sys.path.append(BASE_DIR)
 
 
 class ClientMainWindow(QMainWindow):
