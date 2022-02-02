@@ -3,7 +3,7 @@ import os
 import sys
 from enum import Enum
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
 from common.constants import ENCODING, MAX_PACKAGE_LENGTH

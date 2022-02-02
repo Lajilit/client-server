@@ -6,14 +6,13 @@ from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QBrush, QColor
 from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QMessageBox
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
 from client.add_contact_dialog import AddContactDialog
 from client.main_window_gui import Ui_MainWindow
 from client.remove_contact_dialog import RemoveContactDialog
-from common.errors import ServerError
-
+from common.errors import ServerError, ConnectionTimeoutError
 
 
 class ClientMainWindow(QMainWindow):
@@ -126,13 +125,10 @@ class ClientMainWindow(QMainWindow):
     def add_contact(self, new_contact_name):
         try:
             self.server_interaction.add_contact(new_contact_name)
-        except OSError as e:
-            if e.errno:
-                self.messages.critical(self, 'Error', 'Server connection lost')
-                self.close()
-            self.messages.critical(self, 'Error', 'Connection timeout')
-        except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
-            self.messages.critical(self, 'Error', 'Server connection lost')
+        except ConnectionTimeoutError as e:
+            self.messages.critical(self, 'Error', e.error_text)
+        except ServerError as e:
+            self.messages.critical(self, 'Error', e.error_text)
             self.close()
         else:
             new_contact = QStandardItem(new_contact_name)
@@ -156,13 +152,10 @@ class ClientMainWindow(QMainWindow):
             contact_to_remove = self.current_contact
         try:
             self.server_interaction.remove_contact(contact_to_remove)
-        except OSError as e:
-            if e.errno:
-                self.messages.critical(self, 'Error', 'Server connection lost')
-                self.close()
-            self.messages.critical(self, 'Error', 'Connection timeout')
-        except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
-            self.messages.critical(self, 'Error', 'Server connection lost')
+        except ConnectionTimeoutError as e:
+            self.messages.critical(self, 'Error', e.error_text)
+        except ServerError as e:
+            self.messages.critical(self, 'Error', e.error_text)
             self.close()
         else:
             self.database.remove_contact(contact_to_remove)
@@ -179,15 +172,10 @@ class ClientMainWindow(QMainWindow):
             try:
                 result = self.server_interaction.send_message(self.current_contact, message_text)
                 pass
+            except ConnectionTimeoutError as e:
+                self.messages.critical(self, 'Error', e.error_text)
             except ServerError as e:
                 self.messages.critical(self, 'Error', e.error_text)
-            except OSError as e:
-                if e.errno:
-                    self.messages.critical(self, 'Error', 'Server connection lost')
-                    self.close()
-                self.messages.critical(self, 'Error', 'Connection timeout')
-            except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
-                self.messages.critical(self, 'Error', 'Server connection lost')
                 self.close()
             else:
                 if result == 'ok':

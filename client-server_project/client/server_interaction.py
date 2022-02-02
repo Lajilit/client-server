@@ -1,3 +1,6 @@
+import binascii
+import hashlib
+import hmac
 import json
 import os
 import sys
@@ -7,13 +10,13 @@ from socket import socket, AF_INET, SOCK_STREAM
 
 from PyQt5.QtCore import QObject, pyqtSignal
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
-from common.constants import ACTION, PRESENCE, TIME, USERNAME, RESPONSE, ALERT, LIST_INFO, ERROR, MESSAGE, SENDER, \
-    MESSAGE_TEXT, DESTINATION, EXIT, GET_ACTIVE_USERS, GET_CONTACTS, ADD_CONTACT, CONTACT_NAME, REMOVE_CONTACT, \
-    GET_ALL_USERS
-from common.errors import ServerError
+from common.constants import ACTION, PRESENCE, TIME, ACCOUNT_NAME, RESPONSE, ALERT, LIST_INFO, ERROR, MESSAGE, SENDER, \
+    MESSAGE_TEXT, DESTINATION, EXIT, GET_CONTACTS, ADD_CONTACT, CONTACT_NAME, REMOVE_CONTACT, \
+    GET_ALL_USERS, USER, PUBLIC_KEY, DATA, RESPONSE_511
+from common.errors import ServerError, ConnectionTimeoutError, RequiredFieldMissedError, WrongResponseCodeError
 from common.socket_include import MySocket
 from project_logging.log_config import client_logger as logger
 
@@ -24,28 +27,37 @@ socket_lock = threading.Lock()
 class ClientServerInteraction(threading.Thread, QObject, MySocket):
     new_message = pyqtSignal(str)
     connection_lost = pyqtSignal()
+    response_205 = pyqtSignal()
 
-    def __init__(self, ip_address, port, client_name, client_db):
+    def __init__(self, ip_address, port, client_db, client_name, client_password, keys):
         threading.Thread.__init__(self)
         QObject.__init__(self)
         MySocket.__init__(self)
+        self.authorized = False
         self.name = client_name
+        self.client_password = client_password
         self.database = client_db
+        self.keys = keys
         self.socket = None
         self.connect_to_server(ip_address, port)
-        try:
-            self.load_data()
-        except OSError as e:
-            if e.errno:
+        self.log_in()
+        if self.authorized:
+            try:
+                self.load_data()
+            except OSError as e:
+                if e.errno:
+                    logger.critical(f'{self.name}: server connection lost')
+                    self.running = False
+                    self.connection_lost.emit()
+                else:
+                    logger.debug(f'{self.name}: server connection timeout')
+
+            except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
                 logger.critical(f'{self.name}: server connection lost')
                 self.running = False
                 self.connection_lost.emit()
-        except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
-            logger.critical(f'{self.name}: server connection lost')
-            self.running = False
-            self.connection_lost.emit()
-        else:
-            self.running = True
+            else:
+                self.running = True
 
     def connect_to_server(self, ip, port):
         logger.info(f'{self.name}: client module started')
@@ -66,59 +78,96 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
             error = f'{self.name}: failed to connect to the server'
             logger.critical(error)
             raise ServerError(error)
-        try:
-            result = self.communicate_server(self.create_presence_message())
-        except (OSError, json.JSONDecodeError):
-            error = f'{self.name}: server connection lost'
-            logger.critical(error)
-            raise ServerError(error)
-        else:
-            logger.info(f'{self.name}: connection established: {result}')
+        logger.debug(f'{self.name}: connection established')
 
-    def communicate_server(self, request):
-        with socket_lock:
-            self.send_data(request)
-            logger.info(f'{self.name}: {request[ACTION]} message was sent to the server')
-            return self.handle_response(self.receive_data())
-
-    def create_presence_message(self):
+    def create_presence_message(self, public_key):
         presence_message = {
             ACTION: PRESENCE,
             TIME: time.time(),
-            USERNAME: self.name,
+            USER: {
+                ACCOUNT_NAME: self.name,
+                PUBLIC_KEY: public_key
+            }
         }
         logger.info(f'{self.name}: {PRESENCE} message is created')
         return presence_message
 
-    def handle_response(self, response):
-        logger.info(f'{self.name}: the response from the server is being handled')
-        if RESPONSE in response:
-            if response[RESPONSE] == 200:
-                return response[ALERT]
-            elif response[RESPONSE] == 202:
-                return response[LIST_INFO]
-            elif response[RESPONSE] == 400:
-                raise ServerError(response[ERROR])
-            elif response[RESPONSE] == 404:
-                return response[ERROR]
-            else:
-                logger.info(f'{self.name}: Received unknown {RESPONSE} code: {response[RESPONSE]}')
+    def get_password_hash(self):
+        password_bytes = self.client_password.encode('utf-8')
+        salt = self.name.lower().encode('utf-8')
+        password_hash = hashlib.pbkdf2_hmac('sha512', password_bytes, salt, 10000)
+        password_hash_string = binascii.hexlify(password_hash)
+        logger.debug(f'{self.name}: password hash ready')
+        return password_hash_string
 
-        elif ACTION in response and \
-                response[ACTION] == MESSAGE and \
-                SENDER in response and \
-                MESSAGE_TEXT in response and \
-                DESTINATION in response and \
-                response[DESTINATION] == self.name:
-            logger.info(f'{self.name}: Received a response from the user {response[SENDER]}')
+    def log_in(self):
+        logger.debug(f'{self.name}: starting log_in dialog')
+        public_key = self.keys.publickey().export_key().decode('ascii')
+        password = self.get_password_hash()
+        presence_response = self.communicate_server(self.create_presence_message(public_key))
+        logger.info(f'{self.name}: the response from the server is being handled')
+        if presence_response[RESPONSE] == 400:
+            raise ServerError(presence_response[ERROR])
+        elif presence_response[RESPONSE] == 511:
+            password = hmac.new(password, presence_response[DATA].encode('utf-8'), 'MD5')
+            digest = password.digest()
+            request = RESPONSE_511
+            request[DATA] = binascii.b2a_base64(digest).decode('ascii')
+            authorize_response = self.communicate_server(request)
+            logger.info(f'{self.name}: the response from the server is being handled')
+            if authorize_response[RESPONSE] == 400:
+                raise ServerError(presence_response[ERROR])
+            elif authorize_response[RESPONSE] == 205:
+                self.authorized = True
+                self.response_205.emit()
+                logger.info(f'{self.name}: authorized')
+            else:
+                logger.info(f'{self.name}: Received wrong {RESPONSE} code: {authorize_response[RESPONSE]}')
+                raise WrongResponseCodeError(authorize_response[RESPONSE])
+        else:
+            logger.info(f'{self.name}: Received unknown {RESPONSE} code: {presence_response[RESPONSE]}')
+            raise WrongResponseCodeError(presence_response[RESPONSE])
+
+    def communicate_server(self, request):
+        with socket_lock:
             try:
-                self.database.save_message(response[SENDER], self.name, response[MESSAGE_TEXT])
+                self.send_data(request)
+                logger.info(f'{self.name}: {request[ACTION]} message was sent to the server')
+                result = self.receive_data()
+            except OSError as e:
+                if e.errno:
+                    error = f'{self.name}: failed {request[ACTION]}: {e}'
+                    logger.critical(error)
+                    raise ServerError(error)
+                error = f'{self.name}: failed {request[ACTION]}: {e}'
+                logger.error(error)
+                raise ConnectionTimeoutError(error)
+            except (
+                    ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError
+            ) as e:
+                error = f'{self.name}: failed {request[ACTION]}: {e}'
+                logger.critical(error)
+                raise ServerError(error)
+            return result
+
+    def handle_message(self, message):
+        logger.info(f'{self.name}: the receives message is being handled')
+        if ACTION in message and \
+                message[ACTION] == MESSAGE and \
+                SENDER in message and \
+                MESSAGE_TEXT in message and \
+                DESTINATION in message and \
+                message[DESTINATION] == self.name:
+            logger.info(f'{self.name}: Received a response from the user {message[SENDER]}')
+            try:
+                self.database.save_message(message[SENDER], self.name, message[MESSAGE_TEXT])
             except Exception as e:
                 logger.e(f'{self.name}: Database error: {e}')
             else:
-                self.new_message.emit(response[SENDER])
+                self.new_message.emit(message[SENDER])
         else:
-            logger.debug(f'{self.name}: the response from server is incorrect: {response}')
+            logger.debug(f'{self.name}: the received message is incorrect: {message}')
+            raise RequiredFieldMissedError(ACTION)
 
     def send_message(self, destination, message_text):
         message = {
@@ -129,70 +178,51 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
             MESSAGE_TEXT: message_text
         }
         logger.debug(f'{self.name}: message is created: {message}')
-        server_response = self.communicate_server(message)
-        return server_response
-        # if server_response == 'ok':
-        #     logger.debug(f'{self.name}: message was sent to user {message[DESTINATION]}')
-        #     self.database.save_message(self.name, message[DESTINATION], message[MESSAGE_TEXT])
-        # else:
-        #     logger.debug(server_response)
-
-    def get_active_users(self):
-        logger.debug(f'{self.name}: get active users list from server')
-        request = {
-            ACTION: GET_ACTIVE_USERS,
-            TIME: time.time(),
-            USERNAME: self.name
-        }
-        try:
-            active_users_list = self.communicate_server(request)
-        except ServerError as e:
-            logger.e(f'{self.name}: failed to get list of active users: {e}')
+        response = self.communicate_server(message)
+        logger.info(f'{self.name}: the response from the server is being handled')
+        if RESPONSE in response:
+            if response[RESPONSE] == 200:
+                return response[ALERT]
+            elif response[RESPONSE] == 404:
+                return response[ERROR]
+            else:
+                logger.info(f'{self.name}: Received wrong {RESPONSE} code: {response[RESPONSE]}')
+                raise WrongResponseCodeError(response[RESPONSE])
         else:
-            return active_users_list
+            logger.debug(f'{self.name}: the response from server is incorrect: {response}')
+            raise RequiredFieldMissedError(RESPONSE)
 
-    def get_all_users(self):
-        logger.debug(f'{self.name}: get all users list from server')
+    def get_users_list(self, action):
+        logger.debug(f'{self.name}: {action}')
         request = {
-            ACTION: GET_ALL_USERS,
+            ACTION: action,
             TIME: time.time(),
-            USERNAME: self.name
+            ACCOUNT_NAME: self.name
         }
-        try:
-            users_list = self.communicate_server(request)
-        except ServerError as e:
-            logger.e(f'{self.name}: failed to get list of active users: {e}')
+        response = self.communicate_server(request)
+        logger.info(f'{self.name}: the response from the server is being handled')
+        if RESPONSE in response:
+            if response[RESPONSE] == 202:
+                return response[LIST_INFO]
+            elif response[RESPONSE] == 400:
+                raise ServerError(response[ERROR])
+            else:
+                logger.info(f'{self.name}: Received wrong {RESPONSE} code: {response[RESPONSE]}')
+                raise WrongResponseCodeError(response[RESPONSE])
         else:
-            return users_list
-
-    def get_contacts(self):
-        logger.debug(f'{self.name}: get user contacts list from server')
-        request = {
-            ACTION: GET_CONTACTS,
-            TIME: time.time(),
-            USERNAME: self.name
-        }
-        try:
-            user_contacts = self.communicate_server(request)
-        except ServerError as e:
-            logger.e(f'{self.name}: failed to get contacts list: {e}')
-        else:
-            return user_contacts
+            logger.debug(f'{self.name}: the response from server is incorrect: {response}')
+            raise RequiredFieldMissedError(RESPONSE)
 
     def load_data(self):
         try:
-            users_list = self.get_all_users()
+            users_list = self.get_users_list(GET_ALL_USERS)
             logger.debug(f'{self.name}: server response: {users_list}')
-        except ServerError as e:
-            logger.e(e)
-        else:
-            self.database.refresh_known_users(users_list)
-        try:
-            contacts_list = self.get_contacts()
+            contacts_list = self.get_users_list(GET_CONTACTS)
             logger.debug(f'{self.name}: server response: {contacts_list}')
         except ServerError as e:
-            logger.e(e)
+            logger.error(e.error_text)
         else:
+            self.database.refresh_known_users(users_list)
             for contact in contacts_list:
                 self.database.add_contact(contact)
 
@@ -201,38 +231,68 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         request = {
             ACTION: ADD_CONTACT,
             TIME: time.time(),
-            USERNAME: self.name,
+            ACCOUNT_NAME: self.name,
             CONTACT_NAME: contact_name
         }
-        try:
-            result = self.communicate_server(request)
-        except ServerError as e:
-            logger.e(f'{self.name}: failed to add new contact: {e}')
+        response = self.communicate_server(request)
+        logger.info(f'{self.name}: the response from the server is being handled')
+        if RESPONSE in response:
+            if response[RESPONSE] == 200:
+                logger.debug(f'{self.name}: contact {contact_name} added successfully: {response}')
+                self.database.add_contact(contact_name)
+            elif response[RESPONSE] == 400:
+                raise ServerError(response[ERROR])
+            else:
+                logger.info(f'{self.name}: Received wrong {RESPONSE} code: {response[RESPONSE]}')
+                raise WrongResponseCodeError(response[RESPONSE])
         else:
-            logger.debug(f'{self.name}: contact {contact_name} added successfully: {result}')
-            self.database.add_contact(contact_name)
+            logger.debug(f'{self.name}: the response from server is incorrect: {response}')
+            raise RequiredFieldMissedError(RESPONSE)
 
     def remove_contact(self, contact_name):
         logger.debug(f'{self.name}: the contact {contact_name} is removed from database')
         request = {
             ACTION: REMOVE_CONTACT,
             TIME: time.time(),
-            USERNAME: self.name,
+            ACCOUNT_NAME: self.name,
             CONTACT_NAME: contact_name
         }
-        try:
-            result = self.communicate_server(request)
-        except ServerError as e:
-            logger.e(f'{self.name}: failed to remove contact: {e}')
+        response = self.communicate_server(request)
+        logger.info(f'{self.name}: the response from the server is being handled')
+        if RESPONSE in response:
+            if response[RESPONSE] == 200:
+                logger.debug(f'{self.name}: contact {contact_name} removed successfully: {response}')
+                self.database.remove_contact(contact_name)
+            elif response[RESPONSE] == 400:
+                raise ServerError(response[ERROR])
+            else:
+                logger.info(f'{self.name}: Received wrong {RESPONSE} code: {response[RESPONSE]}')
+                raise WrongResponseCodeError(response[RESPONSE])
         else:
-            logger.debug(f'{self.name}: contact {contact_name} removed successfully: {result}')
-            self.database.remove_contact(contact_name)
+            logger.debug(f'{self.name}: the response from server is incorrect: {response}')
+            raise RequiredFieldMissedError(RESPONSE)
+
+    def get_message(self):
+        try:
+            message = self.receive_data()
+        except OSError as e:
+            if e.errno:
+                logger.critical(f'{self.name}: server connection lost')
+                self.running = False
+                self.connection_lost.emit()
+        except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
+            logger.critical(f'{self.name}: server connection lost')
+            self.running = False
+            self.connection_lost.emit()
+        else:
+            logger.debug(f'{self.name}: : Message {message} received from server')
+            self.handle_message(message)
 
     def terminate_interaction(self):
         request = {
             ACTION: EXIT,
             TIME: time.time(),
-            USERNAME: self.name
+            ACCOUNT_NAME: self.name
         }
         logger.info(
             f'{self.name}: {EXIT} request is created'
@@ -251,20 +311,6 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         while self.running:
             time.sleep(1)
             with socket_lock:
-                try:
-                    self.socket.settimeout(0.5)
-                    message = self.receive_data()
-                except OSError as e:
-                    if e.errno:
-                        logger.critical(f'{self.name}: server connection lost')
-                        self.running = False
-                        self.connection_lost.emit()
-                except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
-                    logger.critical(f'{self.name}: server connection lost')
-                    self.running = False
-                    self.connection_lost.emit()
-                else:
-                    logger.debug(f'{self.name}: : Message {message} received from server')
-                    self.handle_response(message)
-                finally:
-                    self.socket.settimeout(5)
+                self.socket.settimeout(0.5)
+                self.get_message()
+                self.socket.settimeout(5)

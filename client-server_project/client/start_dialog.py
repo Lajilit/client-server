@@ -3,7 +3,7 @@ import sys
 
 from PyQt5.QtWidgets import QDialog, QApplication, qApp
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
 from client.start_dialog_gui import UI_StartDialog

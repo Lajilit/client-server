@@ -12,7 +12,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMessageBox
 
 from common.constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
-    USERNAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, \
+    ACCOUNT_NAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, \
     REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
     GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, RESPONSE_404
 from common.errors import ServerError
@@ -22,7 +22,7 @@ from server.server_gui import MainWindow, gui_create_active_users_table, ClientS
     gui_create_clients_statistics_table, ServerConfigWindow
 from common.socket_include import MySocket, SocketType, CheckServerPort
 
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 
 new_connection = False
 conflag_lock = threading.Lock()
@@ -81,8 +81,8 @@ class Server(threading.Thread, MySocket):
         logger.info(
             f'{client_socket.getpeername()}: the request from the client is being handled'
         )
-        if ACTION in request and request[ACTION] == PRESENCE and TIME in request and USERNAME in request:
-            client_username = request[USERNAME]
+        if ACTION in request and request[ACTION] == PRESENCE and TIME in request and ACCOUNT_NAME in request:
+            client_username = request[ACCOUNT_NAME]
             client_ip, client_port = client_socket.getpeername()
             if client_username not in self.client_usernames.keys():
                 logger.info(
@@ -118,8 +118,8 @@ class Server(threading.Thread, MySocket):
                 logger.info(f'{request[SENDER]}: {response[ERROR]}')
             self.send_data(response, client_socket)
 
-        elif ACTION in request and request[ACTION] == EXIT and USERNAME in request:
-            client_username = request[USERNAME]
+        elif ACTION in request and request[ACTION] == EXIT and ACCOUNT_NAME in request:
+            client_username = request[ACCOUNT_NAME]
             logger.info(f'{client_username} exit')
             del self.client_usernames[client_username]
             self.database.user_logout(client_username)
@@ -128,26 +128,26 @@ class Server(threading.Thread, MySocket):
             with conflag_lock:
                 new_connection = True
 
-        elif ACTION in request and request[ACTION] == GET_CONTACTS and USERNAME in request:
-            client_username = request[USERNAME]
+        elif ACTION in request and request[ACTION] == GET_CONTACTS and ACCOUNT_NAME in request:
+            client_username = request[ACCOUNT_NAME]
             response = RESPONSE_202
             response[LIST_INFO] = self.database.get_contacts(client_username)
             self.send_data(response, client_socket)
 
-        elif ACTION in request and request[ACTION] == GET_ALL_USERS and USERNAME in request:
+        elif ACTION in request and request[ACTION] == GET_ALL_USERS and ACCOUNT_NAME in request:
             response = RESPONSE_202
             response[LIST_INFO] = [username for username, last_connection_time in self.database.get_all_users()]
             self.send_data(response, client_socket)
 
-        elif ACTION in request and request[ACTION] == GET_ACTIVE_USERS and USERNAME in request:
+        elif ACTION in request and request[ACTION] == GET_ACTIVE_USERS and ACCOUNT_NAME in request:
             response = RESPONSE_202
             response[LIST_INFO] = [
                 username for username, ip, port, last_connection_time in self.database.get_active_users()
             ]
             self.send_data(response, client_socket)
 
-        elif ACTION in request and request[ACTION] == ADD_CONTACT and USERNAME in request and CONTACT_NAME in request:
-            client_username = request[USERNAME]
+        elif ACTION in request and request[ACTION] == ADD_CONTACT and ACCOUNT_NAME in request and CONTACT_NAME in request:
+            client_username = request[ACCOUNT_NAME]
             contact_username = request[CONTACT_NAME]
             try:
                 self.database.add_contact(client_username, contact_username)
@@ -161,13 +161,19 @@ class Server(threading.Thread, MySocket):
                 self.send_data(RESPONSE_200, client_socket)
 
         elif ACTION in request and request[ACTION] == REMOVE_CONTACT and \
-                USERNAME in request and CONTACT_NAME in request:
-            client_username = request[USERNAME]
+                ACCOUNT_NAME in request and CONTACT_NAME in request:
+            client_username = request[ACCOUNT_NAME]
             contact_username = request[CONTACT_NAME]
-            logger.info(f'{client_username} removed contact {contact_username}')
-            self.database.remove_contact(client_username, contact_username)
-            self.send_data(RESPONSE_200, client_socket)
-
+            try:
+                self.database.remove_contact(client_username, contact_username)
+            except ServerError as e:
+                response = RESPONSE_400
+                response[ERROR] = f'{e}'
+                self.send_data(response, client_socket)
+                logger.info(e)
+            else:
+                logger.info(f'{client_username} removed contact {contact_username}')
+                self.send_data(RESPONSE_200, client_socket)
         else:
             self.send_data(RESPONSE_400, client_socket)
             logger.info(ERROR)

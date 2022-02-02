@@ -12,12 +12,15 @@ ENCODING = 'utf-8'
 # Ключи:
 ACTION = 'action'
 TIME = 'time'
-USERNAME = 'username'
+USER = 'user'
+ACCOUNT_NAME = 'account_name'
+PUBLIC_KEY = 'public_key'
 CONTACT_NAME = 'contact_name'
 TYPE = 'type'
 STATUS = 'status'
 PRESENCE = 'presence'
 RESPONSE = 'response'
+DATA = 'data'
 MESSAGE = 'message'
 MESSAGE_TEXT = 'message_text'
 SENDER = 'to'
@@ -40,6 +43,10 @@ RESPONSE_202 = {
     RESPONSE: 202,
     LIST_INFO: []
 }
+RESPONSE_205 = {
+    RESPONSE: 205,
+    ALERT: 'authorized'
+}
 RESPONSE_400 = {
     RESPONSE: 400,
     ERROR: 'Bad Request'
@@ -47,4 +54,8 @@ RESPONSE_400 = {
 RESPONSE_404 = {
     RESPONSE: 404,
     ERROR: 'Not Found'
+}
+RESPONSE_511 = {
+    RESPONSE: 511,
+    DATA: None
 }

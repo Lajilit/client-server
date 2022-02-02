@@ -9,7 +9,7 @@
 import os
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

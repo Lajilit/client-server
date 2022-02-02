@@ -12,7 +12,7 @@ from time import sleep
 import argparse as argparse
 
 PYTHON_PATH = sys.executable
-BASE_PATH = os.path.dirname(os.path.abspath(__file__))
+BASE_PATH = os.path.dirname(os.path.realpath(__file__))
 parser = argparse.ArgumentParser()
 parser.add_argument('count', type=int, help='Количество клиентских приложений')
 args = parser.parse_args()

@@ -2,7 +2,7 @@ import os
 import sys
 import logging.handlers
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
 logs_formatter = logging.Formatter(
