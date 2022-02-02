@@ -9,7 +9,6 @@ sys.path.append(BASE_DIR)
 from client.start_dialog_gui import UI_StartDialog
 
 
-
 class StartDialog(QDialog):
     def __init__(self):
         super().__init__()
@@ -26,7 +25,7 @@ class StartDialog(QDialog):
         self.show()
 
     def click(self):
-        if self.ui.input_username.text():
+        if self.ui.input_username.text() and self.ui.input_password.text():
             self.ok_pressed = True
             qApp.exit()
 
