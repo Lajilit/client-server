@@ -7,7 +7,8 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, qApp, QMessageBox, QApplication
 
 from common.constants import DEFAULT_PORT, LISTEN_ADDRESS
-from server.server_gui import ClientStatisticsWindow, ServerConfigWindow
+from server.server_statistics_window import ServerStatisticsWindow
+from server.server_config_window import ServerConfigWindow
 from server.server_main_window_gui import Server_Ui_MainWindow
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -90,7 +91,7 @@ class ServerMainWindow(QMainWindow):
         return active_users_table
 
     def show_statistics(self):
-        self.stat_window = ClientStatisticsWindow()
+        self.stat_window = ServerStatisticsWindow()
         self.stat_window.clients_statistics_table.setModel(self.gui_create_clients_statistics_table(self.db))
         self.stat_window.clients_statistics_table.resizeColumnsToContents()
         self.stat_window.clients_statistics_table.resizeRowsToContents()
@@ -146,11 +147,22 @@ if __name__ == '__main__':
     config.set('SETTINGS', 'Default_port', str(DEFAULT_PORT))
     config.set('SETTINGS', 'Listen_Address', LISTEN_ADDRESS)
     config.set('SETTINGS', 'Database_path', '')
-    config.set('SETTINGS', 'Database_file', 'server_test_db')
+    config.set('SETTINGS', 'Database_file', 'db_server.sqlite')
     database_path = os.path.join(
         config['SETTINGS']['Database_path'],
         config['SETTINGS']['Database_file'])
     database = ServerDB(database_path)
 
-    window = ServerMainWindow(config, database)
+    main_window = ServerMainWindow(config, database)
+
+    main_window.statusBar().showMessage('Test Statusbar Message')
+    test_list = QStandardItemModel(main_window)
+    test_list.setHorizontalHeaderLabels(['Имя Клиента', 'IP Адрес', 'Порт', 'Время подключения'])
+    test_list.appendRow(
+        [QStandardItem('test1'), QStandardItem('192.198.0.5'), QStandardItem('23544'), QStandardItem('16:20:34')])
+    test_list.appendRow(
+        [QStandardItem('test2'), QStandardItem('192.198.0.8'), QStandardItem('33245'), QStandardItem('16:22:11')])
+    main_window.ui.active_clients_table.setModel(test_list)
+    main_window.ui.active_clients_table.resizeColumnsToContents()
+
     sys.exit(app.exec_())

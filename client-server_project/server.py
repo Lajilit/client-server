@@ -20,7 +20,7 @@ from server.server_database import ServerDB
 from server.server_main_window import ServerMainWindow
 from common.socket_include import MySocket, SocketType, CheckServerPort
 
-BASE_DIR = os.path.dirname(os.path.realpath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 new_connection = False
 conflag_lock = threading.Lock()
