@@ -8,18 +8,16 @@ from json.decoder import JSONDecodeError
 from socket import socket, AF_INET, SOCK_STREAM, SO_REUSEADDR, SOL_SOCKET
 from sqlite3 import IntegrityError
 
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication, QMessageBox
+from PyQt5.QtWidgets import QApplication
 
 from common.constants import DEFAULT_IP, MAX_CONNECTIONS, ACTION, PRESENCE, TIME, \
     ACCOUNT_NAME, MESSAGE, SENDER, DESTINATION, MESSAGE_TEXT, ERROR, RESPONSE_200, RESPONSE_400, EXIT, ADD_CONTACT, \
     REMOVE_CONTACT, GET_ALL_USERS, RESPONSE_202, LIST_INFO, \
-    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, RESPONSE_404
+    GET_CONTACTS, CONTACT_NAME, GET_ACTIVE_USERS, RESPONSE_404, DEFAULT_PORT, LISTEN_ADDRESS
 from common.errors import ServerError
 from project_logging.log_config import server_logger as logger
 from server.server_database import ServerDB
-from server.server_gui import MainWindow, gui_create_active_users_table, ClientStatisticsWindow, \
-    gui_create_clients_statistics_table, ServerConfigWindow
+from server.server_main_window import ServerMainWindow
 from common.socket_include import MySocket, SocketType, CheckServerPort
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -228,10 +226,10 @@ class Server(threading.Thread, MySocket):
                             self.client_logout(client)
 
 
-def config_parser(default_ip, default_port):
+def arg_parser(default_ip_address, default_port):
     parser = argparse.ArgumentParser()
-    parser.add_argument('-a', '--address', default=default_ip, nargs='?',
-                        help=f'server ip-address, default - {default_ip}')
+    parser.add_argument('-a', '--address', default=default_ip_address, nargs='?',
+                        help=f'server ip-address, default - {default_ip_address}')
     parser.add_argument('-p', '--port', default=default_port, type=int, nargs='?',
                         help=f'server port, default - {default_port}')
 
@@ -241,13 +239,29 @@ def config_parser(default_ip, default_port):
     return ip_address, port
 
 
-def main():
-
-    config_path = os.path.join(BASE_DIR, 'server', 'server.ini')
+def config_load():
+    """Парсер конфигурационного ini файла."""
     config = configparser.ConfigParser()
+    config_path = os.path.join(BASE_DIR, 'server', 'server.ini')
     config.read(config_path)
 
-    listen_address, listen_port = config_parser(
+    if 'SETTINGS' in config:
+        return config
+    else:
+        config.add_section('SETTINGS')
+        config.set('SETTINGS', 'Default_port', str(DEFAULT_PORT))
+        config.set('SETTINGS', 'Listen_Address', LISTEN_ADDRESS)
+        config.set('SETTINGS', 'Database_path', '')
+        config.set('SETTINGS', 'Database_file', 'db_server.sqlite')
+        return config
+
+
+def main():
+    config_path = os.path.join(BASE_DIR, 'server', 'server.ini')
+    config = config_load()
+    config.read(config_path)
+
+    listen_address, listen_port = arg_parser(
         config['SETTINGS']['Listen_Address'], config['SETTINGS']['Default_port'])
 
     database_path = os.path.join(
@@ -260,68 +274,7 @@ def main():
     server.start()
 
     server_app = QApplication(sys.argv)
-    main_window = MainWindow()
-
-    main_window.statusBar().showMessage('Server Working')
-    main_window.active_clients_table.setModel(gui_create_active_users_table(database))
-    main_window.active_clients_table.resizeColumnsToContents()
-    main_window.active_clients_table.resizeRowsToContents()
-
-    def update_active_users():
-        main_window.active_clients_table.setModel(
-            gui_create_active_users_table(database))
-        main_window.active_clients_table.resizeColumnsToContents()
-        main_window.active_clients_table.resizeRowsToContents()
-
-    def show_statistics():
-        global stat_window
-        stat_window = ClientStatisticsWindow()
-        stat_window.clients_statistics_table.setModel(gui_create_clients_statistics_table(database))
-        stat_window.clients_statistics_table.resizeColumnsToContents()
-        stat_window.clients_statistics_table.resizeRowsToContents()
-        stat_window.show()
-
-    def show_server_config():
-        global config_window
-        config_window = ServerConfigWindow()
-        config_window.db_path.insert(config['SETTINGS']['Database_path'])
-        config_window.db_file.insert(config['SETTINGS']['Database_file'])
-        config_window.port.insert(config['SETTINGS']['Default_port'])
-        config_window.ip.insert(config['SETTINGS']['Listen_Address'])
-        config_window.save_button.clicked.connect(save_server_config)
-
-    def save_server_config():
-        global config_window
-        message = QMessageBox()
-        config['SETTINGS']['Database_path'] = config_window.db_path.text()
-        config['SETTINGS']['Database_file'] = config_window.db_file.text()
-        try:
-            port = int(config_window.port.text())
-        except ValueError:
-            message.warning(config_window, 'Error', 'Port must be an integer')
-        else:
-            config['SETTINGS']['Listen_Address'] = config_window.ip.text()
-            if 1023 < port < 65536:
-                config['SETTINGS']['Default_port'] = str(port)
-                print(port)
-                with open(f'{BASE_DIR}/server/server.ini', 'w') as conf:
-                    config.write(conf)
-                    message.information(
-                        config_window, 'Ok', 'Settings saved')
-            else:
-                message.warning(
-                    config_window,
-                    'Error',
-                    'port number must be a number between 1024 and 65536')
-
-    timer = QTimer()
-    timer.timeout.connect(update_active_users)
-    timer.start(1000)
-
-    main_window.refresh_users_list_button.triggered.connect(update_active_users)
-    main_window.show_clients_statistics_button.triggered.connect(show_statistics)
-    main_window.show_server_configuration_button.triggered.connect(show_server_config)
-
+    main_window = ServerMainWindow(config, database)
     server_app.exec_()
 
 

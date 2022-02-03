@@ -56,7 +56,7 @@ def gui_create_clients_statistics_table(database):
     return clients_statistics_table
 
 
-class MainWindow(QMainWindow):
+class ServerMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -192,7 +192,7 @@ class ServerConfigWindow(QDialog):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    main_window = MainWindow()
+    main_window = ServerMainWindow()
     main_window.statusBar().showMessage('Test Statusbar Message')
     test_list = QStandardItemModel(main_window)
     test_list.setHorizontalHeaderLabels(['Имя Клиента', 'IP Адрес', 'Порт', 'Время подключения'])

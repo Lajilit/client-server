@@ -71,7 +71,7 @@ if __name__ == '__main__':
     from client.client_database import ClientDB
 
     database = ClientDB('test3')
-    from server_interaction import ClientServerInteraction
+    from server_interaction_thread import ClientServerInteraction
 
     transport = ClientServerInteraction('127.0.0.1', 7777, 'test3', database)
     window = AddContactDialog(transport, database)

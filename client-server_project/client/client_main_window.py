@@ -9,9 +9,9 @@ from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QMessageBox
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
-from client.add_contact_dialog import AddContactDialog
-from client.main_window_gui import Ui_MainWindow
-from client.remove_contact_dialog import RemoveContactDialog
+from client.client_add_contact_dialog import AddContactDialog
+from client.client_main_window_gui import Ui_MainWindow
+from client.client_remove_contact_dialog import RemoveContactDialog
 from common.errors import ServerError, ConnectionTimeoutError
 
 
@@ -225,7 +225,7 @@ if __name__ == '__main__':
     from client.client_database import ClientDB
 
     database = ClientDB('test30')
-    from server_interaction import ClientServerInteraction
+    from server_interaction_thread import ClientServerInteraction
 
     server_int = ClientServerInteraction('127.0.0.1', 7777, 'test30', database)
     window = ClientMainWindow(database, server_int)
