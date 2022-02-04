@@ -7,20 +7,23 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, qApp, QMessageBox, QApplication
 
 from common.constants import DEFAULT_PORT, LISTEN_ADDRESS
+from server.server_remove_user_window import DelUserDialog
 from server.server_statistics_window import ServerStatisticsWindow
 from server.server_config_window import ServerConfigWindow
 from server.server_main_window_gui import Server_Ui_MainWindow
+from server.server_user_registration_dialog import RegisterUserDialog
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 sys.path.append(BASE_DIR)
 
 
 class ServerMainWindow(QMainWindow):
-    def __init__(self, config, database):
+    def __init__(self, config, server, database):
         super().__init__()
         self.config_window = None
         self.stat_window = None
         self.config = config
+        self.server_thread = server
         self.db = database
         self.ui = Server_Ui_MainWindow()
         self.ui.setupUi(self)
@@ -31,6 +34,8 @@ class ServerMainWindow(QMainWindow):
         self.ui.refresh_users_list_button.triggered.connect(self.update_active_users)
         self.ui.show_clients_statistics_button.triggered.connect(self.show_statistics)
         self.ui.show_server_configuration_button.triggered.connect(self.show_server_config)
+        self.ui.add_user_button.triggered.connect(self.new_user_registration)
+        self.ui.remove_user_button.triggered.connect(self.remove_user)
 
         self.ui.active_clients_table.setModel(self.gui_create_active_users_table(self.db))
         self.ui.active_clients_table.resizeColumnsToContents()
@@ -133,6 +138,14 @@ class ServerMainWindow(QMainWindow):
         self.ui.active_clients_table.setModel(self.gui_create_active_users_table(self.db))
         self.ui.active_clients_table.resizeColumnsToContents()
         self.ui.active_clients_table.resizeRowsToContents()
+
+    def new_user_registration(self):
+        self.registration_window = RegisterUserDialog(self.db, self.server_thread)
+        self.registration_window.show()
+
+    def remove_user(self):
+        self.remove_user_window = DelUserDialog(self.db, self.server_thread)
+        self.remove_user_window.show()
 
 
 if __name__ == '__main__':

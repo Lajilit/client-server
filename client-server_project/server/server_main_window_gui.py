@@ -67,6 +67,16 @@ class Server_Ui_MainWindow(object):
         self.show_server_configuration_button.setIcon(icon2)
         self.show_server_configuration_button.setObjectName("show_server_configuration_button")
 
+        self.add_user_button = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon(os.path.join(BASE_DIR, 'server', 'img', 'add_user_button.png'))
+        self.add_user_button.setIcon(icon)
+        self.add_user_button.setObjectName("add_user_button")
+
+        self.remove_user_button = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon(os.path.join(BASE_DIR, 'server', 'img', 'remove_user_button.png'))
+        self.remove_user_button.setIcon(icon)
+        self.remove_user_button.setObjectName("remove_user_button")
+
         self.exit_action = QtWidgets.QAction(MainWindow)
         icon3 = QtGui.QIcon(os.path.join(BASE_DIR, 'server', 'img', 'exit_btn.png'))
         self.exit_action.setIcon(icon3)
@@ -76,6 +86,8 @@ class Server_Ui_MainWindow(object):
         self.toolBar.addAction(self.refresh_users_list_button)
         self.toolBar.addAction(self.show_clients_statistics_button)
         self.toolBar.addAction(self.show_server_configuration_button)
+        self.toolBar.addAction(self.add_user_button)
+        self.toolBar.addAction(self.remove_user_button)
         self.toolBar.addAction(self.exit_action)
 
         self.retranslateUi(MainWindow)
@@ -89,7 +101,9 @@ class Server_Ui_MainWindow(object):
         self.refresh_users_list_button.setText(_translate("MainWindow", "Обновить список"))
         self.refresh_users_list_button.setToolTip(_translate("MainWindow", "обновить список активных пользователей"))
         self.show_clients_statistics_button.setText(_translate("MainWindow", "Статистика клиентов"))
-        self.show_clients_statistics_button.setToolTip(_translate("MainWindow", "показать статистику сообщений клиентов"))
+        self.show_clients_statistics_button.setToolTip(_translate("MainWindow", "Показать статистику сообщений клиентов"))
+        self.add_user_button.setToolTip(_translate("MainWindow", "Добавить пользователя"))
+        self.remove_user_button.setToolTip(_translate("MainWindow", "Удалить пользователя"))
         self.show_server_configuration_button.setText(_translate("MainWindow", "Настройки"))
         self.show_server_configuration_button.setToolTip(_translate("MainWindow", "Открыть конфигурацию сервера"))
         self.exit_action.setText(_translate("MainWindow", "Выход"))

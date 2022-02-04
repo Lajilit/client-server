@@ -15,7 +15,7 @@ sys.path.append(BASE_DIR)
 
 from common.constants import ACTION, PRESENCE, TIME, ACCOUNT_NAME, RESPONSE, ALERT, LIST_INFO, ERROR, MESSAGE, SENDER, \
     MESSAGE_TEXT, DESTINATION, EXIT, GET_CONTACTS, ADD_CONTACT, CONTACT_NAME, REMOVE_CONTACT, \
-    GET_ALL_USERS, USER, PUBLIC_KEY, DATA, RESPONSE_511
+    GET_ALL_USERS, USER, PUBLIC_KEY, DATA, RESPONSE_511, PUBLIC_KEY_REQUEST
 from common.errors import ServerError, ConnectionTimeoutError, RequiredFieldMissedError, WrongResponseCodeError
 from common.socket_include import MySocket
 from project_logging.log_config import client_logger as logger
@@ -24,7 +24,7 @@ from project_logging.log_config import client_logger as logger
 socket_lock = threading.Lock()
 
 
-class ClientServerInteraction(threading.Thread, QObject, MySocket):
+class ServerInteractionThread(threading.Thread, QObject, MySocket):
     new_message = pyqtSignal(str)
     connection_lost = pyqtSignal()
     response_205 = pyqtSignal()
@@ -111,15 +111,14 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
         elif presence_response[RESPONSE] == 511:
             password = hmac.new(password, presence_response[DATA].encode('utf-8'), 'MD5')
             digest = password.digest()
-            request = RESPONSE_511
-            request[DATA] = binascii.b2a_base64(digest).decode('ascii')
-            authorize_response = self.communicate_server(request)
+            answer = RESPONSE_511
+            answer[DATA] = binascii.b2a_base64(digest).decode('ascii')
+            authorize_response = self.communicate_server(answer)
             logger.info(f'{self.name}: the response from the server is being handled')
             if authorize_response[RESPONSE] == 400:
-                raise ServerError(presence_response[ERROR])
-            elif authorize_response[RESPONSE] == 205:
+                raise ServerError(authorize_response[ERROR])
+            elif authorize_response[RESPONSE] == 200:
                 self.authorized = True
-                self.response_205.emit()
                 logger.info(f'{self.name}: authorized')
             else:
                 logger.info(f'{self.name}: Received wrong {RESPONSE} code: {authorize_response[RESPONSE]}')
@@ -128,11 +127,27 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
             logger.info(f'{self.name}: Received unknown {RESPONSE} code: {presence_response[RESPONSE]}')
             raise WrongResponseCodeError(presence_response[RESPONSE])
 
+    def get_public_key(self, contact_name):
+        logger.debug(f'{self.name}: get public key request {contact_name}')
+        request = {
+            ACTION: PUBLIC_KEY_REQUEST,
+            TIME: time.time(),
+            ACCOUNT_NAME: contact_name
+        }
+        with socket_lock:
+            response = self.communicate_server(request)
+        if RESPONSE in response and response[RESPONSE] == 511:
+            return response[DATA]
+        else:
+            logger.error(f'{self.name}: no public key')
+
     def communicate_server(self, request):
         with socket_lock:
             try:
                 self.send_data(request)
-                logger.info(f'{self.name}: {request[ACTION]} message was sent to the server')
+                logger.info(
+                    f'{self.name}: {request[ACTION] if request.get(ACTION) else request} message was sent to the server'
+                )
                 result = self.receive_data()
             except OSError as e:
                 if e.errno:
@@ -152,7 +167,19 @@ class ClientServerInteraction(threading.Thread, QObject, MySocket):
 
     def handle_message(self, message):
         logger.info(f'{self.name}: the receives message is being handled')
-        if ACTION in message and \
+
+        if RESPONSE in message:
+            if message[RESPONSE] == 200:
+                return
+            elif message[RESPONSE] == 400:
+                raise ServerError(f'{message[ERROR]}')
+            elif message[RESPONSE] == 205:
+                self.load_data()
+                self.response_205.emit()
+            else:
+                logger.info(f'{self.name}: Received unknown {RESPONSE} code: {message[RESPONSE]}')
+                raise WrongResponseCodeError(message[RESPONSE])
+        elif ACTION in message and \
                 message[ACTION] == MESSAGE and \
                 SENDER in message and \
                 MESSAGE_TEXT in message and \

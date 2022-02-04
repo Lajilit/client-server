@@ -35,6 +35,7 @@ REMOVE_CONTACT = 'remove_contact'
 GET_ALL_USERS = 'get_all_users'
 GET_ACTIVE_USERS = 'get_active_users'
 GET_CONTACTS = 'get_contacts'
+PUBLIC_KEY_REQUEST = 'need_public_key'
 
 RESPONSE_200 = {
     RESPONSE: 200,

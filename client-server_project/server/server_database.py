@@ -2,7 +2,7 @@ import os
 import sys
 from pprint import pprint
 
-from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
@@ -21,10 +21,14 @@ class ServerDB:
         id = Column(Integer, primary_key=True)
         username = Column(String(24), unique=True)
         last_connection = Column(DateTime)
+        password_hash = Column(String)
+        public_key = Column(Text)
 
-        def __init__(self, username):
+        def __init__(self, username, password_hash):
             self.username = username
             self.last_connection = datetime.now()
+            self.password_hash = password_hash
+            self.public_key = None
 
     class ActiveUser(Base):
         __tablename__ = 'active_users'
@@ -92,11 +96,13 @@ class ServerDB:
         self.session.query(self.ActiveUser).delete()
         self.session.commit()
 
-    def user_login(self, username, ip_address, port):
+    def user_login(self, username, ip_address, port, key):
         user_query_result = self.session.query(self.User).filter_by(username=username)
         if user_query_result.count():
             user = user_query_result.first()
             user.last_connection = datetime.now()
+            if user.public_key != key:
+                user.public_key = key
         else:
             user = self.User(username)
             self.session.add(user)
@@ -193,6 +199,38 @@ class ServerDB:
         if username:
             message_history = message_history.filter(self.User.username == username)
         return message_history.all()
+
+    def check_user_exists(self, name):
+        if self.session.query(self.User).filter_by(username=name).count():
+            return True
+        else:
+            return False
+
+    def get_public_key(self, name):
+        user = self.session.query(self.User).filter_by(username=name).first()
+        return user.public_key
+
+    def add_user(self, name, passwd_hash):
+        new_user = self.User(name, passwd_hash)
+        self.session.add(new_user)
+        self.session.commit()
+        history_row = self.UserMessageHistory(new_user.id)
+        self.session.add(history_row)
+        self.session.commit()
+
+    def remove_user(self, name):
+        user = self.session.query(self.User).filter_by(username=name).first()
+        self.session.query(self.ActiveUser).filter_by(user=user.id).delete()
+        self.session.query(self.LoginHistory).filter_by(user=user.id).delete()
+        self.session.query(self.UserContact).filter_by(user=user.id).delete()
+        self.session.query(self.UserContact).filter_by(contact=user.id).delete()
+        self.session.query(self.UserMessageHistory).filter_by(user=user.id).delete()
+        self.session.query(self.User).filter_by(username=name).delete()
+        self.session.commit()
+
+    def get_hash(self, name):
+        user = self.session.query(self.User).filter_by(username=name).first()
+        return user.password_hash
 
 
 if __name__ == '__main__':
