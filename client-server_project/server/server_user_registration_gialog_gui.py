@@ -11,22 +11,69 @@
 from PyQt5 import QtCore, QtWidgets
 
 
-class UI_StartDialog(object):
+class UI_UserRegisterDialog(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(300, 100)
+        Form.resize(300, 200)
         self.main_layout = QtWidgets.QGridLayout(Form)
         self.main_layout.setObjectName("main_layout")
+
+        self.authorization_layout = QtWidgets.QVBoxLayout()
+        self.authorization_layout.setObjectName("authorization_layout")
+
         self.layout_username = QtWidgets.QHBoxLayout()
         self.layout_username.setObjectName("layout_username")
+
         self.label_username = QtWidgets.QLabel(Form)
         self.label_username.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
         self.label_username.setObjectName("label_username")
+
         self.layout_username.addWidget(self.label_username)
+
         self.input_username = QtWidgets.QLineEdit(Form)
         self.input_username.setObjectName("input_username")
+
+
         self.layout_username.addWidget(self.input_username)
-        self.main_layout.addLayout(self.layout_username, 0, 0, 1, 1)
+
+        self.authorization_layout.addLayout(self.layout_username)
+
+        self.layout_password_1 = QtWidgets.QHBoxLayout()
+        self.layout_password_1.setObjectName("layout_password_1")
+
+        self.label_password_1 = QtWidgets.QLabel(Form)
+        self.label_password_1.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.label_password_1.setObjectName("label_password_1")
+
+        self.layout_password_1.addWidget(self.label_password_1)
+
+        self.input_password_1 = QtWidgets.QLineEdit(Form)
+        self.input_password_1.setObjectName("input_password_1")
+        self.input_password_1.setEchoMode(QtWidgets.QLineEdit.Password)
+
+        self.layout_password_1.addWidget(self.input_password_1)
+
+        self.authorization_layout.addLayout(self.layout_password_1)
+
+        self.layout_password_2 = QtWidgets.QHBoxLayout()
+        self.layout_password_2.setObjectName("layout_password_2")
+
+        self.label_password_2 = QtWidgets.QLabel(Form)
+        self.label_password_2.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignTrailing | QtCore.Qt.AlignVCenter)
+        self.label_password_2.setObjectName("label_password_2")
+
+        self.layout_password_2.addWidget(self.label_password_2)
+
+        self.input_password_2 = QtWidgets.QLineEdit(Form)
+        self.input_password_2.setObjectName("input_password_2")
+        self.input_password_2.setEchoMode(QtWidgets.QLineEdit.Password)
+
+        self.layout_password_2.addWidget(self.input_password_2)
+
+        self.authorization_layout.addLayout(self.layout_password_2)
+
+        self.main_layout.addLayout(self.authorization_layout, 0, 0, 1, 1)
+
         self.layout_buttons = QtWidgets.QHBoxLayout()
         self.layout_buttons.setObjectName("layout_buttons")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -44,8 +91,10 @@ class UI_StartDialog(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "User registration"))
         self.label_username.setText(_translate("Form", "Username:"))
+        self.label_password_1.setText(_translate("Form", "Password:"))
+        self.label_password_2.setText(_translate("Form", "Confirm password:"))
         self.button_ok.setText(_translate("Form", "Ok"))
         self.button_cancel.setText(_translate("Form", "Cancel"))
 
@@ -55,7 +104,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = UI_StartDialog()
+    ui = UI_UserRegisterDialog()
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())

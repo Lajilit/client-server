@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main_window.ui'
+# Form implementation generated from reading ui file 'client_main_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -9,7 +9,7 @@
 import os
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

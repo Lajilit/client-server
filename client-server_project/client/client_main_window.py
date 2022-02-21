@@ -2,23 +2,27 @@ import json
 import os
 import sys
 
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.PublicKey import RSA
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem, QBrush, QColor
 from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QMessageBox
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
-from client.add_contact_dialog import AddContactDialog
-from client.main_window_gui import Ui_MainWindow
-from client.remove_contact_dialog import RemoveContactDialog
-from common.errors import ServerError
-
+from client.client_add_contact_dialog import AddContactDialog
+from client.client_main_window_gui import Ui_MainWindow
+from client.client_remove_contact_dialog import RemoveContactDialog
+from common.errors import ServerError, ConnectionTimeoutError
 
 
 class ClientMainWindow(QMainWindow):
-    def __init__(self, db, server_interaction):
+    def __init__(self, name, db, server_interaction):
         super().__init__()
+        self.encryptor = None
+        self.current_contact_key = None
+        self.name = name
         self.database = db
         self.server_interaction = server_interaction
 
@@ -46,6 +50,8 @@ class ClientMainWindow(QMainWindow):
 
         self.clients_list_update()
         self.set_disabled_input()
+        self.make_connection(self.server_interaction)
+        self.setWindowTitle(f'Messenger - user {self.name}')
         self.show()
 
     def set_disabled_input(self):
@@ -57,6 +63,10 @@ class ClientMainWindow(QMainWindow):
         self.ui.button_send_message.setDisabled(True)
         self.ui.button_remove_contact.setDisabled(True)
         self.ui.input_new_message.setDisabled(True)
+
+        self.current_contact_key = None
+        self.current_contact = None
+        self.encryptor = None
 
     def update_message_history(self):
 
@@ -96,6 +106,20 @@ class ClientMainWindow(QMainWindow):
         self.set_current_contact()
 
     def set_current_contact(self):
+
+        try:
+            self.current_contact_key = self.server_interaction.get_public_key(
+                self.current_contact)
+            if self.current_contact_key:
+                self.encryptor = PKCS1_OAEP.new(RSA.import_key(self.current_contact_key))
+        except (OSError, json.JSONDecodeError):
+            self.current_contact_key = None
+            self.encryptor = None
+
+        if not self.current_contact_key:
+            self.messages.warning(
+                self, 'Error', 'no user public key')
+            return
         self.ui.label_contact_name.setText(f'{self.current_contact}:')
         self.ui.button_send_message.setDisabled(False)
         self.ui.input_new_message.setDisabled(False)
@@ -126,13 +150,10 @@ class ClientMainWindow(QMainWindow):
     def add_contact(self, new_contact_name):
         try:
             self.server_interaction.add_contact(new_contact_name)
-        except OSError as e:
-            if e.errno:
-                self.messages.critical(self, 'Error', 'Server connection lost')
-                self.close()
-            self.messages.critical(self, 'Error', 'Connection timeout')
-        except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
-            self.messages.critical(self, 'Error', 'Server connection lost')
+        except ConnectionTimeoutError as e:
+            self.messages.critical(self, 'Error', e.error_text)
+        except ServerError as e:
+            self.messages.critical(self, 'Error', e.error_text)
             self.close()
         else:
             new_contact = QStandardItem(new_contact_name)
@@ -143,7 +164,7 @@ class ClientMainWindow(QMainWindow):
     def remove_contact_window(self):
         global remove_dialog
         remove_dialog = RemoveContactDialog(self.database)
-        remove_dialog.btn_ok.clicked.connect(lambda: self.remove_contact(remove_dialog))
+        remove_dialog.btn_ok.clicked.connect(lambda: self.remove_contact_action(remove_dialog))
         remove_dialog.show()
 
     def remove_contact_action(self, item):
@@ -156,13 +177,10 @@ class ClientMainWindow(QMainWindow):
             contact_to_remove = self.current_contact
         try:
             self.server_interaction.remove_contact(contact_to_remove)
-        except OSError as e:
-            if e.errno:
-                self.messages.critical(self, 'Error', 'Server connection lost')
-                self.close()
-            self.messages.critical(self, 'Error', 'Connection timeout')
-        except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
-            self.messages.critical(self, 'Error', 'Server connection lost')
+        except ConnectionTimeoutError as e:
+            self.messages.critical(self, 'Error', e.error_text)
+        except ServerError as e:
+            self.messages.critical(self, 'Error', e.error_text)
             self.close()
         else:
             self.database.remove_contact(contact_to_remove)
@@ -179,15 +197,10 @@ class ClientMainWindow(QMainWindow):
             try:
                 result = self.server_interaction.send_message(self.current_contact, message_text)
                 pass
+            except ConnectionTimeoutError as e:
+                self.messages.critical(self, 'Error', e.error_text)
             except ServerError as e:
                 self.messages.critical(self, 'Error', e.error_text)
-            except OSError as e:
-                if e.errno:
-                    self.messages.critical(self, 'Error', 'Server connection lost')
-                    self.close()
-                self.messages.critical(self, 'Error', 'Connection timeout')
-            except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError, TypeError):
-                self.messages.critical(self, 'Error', 'Server connection lost')
                 self.close()
             else:
                 if result == 'ok':
@@ -237,8 +250,8 @@ if __name__ == '__main__':
     from client.client_database import ClientDB
 
     database = ClientDB('test30')
-    from server_interaction import ClientServerInteraction
+    from server_interaction_thread import ServerInteractionThread
 
-    server_int = ClientServerInteraction('127.0.0.1', 7777, 'test30', database)
+    server_int = ServerInteractionThread('127.0.0.1', 7777, 'test30', database)
     window = ClientMainWindow(database, server_int)
     sys.exit(app.exec_())

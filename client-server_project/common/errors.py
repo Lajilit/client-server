@@ -6,7 +6,23 @@ class RequiredFieldMissedError(Exception):
         return f'Missed field {self.missed_field}'
 
 
+class WrongResponseCodeError(Exception):
+    def __init__(self, code):
+        self.wrong_code = code
+
+    def __str__(self):
+        return f'Received wrong response code: {self.wrong_code}'
+
+
 class ServerError(Exception):
+    def __init__(self, error_text):
+        self.error_text = error_text
+
+    def __str__(self):
+        return self.error_text
+
+
+class ConnectionTimeoutError(Exception):
     def __init__(self, error_text):
         self.error_text = error_text
 

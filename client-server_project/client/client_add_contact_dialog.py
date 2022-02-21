@@ -4,7 +4,7 @@ import sys
 from PyQt5.QtWidgets import QDialog, QLabel, QComboBox, QPushButton, QApplication
 from PyQt5.QtCore import Qt
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
 from project_logging.log_config import client_logger as logger
@@ -71,9 +71,9 @@ if __name__ == '__main__':
     from client.client_database import ClientDB
 
     database = ClientDB('test3')
-    from server_interaction import ClientServerInteraction
+    from server_interaction_thread import ServerInteractionThread
 
-    transport = ClientServerInteraction('127.0.0.1', 7777, 'test3', database)
+    transport = ServerInteractionThread('127.0.0.1', 7777, 'test3', database)
     window = AddContactDialog(transport, database)
     window.show()
     app.exec_()

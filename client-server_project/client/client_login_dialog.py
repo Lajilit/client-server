@@ -3,11 +3,10 @@ import sys
 
 from PyQt5.QtWidgets import QDialog, QApplication, qApp
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(BASE_DIR)
 
-from client.start_dialog_gui import UI_StartDialog
-
+from client.client_login_dialog_gui import UI_StartDialog
 
 
 class StartDialog(QDialog):
@@ -26,7 +25,7 @@ class StartDialog(QDialog):
         self.show()
 
     def click(self):
-        if self.ui.input_username.text():
+        if self.ui.input_username.text() and self.ui.input_password.text():
             self.ok_pressed = True
             qApp.exit()
 

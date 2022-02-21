@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>5</y>
+      <width>106</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>Active users list</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>30</y>
+      <width>790</width>
+      <height>500</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="refresh_users_list_button"/>
+   <addaction name="show_clients_statistics_button"/>
+   <addaction name="show_server_configuration_button"/>
+   <addaction name="exit_action"/>
+  </widget>
+  <action name="refresh_users_list_button">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/refresh_btn.png</normaloff>img/refresh_btn.png</iconset>
+   </property>
+   <property name="text">
+    <string>Обновить список</string>
+   </property>
+   <property name="toolTip">
+    <string>обновить список активных пользователей</string>
+   </property>
+  </action>
+  <action name="show_clients_statistics_button">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/message_history_btn.png</normaloff>img/message_history_btn.png</iconset>
+   </property>
+   <property name="text">
+    <string>Статистика клиентов</string>
+   </property>
+   <property name="toolTip">
+    <string>показать статистику сообщений клиентов</string>
+   </property>
+  </action>
+  <action name="show_server_configuration_button">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/config_btn.png</normaloff>img/config_btn.png</iconset>
+   </property>
+   <property name="text">
+    <string>Настройки</string>
+   </property>
+   <property name="toolTip">
+    <string>Открыть конфигурацию сервера</string>
+   </property>
+  </action>
+  <action name="exit_action">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/exit_btn.png</normaloff>img/exit_btn.png</iconset>
+   </property>
+   <property name="text">
+    <string>Выход</string>
+   </property>
+   <property name="toolTip">
+    <string>Выход</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
