@@ -164,7 +164,7 @@ class ClientMainWindow(QMainWindow):
     def remove_contact_window(self):
         global remove_dialog
         remove_dialog = RemoveContactDialog(self.database)
-        remove_dialog.btn_ok.clicked.connect(lambda: self.remove_contact(remove_dialog))
+        remove_dialog.btn_ok.clicked.connect(lambda: self.remove_contact_action(remove_dialog))
         remove_dialog.show()
 
     def remove_contact_action(self, item):

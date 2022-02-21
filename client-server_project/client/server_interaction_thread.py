@@ -134,8 +134,7 @@ class ServerInteractionThread(threading.Thread, QObject, MySocket):
             TIME: time.time(),
             ACCOUNT_NAME: contact_name
         }
-        with socket_lock:
-            response = self.communicate_server(request)
+        response = self.communicate_server(request)
         if RESPONSE in response and response[RESPONSE] == 511:
             return response[DATA]
         else:

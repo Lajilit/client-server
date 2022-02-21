@@ -82,12 +82,18 @@ class Server(threading.Thread, MySocket):
             f'{client_socket.getpeername()}: the request from the client is being handled'
         )
         if ACTION in request and request[ACTION] == PUBLIC_KEY_REQUEST and ACCOUNT_NAME in request:
+            logger.info(
+                f'{client_socket.getpeername()}: {PUBLIC_KEY_REQUEST} request'
+            )
             contact_name = request[ACCOUNT_NAME]
+            logger.info(
+                f'{client_socket.getpeername()}: contact_name {contact_name}'
+            )
             response = RESPONSE_511
             response[DATA] = self.database.get_public_key(contact_name)
             if response[DATA]:
                 try:
-                    self.send_data(RESPONSE_200, client_socket)
+                    self.send_data(response, client_socket)
                     logger.info(f'{client_socket.getpeername()}: ok')
                 except OSError:
                     self.client_logout(contact_name)
